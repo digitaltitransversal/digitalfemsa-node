@@ -39,6 +39,23 @@ npm update digitalfemsa
 
 Check for breaking changes on the [releases page](https://github.com/digitalfemsa/digitalfemsa-node/releases/).
 
+## Releasing a new SDK version
+
+Use the Make target to bump the SDK version across the repository.
+
+```bash
+# Example: bump to 1.0.1
+make update-version VERSION=1.0.1
+```
+
+What it updates:
+
+- VERSION (file)
+- package.json ("version")
+- config-node.json ("npmVersion")
+- common.ts (User-Agent version and bindings_version)
+
+
 
 ## Using the library
 
