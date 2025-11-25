@@ -171,5 +171,6 @@ export const createRequestFunction = function (axiosArgs: RequestArgs, globalAxi
 export const setCommonHeaders = async function (object: any) {
     object["User-Agent"] = "App/v2 NodeBindings/" + "{{npmVersion}}";
     object["X-App-Client-User-Agent"] = JSON.stringify(digitalfemsaHeaders);
+    object["X-DigitalFemsa-Client-User-Agent"] = JSON.stringify(digitalfemsaHeaders);
     object["Accept"] = "{{apiVersion}}";
 }

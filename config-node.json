@@ -1,7 +1,7 @@
 {
   "npmName": "digitalfemsa",
   "generateSourceCodeOnly": "false",
-  "npmVersion": "1.0.0",
+  "npmVersion": "1.0.1",
   "packageUrl": "https://developers.digitalfemsa.com/",
   "projectName": "digitalfemsa-node",
   "appDescription": "DigitalFemsa Node Library",
