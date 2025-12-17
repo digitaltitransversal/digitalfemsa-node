@@ -32,12 +32,14 @@ export const DUMMY_BASE_URL = 'https://example.com'
  * @export
  */
 export const digitalfemsaHeaders = {
-    bindings_version: ['DigitalFemsa::', "1.0.1"].join(''),
     lang: 'node',
     lang_version: process.version,
-    publisher: 'digitalfemsa',
     uname: [arch, platform, release].join(' ')
   }
+
+export const formatHeaders = (data: Record<string, string>) =>
+    Object.entries(data).map(([key, value]) => '${key}=${value}').join("; ");
+
 
 /**
  *
@@ -177,8 +179,10 @@ export const createRequestFunction = function (axiosArgs: RequestArgs, globalAxi
  * @export
  */
 export const setCommonHeaders = async function (object: any) {
+    const spinHeaders = formatHeaders(digitalfemsaHeaders);
+
     object["User-Agent"] = "App/v2 NodeBindings/" + "1.0.1";
-    object["X-App-Client-User-Agent"] = JSON.stringify(digitalfemsaHeaders);
-    object["X-DigitalFemsa-Client-User-Agent"] = JSON.stringify(digitalfemsaHeaders);
+    object["X-App-Client-User-Agent"] = spinHeaders;
+    object["Spin-Client-User-Agent"] = spinHeaders;
     object["Accept"] = "application/vnd.app-v2.1.0+json";
 }
