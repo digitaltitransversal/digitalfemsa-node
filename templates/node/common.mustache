@@ -24,7 +24,7 @@ export const DUMMY_BASE_URL = 'https://example.com'
  * @export
  */
 export const digitalfemsaHeaders = {
-    bindings_version: ['DigitalFemsa::', "{{npmVersion}}"].join(''),
+    sdk_version: ['DigitalFemsa::', "{{npmVersion}}"].join(''),
     lang: 'node',
     lang_version: process.version,
     publisher: 'digitalfemsa',
@@ -171,6 +171,6 @@ export const createRequestFunction = function (axiosArgs: RequestArgs, globalAxi
 export const setCommonHeaders = async function (object: any) {
     object["User-Agent"] = "App/v2 NodeBindings/" + "{{npmVersion}}";
     object["X-App-Client-User-Agent"] = JSON.stringify(digitalfemsaHeaders);
-    object["X-DigitalFemsa-Client-User-Agent"] = JSON.stringify(digitalfemsaHeaders);
+    object["Spin-Client-User-Agent"] = JSON.stringify(digitalfemsaHeaders);
     object["Accept"] = "{{apiVersion}}";
 }
