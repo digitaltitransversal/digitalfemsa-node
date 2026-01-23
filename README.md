@@ -53,7 +53,7 @@ What it updates:
 - VERSION (file)
 - package.json ("version")
 - config-node.json ("npmVersion")
-- common.ts (User-Agent version and bindings_version)
+- common.ts (User-Agent version and sdk_version)
 
 
 
