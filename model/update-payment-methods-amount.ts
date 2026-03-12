@@ -13,21 +13,11 @@
  */
 
 
-// May contain unused imports in some cases
-// @ts-ignore
-import { OrderResponse } from './order-response';
 
 /**
- * 
+ * @type UpdatePaymentMethodsAmount
  * @export
- * @interface OrdersResponse
  */
-export interface OrdersResponse {
-    /**
-     * 
-     * @type {Array<OrderResponse>}
-     * @memberof OrdersResponse
-     */
-    'data': Array<OrderResponse>;
-}
+export type UpdatePaymentMethodsAmount = number | string;
+
 
