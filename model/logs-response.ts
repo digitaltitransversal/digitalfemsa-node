@@ -13,6 +13,9 @@
  */
 
 
+// May contain unused imports in some cases
+// @ts-ignore
+import { LogsResponseData } from './logs-response-data';
 
 /**
  * Log model representing a recorded request/response cycle for troubleshooting and auditing.
@@ -21,107 +24,34 @@
  */
 export interface LogsResponse {
     /**
-     * 
-     * @type {string}
-     * @memberof LogsResponse
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof LogsResponse
-     */
-    'object': LogsResponseObjectEnum;
-    /**
-     * 
-     * @type {number}
-     * @memberof LogsResponse
-     */
-    'created_at': number;
-    /**
-     * 
+     * True, if there are more pages.
      * @type {boolean}
      * @memberof LogsResponse
      */
-    'livemode': boolean;
+    'has_more'?: boolean;
     /**
-     * 
+     * The object type
      * @type {string}
      * @memberof LogsResponse
      */
-    'method': string;
+    'object'?: string;
     /**
-     * 
+     * URL of the next page.
      * @type {string}
      * @memberof LogsResponse
      */
-    'url': string;
+    'next_page_url'?: string | null;
     /**
-     * 
+     * Url of the previous page.
      * @type {string}
      * @memberof LogsResponse
      */
-    'status': string;
+    'previous_page_url'?: string | null;
     /**
-     * 
-     * @type {string}
+     * set to page results.
+     * @type {Array<LogsResponseData>}
      * @memberof LogsResponse
      */
-    'version': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof LogsResponse
-     */
-    'ip_address': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof LogsResponse
-     */
-    'related': string;
-    /**
-     * 
-     * @type {{ [key: string]: any; }}
-     * @memberof LogsResponse
-     */
-    'query_string'?: { [key: string]: any; } | null;
-    /**
-     * 
-     * @type {{ [key: string]: any; }}
-     * @memberof LogsResponse
-     */
-    'request_body'?: { [key: string]: any; } | null;
-    /**
-     * 
-     * @type {{ [key: string]: any; }}
-     * @memberof LogsResponse
-     */
-    'response_body'?: { [key: string]: any; } | null;
-    /**
-     * 
-     * @type {{ [key: string]: string; }}
-     * @memberof LogsResponse
-     */
-    'request_headers'?: { [key: string]: string; } | null;
-    /**
-     * 
-     * @type {{ [key: string]: string; }}
-     * @memberof LogsResponse
-     */
-    'response_headers'?: { [key: string]: string; } | null;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof LogsResponse
-     */
-    'searchable_tags'?: Array<string>;
+    'data'?: Array<LogsResponseData> | null;
 }
-
-export const LogsResponseObjectEnum = {
-    log: 'log'
-} as const;
-
-export type LogsResponseObjectEnum = typeof LogsResponseObjectEnum[keyof typeof LogsResponseObjectEnum];
-
 

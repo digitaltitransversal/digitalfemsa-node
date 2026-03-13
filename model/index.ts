@@ -74,6 +74,7 @@ export * from './get-webhook-keys-response';
 export * from './get-webhooks-response';
 export * from './log-response';
 export * from './logs-response';
+export * from './logs-response-data';
 export * from './model-error';
 export * from './order-capture-request';
 export * from './order-customer-info-response';

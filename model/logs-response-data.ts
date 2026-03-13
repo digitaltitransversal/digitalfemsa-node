@@ -15,129 +15,129 @@
 
 
 /**
- * Log model representing a recorded request/response cycle for troubleshooting and auditing.
+ * 
  * @export
- * @interface LogResponse
+ * @interface LogsResponseData
  */
-export interface LogResponse {
+export interface LogsResponseData {
     /**
      * 
      * @type {number}
-     * @memberof LogResponse
+     * @memberof LogsResponseData
      */
-    'created_at': number;
+    'created_at'?: number;
     /**
      * 
      * @type {string}
-     * @memberof LogResponse
+     * @memberof LogsResponseData
      */
-    'id': string;
+    'id'?: string;
     /**
      * 
      * @type {string}
-     * @memberof LogResponse
+     * @memberof LogsResponseData
      */
     'ip_address'?: string;
     /**
      * 
      * @type {boolean}
-     * @memberof LogResponse
+     * @memberof LogsResponseData
      */
-    'livemode': boolean;
+    'livemode'?: boolean;
     /**
      * 
      * @type {string}
-     * @memberof LogResponse
+     * @memberof LogsResponseData
      */
     'loggable_id'?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof LogResponse
+     * @memberof LogsResponseData
      */
     'loggable_type'?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof LogResponse
+     * @memberof LogsResponseData
      */
     'method'?: string;
     /**
      * 
      * @type {string}
-     * @memberof LogResponse
+     * @memberof LogsResponseData
      */
     'oauth_token_id'?: string | null;
     /**
      * 
      * @type {{ [key: string]: any; }}
-     * @memberof LogResponse
+     * @memberof LogsResponseData
      */
     'query_string'?: { [key: string]: any; };
     /**
      * 
      * @type {string}
-     * @memberof LogResponse
+     * @memberof LogsResponseData
      */
     'related'?: string;
     /**
      * 
      * @type {object}
-     * @memberof LogResponse
+     * @memberof LogsResponseData
      */
     'request_body'?: object;
     /**
      * 
      * @type {{ [key: string]: string; }}
-     * @memberof LogResponse
+     * @memberof LogsResponseData
      */
     'request_headers'?: { [key: string]: string; };
     /**
      * 
      * @type {object}
-     * @memberof LogResponse
+     * @memberof LogsResponseData
      */
     'response_body'?: object;
     /**
      * 
      * @type {{ [key: string]: string; }}
-     * @memberof LogResponse
+     * @memberof LogsResponseData
      */
     'response_headers'?: { [key: string]: string; };
     /**
      * 
      * @type {Array<string>}
-     * @memberof LogResponse
+     * @memberof LogsResponseData
      */
     'searchable_tags'?: Array<string>;
     /**
      * 
      * @type {string}
-     * @memberof LogResponse
+     * @memberof LogsResponseData
      */
     'status'?: string;
     /**
      * 
      * @type {string}
-     * @memberof LogResponse
+     * @memberof LogsResponseData
      */
     'updated_at'?: string;
     /**
      * 
      * @type {string}
-     * @memberof LogResponse
+     * @memberof LogsResponseData
      */
     'url'?: string;
     /**
      * 
      * @type {string}
-     * @memberof LogResponse
+     * @memberof LogsResponseData
      */
     'user_account_id'?: string;
     /**
      * 
      * @type {string}
-     * @memberof LogResponse
+     * @memberof LogsResponseData
      */
     'version'?: string;
 }

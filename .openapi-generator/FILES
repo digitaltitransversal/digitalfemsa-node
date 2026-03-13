@@ -104,6 +104,7 @@ model/get-webhook-keys-response.ts
 model/get-webhooks-response.ts
 model/index.ts
 model/log-response.ts
+model/logs-response-data.ts
 model/logs-response.ts
 model/model-error.ts
 model/order-capture-request.ts
