@@ -47,6 +47,7 @@ model/charge-response-refunds.ts
 model/charge-response.ts
 model/charge-update-request.ts
 model/charges-data-response.ts
+model/checkout-order-template-customer-info.ts
 model/checkout-order-template.ts
 model/checkout-request.ts
 model/checkout-response.ts
@@ -64,12 +65,12 @@ model/customer-fiscal-entities-data-response.ts
 model/customer-fiscal-entities-request.ts
 model/customer-fiscal-entities-response.ts
 model/customer-info-just-customer-id-response.ts
+model/customer-info-just-customer-id.ts
 model/customer-info.ts
 model/customer-payment-method-request.ts
 model/customer-payment-methods-data.ts
 model/customer-payment-methods-request.ts
 model/customer-payment-methods-response.ts
-model/customer-payment-sources-inner.ts
 model/customer-response-shipping-contacts.ts
 model/customer-response.ts
 model/customer-shipping-contacts-address.ts
@@ -111,8 +112,10 @@ model/order-capture-request.ts
 model/order-customer-info-response.ts
 model/order-discount-lines-request.ts
 model/order-fiscal-entity-address-response.ts
+model/order-fiscal-entity-request.ts
 model/order-fiscal-entity-response.ts
 model/order-refund-request.ts
+model/order-request-customer-info.ts
 model/order-request.ts
 model/order-response-channel.ts
 model/order-response-charges.ts
@@ -124,6 +127,7 @@ model/order-response-shipping-contact.ts
 model/order-response.ts
 model/order-tax-request.ts
 model/order-update-fiscal-entity-request.ts
+model/order-update-request-customer-info.ts
 model/order-update-request.ts
 model/orders-response.ts
 model/page.ts
@@ -140,8 +144,8 @@ model/shipping-order-response.ts
 model/shipping-request.ts
 model/transaction-response.ts
 model/transfer-destination-response.ts
+model/transfer-method-response.ts
 model/transfer-response.ts
-model/transfers-response-destination.ts
 model/transfers-response.ts
 model/update-customer-fiscal-entities-response.ts
 model/update-customer-payment-methods-response.ts
@@ -149,8 +153,6 @@ model/update-customer.ts
 model/update-order-discount-lines-request.ts
 model/update-order-tax-request.ts
 model/update-order-tax-response.ts
-model/update-payment-methods-amount.ts
-model/update-payment-methods-expires-at.ts
 model/update-payment-methods.ts
 model/update-product.ts
 model/webhook-key-create-response.ts

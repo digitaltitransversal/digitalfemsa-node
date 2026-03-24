@@ -20,43 +20,43 @@ import {FiscalEntityAddress} from './fiscal-entity-address';
 /**
  * Fiscal entity of the order, Currently it is a purely informative field
  * @export
- * @interface OrderUpdateFiscalEntityRequest
+ * @interface OrderFiscalEntityRequest
  */
-export interface OrderUpdateFiscalEntityRequest {
+export interface OrderFiscalEntityRequest {
     /**
      * 
      * @type {FiscalEntityAddress}
-     * @memberof OrderUpdateFiscalEntityRequest
+     * @memberof OrderFiscalEntityRequest
      */
     'address': FiscalEntityAddress;
     /**
      * Email of the fiscal entity
      * @type {string}
-     * @memberof OrderUpdateFiscalEntityRequest
+     * @memberof OrderFiscalEntityRequest
      */
     'email'?: string;
     /**
-     * Name of the fiscal entity
-     * @type {string}
-     * @memberof OrderUpdateFiscalEntityRequest
-     */
-    'name'?: string | null;
-    /**
-     * Arbitrary key-value data associated with the fiscal entity for your internal use. Keys should be strings; values can be any JSON value. 
+     * Metadata associated with the fiscal entity
      * @type {{ [key: string]: any; }}
-     * @memberof OrderUpdateFiscalEntityRequest
+     * @memberof OrderFiscalEntityRequest
      */
     'metadata'?: { [key: string]: any; };
     /**
+     * Name of the fiscal entity
+     * @type {string}
+     * @memberof OrderFiscalEntityRequest
+     */
+    'name'?: string | null;
+    /**
      * Phone of the fiscal entity
      * @type {string}
-     * @memberof OrderUpdateFiscalEntityRequest
+     * @memberof OrderFiscalEntityRequest
      */
     'phone'?: string;
     /**
      * Tax ID of the fiscal entity
      * @type {string}
-     * @memberof OrderUpdateFiscalEntityRequest
+     * @memberof OrderFiscalEntityRequest
      */
     'tax_id'?: string | null;
 }

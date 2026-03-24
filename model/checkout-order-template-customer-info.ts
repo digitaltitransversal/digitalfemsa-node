@@ -15,18 +15,16 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import {CompanyResponse} from './company-response';
+import {CustomerInfo} from './customer-info';
 // May contain unused imports in some cases
 // @ts-ignore
-import {Page} from './page';
-// May contain unused imports in some cases
-// @ts-ignore
-import {Pagination} from './pagination';
+import {CustomerInfoJustCustomerId} from './customer-info-just-customer-id';
 
 /**
- * @type GetCompaniesResponse
+ * @type CheckoutOrderTemplateCustomerInfo
+ * It is the information of the customer who will be created when receiving a new payment.
  * @export
  */
-export type GetCompaniesResponse = Page & Pagination;
+export type CheckoutOrderTemplateCustomerInfo = CustomerInfo | CustomerInfoJustCustomerId;
 
 

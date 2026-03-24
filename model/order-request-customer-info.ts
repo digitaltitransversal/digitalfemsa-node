@@ -15,18 +15,16 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import {CompanyResponse} from './company-response';
+import {CustomerInfo} from './customer-info';
 // May contain unused imports in some cases
 // @ts-ignore
-import {Page} from './page';
-// May contain unused imports in some cases
-// @ts-ignore
-import {Pagination} from './pagination';
+import {CustomerInfoJustCustomerId} from './customer-info-just-customer-id';
 
 /**
- * @type GetCompaniesResponse
+ * @type OrderRequestCustomerInfo
+ * Customer information
  * @export
  */
-export type GetCompaniesResponse = Page & Pagination;
+export type OrderRequestCustomerInfo = CustomerInfo | CustomerInfoJustCustomerId;
 
 

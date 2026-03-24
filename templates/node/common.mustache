@@ -2,14 +2,11 @@
 /* eslint-disable */
 {{>licenseInfo}}
 
-import type { Configuration } from "./configuration";
-import type { RequestArgs } from "./base";
-import type { AxiosInstance, AxiosResponse } from 'axios';
-import { RequiredError } from "./base";
-{{#withNodeImports}}
-import { URL, URLSearchParams } from 'url';
-{{/withNodeImports}}
-import {arch, platform, release}  from 'os';
+import type {Configuration} from "./configuration";
+import type {RequestArgs} from "./base";
+import {RequiredError} from "./base";
+import type {AxiosInstance, AxiosResponse} from 'axios';
+import {arch, platform, release} from 'os';
 import * as fs from 'fs';
 import * as https from 'https';
 import * as path from 'path';
