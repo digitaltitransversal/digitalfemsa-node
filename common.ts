@@ -33,10 +33,9 @@ export const DUMMY_BASE_URL = 'https://example.com'
  * @export
  */
 export const digitalfemsaHeaders = {
-    sdk_version: ['DigitalFemsa::', "1.1.0"].join(''),
+    sdk_version: '1.1.0',
     lang: 'node',
     lang_version: process.version,
-    publisher: 'digitalfemsa',
     uname: [arch, platform, release].join(' ')
   }
 
