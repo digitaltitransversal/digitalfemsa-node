@@ -15,13 +15,13 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { Page } from './page';
+import {Page} from './page';
 // May contain unused imports in some cases
 // @ts-ignore
-import { Pagination } from './pagination';
+import {Pagination} from './pagination';
 // May contain unused imports in some cases
 // @ts-ignore
-import { TransactionResponse } from './transaction-response';
+import {TransactionResponse} from './transaction-response';
 
 /**
  * @type GetTransactionsResponse

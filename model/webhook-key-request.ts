@@ -25,6 +25,6 @@ export interface WebhookKeyRequest {
      * @type {boolean}
      * @memberof WebhookKeyRequest
      */
-    'active'?: boolean;
+    'active'?: boolean | null;
 }
 

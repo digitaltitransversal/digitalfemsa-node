@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14, 16, 18, 20]
+        node-version: [16, 18, 20]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js 20 for Mockoon CLI
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
@@ -28,7 +28,7 @@ jobs:
           port: 3000
 
       - name: Setup Node.js for test
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -41,8 +41,8 @@ jobs:
           BASE_PATH: http://localhost:3000
 
       - name: Publish code coverage
-        if: matrix.node-version == 14
-        uses: paambaati/codeclimate-action@v5.0.0
+        if: matrix.node-version == 18
+        uses: paambaati/codeclimate-action@v9.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:

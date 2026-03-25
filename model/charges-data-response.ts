@@ -15,16 +15,16 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { ChargeResponse } from './charge-response';
+import {ChargeResponse} from './charge-response';
 // May contain unused imports in some cases
 // @ts-ignore
-import { ChargeResponseChannel } from './charge-response-channel';
+import {ChargeResponseChannel} from './charge-response-channel';
 // May contain unused imports in some cases
 // @ts-ignore
-import { ChargeResponsePaymentMethod } from './charge-response-payment-method';
+import {ChargeResponsePaymentMethod} from './charge-response-payment-method';
 // May contain unused imports in some cases
 // @ts-ignore
-import { ChargeResponseRefunds } from './charge-response-refunds';
+import {ChargeResponseRefunds} from './charge-response-refunds';
 
 /**
  * @type ChargesDataResponse

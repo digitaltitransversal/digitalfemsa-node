@@ -13,20 +13,37 @@
  */
 
 
-import type { Configuration } from '../configuration';
-import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
+import type {Configuration} from '../configuration';
+import type {AxiosInstance, AxiosPromise, RawAxiosRequestConfig} from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import {
+  assertParamExists,
+  createRequestFunction,
+  DUMMY_BASE_URL,
+  serializeDataIfNeeded,
+  setApiKeyToObject,
+  setBasicAuthToObject,
+  setBearerAuthToObject,
+  setOAuthToObject,
+  setSearchParams,
+  toPathString
+} from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
+import {
+  BASE_PATH,
+  BaseAPI,
+  COLLECTION_FORMATS,
+  operationServerMap,
+  RequestArgs,
+  RequiredError
+} from '../base';
 // @ts-ignore
-import { GetTransfersResponse } from '../model';
 // @ts-ignore
-import { ModelError } from '../model';
 // @ts-ignore
-import { TransferResponse } from '../model';
+import {GetTransfersResponse, ModelError, TransferResponse} from '../model';
+
 /**
  * TransfersApi - axios parameter creator
  * @export
@@ -34,8 +51,8 @@ import { TransferResponse } from '../model';
 export const TransfersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Get the details of a Transfer
-         * @summary Get Transfer
+         * Retrieves the details of a transfer by its ID.
+         * @summary Get transfer
          * @param {string} id Identifier of the resource
          * @param {GetTransferAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -82,8 +99,8 @@ export const TransfersApiAxiosParamCreator = function (configuration?: Configura
             };
         },
         /**
-         * Get transfers details in the form of a list
-         * @summary Get a list of transfers
+         * Returns a paginated list of transfers (payouts/dispersions).  A transfer represents a payout of funds to the merchant (where the money is sent and the payout status). Transfers typically aggregate multiple transactions.  If you need movement-level details (amount/fee/net per operation) or to reconcile charges, use GET /transactions. 
+         * @summary List transfers
          * @param {GetTransfersAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {number} [limit] The numbers of items to return, the maximum value is 250
@@ -156,8 +173,8 @@ export const TransfersApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = TransfersApiAxiosParamCreator(configuration)
     return {
         /**
-         * Get the details of a Transfer
-         * @summary Get Transfer
+         * Retrieves the details of a transfer by its ID.
+         * @summary Get transfer
          * @param {string} id Identifier of the resource
          * @param {GetTransferAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -171,8 +188,8 @@ export const TransfersApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * Get transfers details in the form of a list
-         * @summary Get a list of transfers
+         * Returns a paginated list of transfers (payouts/dispersions).  A transfer represents a payout of funds to the merchant (where the money is sent and the payout status). Transfers typically aggregate multiple transactions.  If you need movement-level details (amount/fee/net per operation) or to reconcile charges, use GET /transactions. 
+         * @summary List transfers
          * @param {GetTransfersAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {number} [limit] The numbers of items to return, the maximum value is 250
@@ -199,8 +216,8 @@ export const TransfersApiFactory = function (configuration?: Configuration, base
     const localVarFp = TransfersApiFp(configuration)
     return {
         /**
-         * Get the details of a Transfer
-         * @summary Get Transfer
+         * Retrieves the details of a transfer by its ID.
+         * @summary Get transfer
          * @param {string} id Identifier of the resource
          * @param {GetTransferAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -211,8 +228,8 @@ export const TransfersApiFactory = function (configuration?: Configuration, base
             return localVarFp.getTransfer(id, acceptLanguage, xChildCompanyId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Get transfers details in the form of a list
-         * @summary Get a list of transfers
+         * Returns a paginated list of transfers (payouts/dispersions).  A transfer represents a payout of funds to the merchant (where the money is sent and the payout status). Transfers typically aggregate multiple transactions.  If you need movement-level details (amount/fee/net per operation) or to reconcile charges, use GET /transactions. 
+         * @summary List transfers
          * @param {GetTransfersAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {number} [limit] The numbers of items to return, the maximum value is 250
@@ -235,8 +252,8 @@ export const TransfersApiFactory = function (configuration?: Configuration, base
  */
 export interface TransfersApiInterface {
     /**
-     * Get the details of a Transfer
-     * @summary Get Transfer
+     * Retrieves the details of a transfer by its ID.
+     * @summary Get transfer
      * @param {string} id Identifier of the resource
      * @param {GetTransferAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -247,8 +264,8 @@ export interface TransfersApiInterface {
     getTransfer(id: string, acceptLanguage?: GetTransferAcceptLanguageEnum, xChildCompanyId?: string, options?: RawAxiosRequestConfig): AxiosPromise<TransferResponse>;
 
     /**
-     * Get transfers details in the form of a list
-     * @summary Get a list of transfers
+     * Returns a paginated list of transfers (payouts/dispersions).  A transfer represents a payout of funds to the merchant (where the money is sent and the payout status). Transfers typically aggregate multiple transactions.  If you need movement-level details (amount/fee/net per operation) or to reconcile charges, use GET /transactions. 
+     * @summary List transfers
      * @param {GetTransfersAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {number} [limit] The numbers of items to return, the maximum value is 250
@@ -271,8 +288,8 @@ export interface TransfersApiInterface {
  */
 export class TransfersApi extends BaseAPI implements TransfersApiInterface {
     /**
-     * Get the details of a Transfer
-     * @summary Get Transfer
+     * Retrieves the details of a transfer by its ID.
+     * @summary Get transfer
      * @param {string} id Identifier of the resource
      * @param {GetTransferAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -285,8 +302,8 @@ export class TransfersApi extends BaseAPI implements TransfersApiInterface {
     }
 
     /**
-     * Get transfers details in the form of a list
-     * @summary Get a list of transfers
+     * Returns a paginated list of transfers (payouts/dispersions).  A transfer represents a payout of funds to the merchant (where the money is sent and the payout status). Transfers typically aggregate multiple transactions.  If you need movement-level details (amount/fee/net per operation) or to reconcile charges, use GET /transactions. 
+     * @summary List transfers
      * @param {GetTransfersAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {number} [limit] The numbers of items to return, the maximum value is 250

@@ -15,7 +15,7 @@
 
 
 /**
- * a webhook
+ * Parameters used to create or update a webhook.
  * @export
  * @interface WebhookRequest
  */

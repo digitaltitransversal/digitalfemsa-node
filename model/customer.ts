@@ -15,91 +15,74 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { CustomerAntifraudInfo } from './customer-antifraud-info';
+import {
+  CustomerFiscalEntitiesRequest
+} from './customer-fiscal-entities-request';
 // May contain unused imports in some cases
 // @ts-ignore
-import { CustomerFiscalEntitiesRequest } from './customer-fiscal-entities-request';
+import {
+  CustomerPaymentMethodsRequest
+} from './customer-payment-methods-request';
 // May contain unused imports in some cases
 // @ts-ignore
-import { CustomerPaymentMethodsRequest } from './customer-payment-methods-request';
-// May contain unused imports in some cases
-// @ts-ignore
-import { CustomerShippingContacts } from './customer-shipping-contacts';
+import {CustomerShippingContacts} from './customer-shipping-contacts';
 
 /**
- * a customer
+ * Customer create request.
  * @export
  * @interface Customer
  */
 export interface Customer {
     /**
-     * 
-     * @type {CustomerAntifraudInfo}
-     * @memberof Customer
-     */
-    'antifraud_info'?: CustomerAntifraudInfo | null;
-    /**
-     * It is a value that allows identifying if the email is corporate or not.
-     * @type {boolean}
-     * @memberof Customer
-     */
-    'corporate'?: boolean;
-    /**
-     * It is an undefined value.
-     * @type {string}
-     * @memberof Customer
-     */
-    'custom_reference'?: string;
-    /**
-     * An email address is a series of customizable characters followed by a universal Internet symbol, the at symbol (@), the name of a host server, and a web domain ending (.mx, .com, .org, . net, etc).
-     * @type {string}
-     * @memberof Customer
-     */
-    'email': string;
-    /**
-     * It is a parameter that allows to identify in the response, the Femsa ID of a payment method (payment_id)
-     * @type {string}
-     * @memberof Customer
-     */
-    'default_payment_source_id'?: string;
-    /**
-     * It is a parameter that allows to identify in the response, the Femsa ID of the shipping address (shipping_contact)
-     * @type {string}
-     * @memberof Customer
-     */
-    'default_shipping_contact_id'?: string;
-    /**
-     * 
-     * @type {Array<CustomerFiscalEntitiesRequest>}
-     * @memberof Customer
-     */
-    'fiscal_entities'?: Array<CustomerFiscalEntitiesRequest>;
-    /**
-     * 
-     * @type {{ [key: string]: any; }}
-     * @memberof Customer
-     */
-    'metadata'?: { [key: string]: any; };
-    /**
-     * Client\'s name
+     * Customer\'s name.
      * @type {string}
      * @memberof Customer
      */
     'name': string;
     /**
-     * Contains details of the payment methods that the customer has active or has used in Femsa
+     * Customer email address.
+     * @type {string}
+     * @memberof Customer
+     */
+    'email': string;
+    /**
+     * Customer phone number.
+     * @type {string}
+     * @memberof Customer
+     */
+    'phone'?: string | null;
+    /**
+     * Indicates whether the customer email is corporate.
+     * @type {boolean}
+     * @memberof Customer
+     */
+    'corporate'?: boolean;
+    /**
+     * Merchant-defined reference used to identify the customer in your system.
+     * @type {string}
+     * @memberof Customer
+     */
+    'custom_reference'?: string;
+    /**
+     * Arbitrary metadata associated with the customer.
+     * @type {{ [key: string]: any; }}
+     * @memberof Customer
+     */
+    'metadata'?: { [key: string]: any; };
+    /**
+     * Customer payment sources to be created with the customer (optional).
      * @type {Array<CustomerPaymentMethodsRequest>}
      * @memberof Customer
      */
     'payment_sources'?: Array<CustomerPaymentMethodsRequest>;
     /**
-     * Is the customer\'s phone number
-     * @type {string}
+     * Customer fiscal entities to be created with the customer (optional).
+     * @type {Array<CustomerFiscalEntitiesRequest>}
      * @memberof Customer
      */
-    'phone': string;
+    'fiscal_entities'?: Array<CustomerFiscalEntitiesRequest>;
     /**
-     * Contains the detail of the shipping addresses that the client has active or has used in Femsa
+     * Customer shipping contacts to be created with the customer (optional).
      * @type {Array<CustomerShippingContacts>}
      * @memberof Customer
      */

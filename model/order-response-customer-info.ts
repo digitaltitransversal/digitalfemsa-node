@@ -15,13 +15,16 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { CustomerInfoJustCustomerIdResponse } from './customer-info-just-customer-id-response';
+import {
+  CustomerInfoJustCustomerIdResponse
+} from './customer-info-just-customer-id-response';
 // May contain unused imports in some cases
 // @ts-ignore
-import { OrderCustomerInfoResponse } from './order-customer-info-response';
+import {OrderCustomerInfoResponse} from './order-customer-info-response';
 
 /**
  * @type OrderResponseCustomerInfo
+ * Customer information associated with the order.
  * @export
  */
 export type OrderResponseCustomerInfo = CustomerInfoJustCustomerIdResponse & OrderCustomerInfoResponse;

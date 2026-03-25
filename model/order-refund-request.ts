@@ -21,22 +21,39 @@
  */
 export interface OrderRefundRequest {
     /**
-     * 
+     * Amount to refund. If not provided, the API refunds the refundable amount of the selected charge.
      * @type {number}
      * @memberof OrderRefundRequest
      */
     'amount': number;
     /**
-     * 
+     * Charge ID to refund. If not provided, the API selects a refundable charge from the order.
+     * @type {string}
+     * @memberof OrderRefundRequest
+     */
+    'charge_id'?: string | null;
+    /**
+     * Refund reason. If not provided, the API uses a default reason.
+     * @type {string}
+     * @memberof OrderRefundRequest
+     */
+    'reason': OrderRefundRequestReasonEnum;
+    /**
+     * Expiration timestamp for cash refunds (must be within the allowed range configured by the API).
      * @type {number}
      * @memberof OrderRefundRequest
      */
     'expires_at'?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof OrderRefundRequest
-     */
-    'reason': string;
 }
+
+export const OrderRefundRequestReasonEnum = {
+    requestedByClient: 'requested_by_client',
+    cannotBeFulfilled: 'cannot_be_fulfilled',
+    duplicatedTransaction: 'duplicated_transaction',
+    suspectedFraud: 'suspected_fraud',
+    other: 'other'
+} as const;
+
+export type OrderRefundRequestReasonEnum = typeof OrderRefundRequestReasonEnum[keyof typeof OrderRefundRequestReasonEnum];
+
 

@@ -15,16 +15,16 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { BalanceCommonField } from './balance-common-field';
+import {BalanceCommonField} from './balance-common-field';
 
 /**
- * balance model
+ * Company balance summary.  Monetary fields are returned as arrays of amounts grouped by currency (see `balance_common_field` items). 
  * @export
  * @interface BalanceResponse
  */
 export interface BalanceResponse {
     /**
-     * The balance\'s available
+     * Amounts currently available, grouped by currency.
      * @type {Array<BalanceCommonField>}
      * @memberof BalanceResponse
      */
@@ -42,43 +42,43 @@ export interface BalanceResponse {
      */
     'conekta_retention'?: Array<BalanceCommonField>;
     /**
-     * The balance\'s gateway
+     * Gateway balance amounts, grouped by currency.
      * @type {Array<BalanceCommonField>}
      * @memberof BalanceResponse
      */
     'gateway'?: Array<BalanceCommonField>;
     /**
-     * The balance\'s pending
+     * Amounts pending settlement, grouped by currency.
      * @type {Array<BalanceCommonField>}
      * @memberof BalanceResponse
      */
     'pending'?: Array<BalanceCommonField>;
     /**
-     * The balance\'s retained
+     * Amounts currently retained, grouped by currency.
      * @type {Array<BalanceCommonField>}
      * @memberof BalanceResponse
      */
     'retained'?: Array<BalanceCommonField>;
     /**
-     * The balance\'s retention amount
+     * Retention amount applied, grouped by currency.
      * @type {Array<BalanceCommonField>}
      * @memberof BalanceResponse
      */
     'retention_amount'?: Array<BalanceCommonField>;
     /**
-     * The balance\'s target collateral amount
+     * Target collateral amount, grouped by currency.
      * @type {object}
      * @memberof BalanceResponse
      */
     'target_collateral_amount'?: object;
     /**
-     * The balance\'s target retention amount
+     * Target retention amount, grouped by currency.
      * @type {Array<BalanceCommonField>}
      * @memberof BalanceResponse
      */
     'target_retention_amount'?: Array<BalanceCommonField>;
     /**
-     * The balance\'s temporarily retained
+     * Amounts temporarily retained
      * @type {Array<BalanceCommonField>}
      * @memberof BalanceResponse
      */

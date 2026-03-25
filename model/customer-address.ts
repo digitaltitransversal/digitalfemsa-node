@@ -55,7 +55,7 @@ export interface CustomerAddress {
      * @type {string}
      * @memberof CustomerAddress
      */
-    'country'?: string;
+    'country': string;
     /**
      * 
      * @type {boolean}

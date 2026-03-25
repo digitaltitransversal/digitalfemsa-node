@@ -13,20 +13,41 @@
  */
 
 
-import type { Configuration } from '../configuration';
-import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
+import type {Configuration} from '../configuration';
+import type {AxiosInstance, AxiosPromise, RawAxiosRequestConfig} from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import {
+  assertParamExists,
+  createRequestFunction,
+  DUMMY_BASE_URL,
+  serializeDataIfNeeded,
+  setApiKeyToObject,
+  setBasicAuthToObject,
+  setBearerAuthToObject,
+  setOAuthToObject,
+  setSearchParams,
+  toPathString
+} from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
+import {
+  BASE_PATH,
+  BaseAPI,
+  COLLECTION_FORMATS,
+  operationServerMap,
+  RequestArgs,
+  RequiredError
+} from '../base';
 // @ts-ignore
-import { GetTransactionsResponse } from '../model';
 // @ts-ignore
-import { ModelError } from '../model';
 // @ts-ignore
-import { TransactionResponse } from '../model';
+import {
+  GetTransactionsResponse,
+  ModelError,
+  TransactionResponse
+} from '../model';
+
 /**
  * TransactionsApi - axios parameter creator
  * @export
@@ -34,7 +55,7 @@ import { TransactionResponse } from '../model';
 export const TransactionsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Get the details of a transaction
+         * Retrieves the details of a transaction by its ID.
          * @summary Get transaction
          * @param {string} id Identifier of the resource
          * @param {GetTransactionAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -82,8 +103,8 @@ export const TransactionsApiAxiosParamCreator = function (configuration?: Config
             };
         },
         /**
-         * Get transaction details in the form of a list
-         * @summary Get List transactions
+         * Returns a paginated list of transactions (ledger movements).  A transaction is a movement that represents the financial impact of payment operations, including amounts, fees, and net values. Transactions can be linked to a charge and may be linked to a transfer (payout) when they are included in a payout.  If you need payout-level information (destination, statement reference/description, payout status), use GET /transfers. 
+         * @summary List transactions
          * @param {GetTransactionsAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {number} [limit] The numbers of items to return, the maximum value is 250
@@ -171,7 +192,7 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = TransactionsApiAxiosParamCreator(configuration)
     return {
         /**
-         * Get the details of a transaction
+         * Retrieves the details of a transaction by its ID.
          * @summary Get transaction
          * @param {string} id Identifier of the resource
          * @param {GetTransactionAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -186,8 +207,8 @@ export const TransactionsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * Get transaction details in the form of a list
-         * @summary Get List transactions
+         * Returns a paginated list of transactions (ledger movements).  A transaction is a movement that represents the financial impact of payment operations, including amounts, fees, and net values. Transactions can be linked to a charge and may be linked to a transfer (payout) when they are included in a payout.  If you need payout-level information (destination, statement reference/description, payout status), use GET /transfers. 
+         * @summary List transactions
          * @param {GetTransactionsAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {number} [limit] The numbers of items to return, the maximum value is 250
@@ -217,7 +238,7 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
     const localVarFp = TransactionsApiFp(configuration)
     return {
         /**
-         * Get the details of a transaction
+         * Retrieves the details of a transaction by its ID.
          * @summary Get transaction
          * @param {string} id Identifier of the resource
          * @param {GetTransactionAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -229,8 +250,8 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
             return localVarFp.getTransaction(id, acceptLanguage, xChildCompanyId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Get transaction details in the form of a list
-         * @summary Get List transactions
+         * Returns a paginated list of transactions (ledger movements).  A transaction is a movement that represents the financial impact of payment operations, including amounts, fees, and net values. Transactions can be linked to a charge and may be linked to a transfer (payout) when they are included in a payout.  If you need payout-level information (destination, statement reference/description, payout status), use GET /transfers. 
+         * @summary List transactions
          * @param {GetTransactionsAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {number} [limit] The numbers of items to return, the maximum value is 250
@@ -256,7 +277,7 @@ export const TransactionsApiFactory = function (configuration?: Configuration, b
  */
 export interface TransactionsApiInterface {
     /**
-     * Get the details of a transaction
+     * Retrieves the details of a transaction by its ID.
      * @summary Get transaction
      * @param {string} id Identifier of the resource
      * @param {GetTransactionAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -268,8 +289,8 @@ export interface TransactionsApiInterface {
     getTransaction(id: string, acceptLanguage?: GetTransactionAcceptLanguageEnum, xChildCompanyId?: string, options?: RawAxiosRequestConfig): AxiosPromise<TransactionResponse>;
 
     /**
-     * Get transaction details in the form of a list
-     * @summary Get List transactions
+     * Returns a paginated list of transactions (ledger movements).  A transaction is a movement that represents the financial impact of payment operations, including amounts, fees, and net values. Transactions can be linked to a charge and may be linked to a transfer (payout) when they are included in a payout.  If you need payout-level information (destination, statement reference/description, payout status), use GET /transfers. 
+     * @summary List transactions
      * @param {GetTransactionsAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {number} [limit] The numbers of items to return, the maximum value is 250
@@ -295,7 +316,7 @@ export interface TransactionsApiInterface {
  */
 export class TransactionsApi extends BaseAPI implements TransactionsApiInterface {
     /**
-     * Get the details of a transaction
+     * Retrieves the details of a transaction by its ID.
      * @summary Get transaction
      * @param {string} id Identifier of the resource
      * @param {GetTransactionAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -309,8 +330,8 @@ export class TransactionsApi extends BaseAPI implements TransactionsApiInterface
     }
 
     /**
-     * Get transaction details in the form of a list
-     * @summary Get List transactions
+     * Returns a paginated list of transactions (ledger movements).  A transaction is a movement that represents the financial impact of payment operations, including amounts, fees, and net values. Transactions can be linked to a charge and may be linked to a transfer (payout) when they are included in a payout.  If you need payout-level information (destination, statement reference/description, payout status), use GET /transfers. 
+     * @summary List transactions
      * @param {GetTransactionsAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {number} [limit] The numbers of items to return, the maximum value is 250

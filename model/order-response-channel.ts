@@ -15,40 +15,34 @@
 
 
 /**
- * 
+ * Channel information for the order (for example Checkout-related metadata). It may be `null`.
  * @export
- * @interface CustomerInfo
+ * @interface OrderResponseChannel
  */
-export interface CustomerInfo {
+export interface OrderResponseChannel {
     /**
      * 
      * @type {string}
-     * @memberof CustomerInfo
+     * @memberof OrderResponseChannel
      */
-    'customer_id'?: string;
+    'segment'?: string;
     /**
      * 
      * @type {string}
-     * @memberof CustomerInfo
+     * @memberof OrderResponseChannel
      */
-    'name': string;
+    'checkout_request_id'?: string;
     /**
      * 
      * @type {string}
-     * @memberof CustomerInfo
+     * @memberof OrderResponseChannel
      */
-    'email': string;
+    'checkout_request_type'?: string;
     /**
      * 
      * @type {string}
-     * @memberof CustomerInfo
+     * @memberof OrderResponseChannel
      */
-    'phone'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CustomerInfo
-     */
-    'corporate'?: boolean;
+    'id'?: string;
 }
 

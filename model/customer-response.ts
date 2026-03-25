@@ -15,16 +15,19 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { CustomerAntifraudInfoResponse } from './customer-antifraud-info-response';
+import {
+  CustomerFiscalEntitiesResponse
+} from './customer-fiscal-entities-response';
 // May contain unused imports in some cases
 // @ts-ignore
-import { CustomerFiscalEntitiesResponse } from './customer-fiscal-entities-response';
+import {
+  CustomerPaymentMethodsResponse
+} from './customer-payment-methods-response';
 // May contain unused imports in some cases
 // @ts-ignore
-import { CustomerPaymentMethodsResponse } from './customer-payment-methods-response';
-// May contain unused imports in some cases
-// @ts-ignore
-import { CustomerResponseShippingContacts } from './customer-response-shipping-contacts';
+import {
+  CustomerResponseShippingContacts
+} from './customer-response-shipping-contacts';
 
 /**
  * customer response
@@ -33,23 +36,53 @@ import { CustomerResponseShippingContacts } from './customer-response-shipping-c
  */
 export interface CustomerResponse {
     /**
-     * 
-     * @type {CustomerAntifraudInfoResponse}
+     * Customer\'s ID
+     * @type {string}
      * @memberof CustomerResponse
      */
-    'antifraud_info'?: CustomerAntifraudInfoResponse | null;
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CustomerResponse
+     */
+    'object': CustomerResponseObjectEnum;
+    /**
+     * Creation date of the object (Unix timestamp)
+     * @type {number}
+     * @memberof CustomerResponse
+     */
+    'created_at': number;
+    /**
+     * true if the object exists in live mode or false if the object exists in test mode
+     * @type {boolean}
+     * @memberof CustomerResponse
+     */
+    'livemode': boolean;
+    /**
+     * Customer\'s name
+     * @type {string}
+     * @memberof CustomerResponse
+     */
+    'name'?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CustomerResponse
+     */
+    'email'?: string | null;
+    /**
+     * Customer\'s phone number
+     * @type {string}
+     * @memberof CustomerResponse
+     */
+    'phone'?: string | null;
     /**
      * true if the customer is a company
      * @type {boolean}
      * @memberof CustomerResponse
      */
     'corporate'?: boolean;
-    /**
-     * Creation date of the object
-     * @type {number}
-     * @memberof CustomerResponse
-     */
-    'created_at': number;
     /**
      * Custom reference
      * @type {string}
@@ -67,55 +100,13 @@ export interface CustomerResponse {
      * @type {string}
      * @memberof CustomerResponse
      */
-    'default_shipping_contact_id'?: string;
+    'default_shipping_contact_id'?: string | null;
     /**
-     * 
-     * @type {string}
-     * @memberof CustomerResponse
-     */
-    'default_payment_source_id'?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CustomerResponse
-     */
-    'email'?: string;
-    /**
-     * 
-     * @type {CustomerFiscalEntitiesResponse}
-     * @memberof CustomerResponse
-     */
-    'fiscal_entities'?: CustomerFiscalEntitiesResponse;
-    /**
-     * Customer\'s ID
-     * @type {string}
-     * @memberof CustomerResponse
-     */
-    'id': string;
-    /**
-     * true if the object exists in live mode or the value false if the object exists in test mode
-     * @type {boolean}
-     * @memberof CustomerResponse
-     */
-    'livemode': boolean;
-    /**
-     * Customer\'s name
-     * @type {string}
-     * @memberof CustomerResponse
-     */
-    'name': string;
-    /**
-     * 
+     * Customer metadata (maps to contextual_data in backend)
      * @type {{ [key: string]: any; }}
      * @memberof CustomerResponse
      */
-    'metadata'?: { [key: string]: any; };
-    /**
-     * 
-     * @type {string}
-     * @memberof CustomerResponse
-     */
-    'object': string;
+    'metadata'?: { [key: string]: any; } | null;
     /**
      * 
      * @type {CustomerPaymentMethodsResponse}
@@ -123,11 +114,11 @@ export interface CustomerResponse {
      */
     'payment_sources'?: CustomerPaymentMethodsResponse;
     /**
-     * Customer\'s phone number
-     * @type {string}
+     * 
+     * @type {CustomerFiscalEntitiesResponse}
      * @memberof CustomerResponse
      */
-    'phone'?: string;
+    'fiscal_entities'?: CustomerFiscalEntitiesResponse;
     /**
      * 
      * @type {CustomerResponseShippingContacts}
@@ -135,4 +126,11 @@ export interface CustomerResponse {
      */
     'shipping_contacts'?: CustomerResponseShippingContacts;
 }
+
+export const CustomerResponseObjectEnum = {
+    customer: 'customer'
+} as const;
+
+export type CustomerResponseObjectEnum = typeof CustomerResponseObjectEnum[keyof typeof CustomerResponseObjectEnum];
+
 

@@ -13,28 +13,49 @@
  */
 
 
-import type { Configuration } from '../configuration';
-import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
+import type {Configuration} from '../configuration';
+import type {AxiosInstance, AxiosPromise, RawAxiosRequestConfig} from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import {
+  assertParamExists,
+  createRequestFunction,
+  DUMMY_BASE_URL,
+  serializeDataIfNeeded,
+  setApiKeyToObject,
+  setBasicAuthToObject,
+  setBearerAuthToObject,
+  setOAuthToObject,
+  setSearchParams,
+  toPathString
+} from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
+import {
+  BASE_PATH,
+  BaseAPI,
+  COLLECTION_FORMATS,
+  operationServerMap,
+  RequestArgs,
+  RequiredError
+} from '../base';
 // @ts-ignore
-import { ApiKeyCreateResponse } from '../model';
 // @ts-ignore
-import { ApiKeyRequest } from '../model';
 // @ts-ignore
-import { ApiKeyResponse } from '../model';
 // @ts-ignore
-import { ApiKeyUpdateRequest } from '../model';
 // @ts-ignore
-import { DeleteApiKeysResponse } from '../model';
 // @ts-ignore
-import { GetApiKeysResponse } from '../model';
 // @ts-ignore
-import { ModelError } from '../model';
+import {
+  ApiKeyCreateResponse,
+  ApiKeyRequest,
+  ApiKeyResponse,
+  ApiKeyUpdateRequest,
+  DeleteApiKeysResponse,
+  GetApiKeysResponse,
+  ModelError
+} from '../model';
+
 /**
  * ApiKeysApi - axios parameter creator
  * @export
@@ -42,8 +63,8 @@ import { ModelError } from '../model';
 export const ApiKeysApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Create a api key
-         * @summary Create Api Key
+         * Creates a new API key.  The response includes an `authentication_token` that is shown only once (at creation time). Copy and store it securely. 
+         * @summary Create API key
          * @param {ApiKeyRequest} apiKeyRequest requested field for a api keys
          * @param {CreateApiKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -183,8 +204,8 @@ export const ApiKeysApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * Consume the list of api keys you have
-         * @summary Get list of Api Keys
+         * Retrieves a paginated list of API keys for the authenticated account.  Use the pagination parameters (`limit`, `next_page`, `previous_page`) to navigate through results. Use the `search` query parameter to perform a general search (for example by key `id` or description). 
+         * @summary List API keys
          * @param {GetApiKeysAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {number} [limit] The numbers of items to return, the maximum value is 250
@@ -304,8 +325,8 @@ export const ApiKeysApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ApiKeysApiAxiosParamCreator(configuration)
     return {
         /**
-         * Create a api key
-         * @summary Create Api Key
+         * Creates a new API key.  The response includes an `authentication_token` that is shown only once (at creation time). Copy and store it securely. 
+         * @summary Create API key
          * @param {ApiKeyRequest} apiKeyRequest requested field for a api keys
          * @param {CreateApiKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -348,8 +369,8 @@ export const ApiKeysApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * Consume the list of api keys you have
-         * @summary Get list of Api Keys
+         * Retrieves a paginated list of API keys for the authenticated account.  Use the pagination parameters (`limit`, `next_page`, `previous_page`) to navigate through results. Use the `search` query parameter to perform a general search (for example by key `id` or description). 
+         * @summary List API keys
          * @param {GetApiKeysAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {number} [limit] The numbers of items to return, the maximum value is 250
@@ -391,8 +412,8 @@ export const ApiKeysApiFactory = function (configuration?: Configuration, basePa
     const localVarFp = ApiKeysApiFp(configuration)
     return {
         /**
-         * Create a api key
-         * @summary Create Api Key
+         * Creates a new API key.  The response includes an `authentication_token` that is shown only once (at creation time). Copy and store it securely. 
+         * @summary Create API key
          * @param {ApiKeyRequest} apiKeyRequest requested field for a api keys
          * @param {CreateApiKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -426,8 +447,8 @@ export const ApiKeysApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.getApiKey(id, acceptLanguage, xChildCompanyId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Consume the list of api keys you have
-         * @summary Get list of Api Keys
+         * Retrieves a paginated list of API keys for the authenticated account.  Use the pagination parameters (`limit`, `next_page`, `previous_page`) to navigate through results. Use the `search` query parameter to perform a general search (for example by key `id` or description). 
+         * @summary List API keys
          * @param {GetApiKeysAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {number} [limit] The numbers of items to return, the maximum value is 250
@@ -462,8 +483,8 @@ export const ApiKeysApiFactory = function (configuration?: Configuration, basePa
  */
 export interface ApiKeysApiInterface {
     /**
-     * Create a api key
-     * @summary Create Api Key
+     * Creates a new API key.  The response includes an `authentication_token` that is shown only once (at creation time). Copy and store it securely. 
+     * @summary Create API key
      * @param {ApiKeyRequest} apiKeyRequest requested field for a api keys
      * @param {CreateApiKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -497,8 +518,8 @@ export interface ApiKeysApiInterface {
     getApiKey(id: string, acceptLanguage?: GetApiKeyAcceptLanguageEnum, xChildCompanyId?: string, options?: RawAxiosRequestConfig): AxiosPromise<ApiKeyResponse>;
 
     /**
-     * Consume the list of api keys you have
-     * @summary Get list of Api Keys
+     * Retrieves a paginated list of API keys for the authenticated account.  Use the pagination parameters (`limit`, `next_page`, `previous_page`) to navigate through results. Use the `search` query parameter to perform a general search (for example by key `id` or description). 
+     * @summary List API keys
      * @param {GetApiKeysAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {number} [limit] The numbers of items to return, the maximum value is 250
@@ -533,8 +554,8 @@ export interface ApiKeysApiInterface {
  */
 export class ApiKeysApi extends BaseAPI implements ApiKeysApiInterface {
     /**
-     * Create a api key
-     * @summary Create Api Key
+     * Creates a new API key.  The response includes an `authentication_token` that is shown only once (at creation time). Copy and store it securely. 
+     * @summary Create API key
      * @param {ApiKeyRequest} apiKeyRequest requested field for a api keys
      * @param {CreateApiKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -574,8 +595,8 @@ export class ApiKeysApi extends BaseAPI implements ApiKeysApiInterface {
     }
 
     /**
-     * Consume the list of api keys you have
-     * @summary Get list of Api Keys
+     * Retrieves a paginated list of API keys for the authenticated account.  Use the pagination parameters (`limit`, `next_page`, `previous_page`) to navigate through results. Use the `search` query parameter to perform a general search (for example by key `id` or description). 
+     * @summary List API keys
      * @param {GetApiKeysAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {number} [limit] The numbers of items to return, the maximum value is 250

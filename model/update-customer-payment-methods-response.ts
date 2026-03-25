@@ -15,7 +15,7 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { PaymentMethodCashResponse } from './payment-method-cash-response';
+import {PaymentMethodCashResponse} from './payment-method-cash-response';
 
 /**
  * @type UpdateCustomerPaymentMethodsResponse

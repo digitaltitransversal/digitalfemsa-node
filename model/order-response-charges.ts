@@ -15,14 +15,14 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { ChargesDataResponse } from './charges-data-response';
+import {ChargesDataResponse} from './charges-data-response';
 // May contain unused imports in some cases
 // @ts-ignore
-import { Pagination } from './pagination';
+import {Pagination} from './pagination';
 
 /**
  * @type OrderResponseCharges
- * The charges associated with the order
+ * List preview of charges created for the order. Charges are only created when included in the request or created later through payment flows. This field can be `null` depending on the response context. 
  * @export
  */
 export type OrderResponseCharges = Pagination;

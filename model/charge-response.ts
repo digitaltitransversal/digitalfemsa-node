@@ -15,13 +15,13 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { ChargeResponseChannel } from './charge-response-channel';
+import {ChargeResponseChannel} from './charge-response-channel';
 // May contain unused imports in some cases
 // @ts-ignore
-import { ChargeResponsePaymentMethod } from './charge-response-payment-method';
+import {ChargeResponsePaymentMethod} from './charge-response-payment-method';
 // May contain unused imports in some cases
 // @ts-ignore
-import { ChargeResponseRefunds } from './charge-response-refunds';
+import {ChargeResponseRefunds} from './charge-response-refunds';
 
 /**
  * 
@@ -76,13 +76,13 @@ export interface ChargeResponse {
      * @type {string}
      * @memberof ChargeResponse
      */
-    'failure_code'?: string;
+    'failure_code'?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ChargeResponse
      */
-    'failure_message'?: string;
+    'failure_message'?: string | null;
     /**
      * 
      * @type {string}
@@ -137,5 +137,11 @@ export interface ChargeResponse {
      * @memberof ChargeResponse
      */
     'status'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ChargeResponse
+     */
+    'is_refundable'?: boolean;
 }
 

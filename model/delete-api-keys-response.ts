@@ -15,7 +15,7 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { ApiKeyResponseOnDelete } from './api-key-response-on-delete';
+import {ApiKeyResponseOnDelete} from './api-key-response-on-delete';
 
 /**
  * @type DeleteApiKeysResponse

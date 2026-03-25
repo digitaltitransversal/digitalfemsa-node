@@ -13,20 +13,37 @@
  */
 
 
-import type { Configuration } from '../configuration';
-import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
+import type {Configuration} from '../configuration';
+import type {AxiosInstance, AxiosPromise, RawAxiosRequestConfig} from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import {
+  assertParamExists,
+  createRequestFunction,
+  DUMMY_BASE_URL,
+  serializeDataIfNeeded,
+  setApiKeyToObject,
+  setBasicAuthToObject,
+  setBearerAuthToObject,
+  setOAuthToObject,
+  setSearchParams,
+  toPathString
+} from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
+import {
+  BASE_PATH,
+  BaseAPI,
+  COLLECTION_FORMATS,
+  operationServerMap,
+  RequestArgs,
+  RequiredError
+} from '../base';
 // @ts-ignore
-import { ModelError } from '../model';
 // @ts-ignore
-import { ShippingOrderResponse } from '../model';
 // @ts-ignore
-import { ShippingRequest } from '../model';
+import {ModelError, ShippingOrderResponse, ShippingRequest} from '../model';
+
 /**
  * ShippingsApi - axios parameter creator
  * @export
@@ -34,10 +51,10 @@ import { ShippingRequest } from '../model';
 export const ShippingsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Create new shipping for an existing orden
+         * Creates a new shipping line for an existing order. The shipping line is added to the order identified by `id`. The response returns the created shipping line.
          * @summary Create Shipping
          * @param {string} id Identifier of the resource
-         * @param {ShippingRequest} shippingRequest requested field for a shipping
+         * @param {ShippingRequest} shippingRequest Request body for creating or updating a shipping line.
          * @param {OrdersCreateShippingAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -88,7 +105,7 @@ export const ShippingsApiAxiosParamCreator = function (configuration?: Configura
             };
         },
         /**
-         * Delete shipping
+         * Deletes an existing shipping line from an order. The shipping line identified by `shipping_id` belongs to the order identified by `id`.
          * @summary Delete Shipping
          * @param {string} id Identifier of the resource
          * @param {string} shippingId identifier
@@ -140,11 +157,11 @@ export const ShippingsApiAxiosParamCreator = function (configuration?: Configura
             };
         },
         /**
-         * Update existing shipping for an existing orden
+         * Updates an existing shipping line for an order. The shipping line identified by `shipping_id` belongs to the order identified by `id`. Only the fields provided in the request body are updated.
          * @summary Update Shipping
          * @param {string} id Identifier of the resource
          * @param {string} shippingId identifier
-         * @param {ShippingRequest} shippingRequest requested field for a shipping
+         * @param {ShippingRequest} shippingRequest Request body for creating or updating a shipping line.
          * @param {OrdersUpdateShippingAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -208,10 +225,10 @@ export const ShippingsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ShippingsApiAxiosParamCreator(configuration)
     return {
         /**
-         * Create new shipping for an existing orden
+         * Creates a new shipping line for an existing order. The shipping line is added to the order identified by `id`. The response returns the created shipping line.
          * @summary Create Shipping
          * @param {string} id Identifier of the resource
-         * @param {ShippingRequest} shippingRequest requested field for a shipping
+         * @param {ShippingRequest} shippingRequest Request body for creating or updating a shipping line.
          * @param {OrdersCreateShippingAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -224,7 +241,7 @@ export const ShippingsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * Delete shipping
+         * Deletes an existing shipping line from an order. The shipping line identified by `shipping_id` belongs to the order identified by `id`.
          * @summary Delete Shipping
          * @param {string} id Identifier of the resource
          * @param {string} shippingId identifier
@@ -240,11 +257,11 @@ export const ShippingsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * Update existing shipping for an existing orden
+         * Updates an existing shipping line for an order. The shipping line identified by `shipping_id` belongs to the order identified by `id`. Only the fields provided in the request body are updated.
          * @summary Update Shipping
          * @param {string} id Identifier of the resource
          * @param {string} shippingId identifier
-         * @param {ShippingRequest} shippingRequest requested field for a shipping
+         * @param {ShippingRequest} shippingRequest Request body for creating or updating a shipping line.
          * @param {OrdersUpdateShippingAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -267,10 +284,10 @@ export const ShippingsApiFactory = function (configuration?: Configuration, base
     const localVarFp = ShippingsApiFp(configuration)
     return {
         /**
-         * Create new shipping for an existing orden
+         * Creates a new shipping line for an existing order. The shipping line is added to the order identified by `id`. The response returns the created shipping line.
          * @summary Create Shipping
          * @param {string} id Identifier of the resource
-         * @param {ShippingRequest} shippingRequest requested field for a shipping
+         * @param {ShippingRequest} shippingRequest Request body for creating or updating a shipping line.
          * @param {OrdersCreateShippingAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -280,7 +297,7 @@ export const ShippingsApiFactory = function (configuration?: Configuration, base
             return localVarFp.ordersCreateShipping(id, shippingRequest, acceptLanguage, xChildCompanyId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Delete shipping
+         * Deletes an existing shipping line from an order. The shipping line identified by `shipping_id` belongs to the order identified by `id`.
          * @summary Delete Shipping
          * @param {string} id Identifier of the resource
          * @param {string} shippingId identifier
@@ -293,11 +310,11 @@ export const ShippingsApiFactory = function (configuration?: Configuration, base
             return localVarFp.ordersDeleteShipping(id, shippingId, acceptLanguage, xChildCompanyId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Update existing shipping for an existing orden
+         * Updates an existing shipping line for an order. The shipping line identified by `shipping_id` belongs to the order identified by `id`. Only the fields provided in the request body are updated.
          * @summary Update Shipping
          * @param {string} id Identifier of the resource
          * @param {string} shippingId identifier
-         * @param {ShippingRequest} shippingRequest requested field for a shipping
+         * @param {ShippingRequest} shippingRequest Request body for creating or updating a shipping line.
          * @param {OrdersUpdateShippingAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -316,10 +333,10 @@ export const ShippingsApiFactory = function (configuration?: Configuration, base
  */
 export interface ShippingsApiInterface {
     /**
-     * Create new shipping for an existing orden
+     * Creates a new shipping line for an existing order. The shipping line is added to the order identified by `id`. The response returns the created shipping line.
      * @summary Create Shipping
      * @param {string} id Identifier of the resource
-     * @param {ShippingRequest} shippingRequest requested field for a shipping
+     * @param {ShippingRequest} shippingRequest Request body for creating or updating a shipping line.
      * @param {OrdersCreateShippingAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.
@@ -329,7 +346,7 @@ export interface ShippingsApiInterface {
     ordersCreateShipping(id: string, shippingRequest: ShippingRequest, acceptLanguage?: OrdersCreateShippingAcceptLanguageEnum, xChildCompanyId?: string, options?: RawAxiosRequestConfig): AxiosPromise<ShippingOrderResponse>;
 
     /**
-     * Delete shipping
+     * Deletes an existing shipping line from an order. The shipping line identified by `shipping_id` belongs to the order identified by `id`.
      * @summary Delete Shipping
      * @param {string} id Identifier of the resource
      * @param {string} shippingId identifier
@@ -342,11 +359,11 @@ export interface ShippingsApiInterface {
     ordersDeleteShipping(id: string, shippingId: string, acceptLanguage?: OrdersDeleteShippingAcceptLanguageEnum, xChildCompanyId?: string, options?: RawAxiosRequestConfig): AxiosPromise<ShippingOrderResponse>;
 
     /**
-     * Update existing shipping for an existing orden
+     * Updates an existing shipping line for an order. The shipping line identified by `shipping_id` belongs to the order identified by `id`. Only the fields provided in the request body are updated.
      * @summary Update Shipping
      * @param {string} id Identifier of the resource
      * @param {string} shippingId identifier
-     * @param {ShippingRequest} shippingRequest requested field for a shipping
+     * @param {ShippingRequest} shippingRequest Request body for creating or updating a shipping line.
      * @param {OrdersUpdateShippingAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.
@@ -365,10 +382,10 @@ export interface ShippingsApiInterface {
  */
 export class ShippingsApi extends BaseAPI implements ShippingsApiInterface {
     /**
-     * Create new shipping for an existing orden
+     * Creates a new shipping line for an existing order. The shipping line is added to the order identified by `id`. The response returns the created shipping line.
      * @summary Create Shipping
      * @param {string} id Identifier of the resource
-     * @param {ShippingRequest} shippingRequest requested field for a shipping
+     * @param {ShippingRequest} shippingRequest Request body for creating or updating a shipping line.
      * @param {OrdersCreateShippingAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.
@@ -380,7 +397,7 @@ export class ShippingsApi extends BaseAPI implements ShippingsApiInterface {
     }
 
     /**
-     * Delete shipping
+     * Deletes an existing shipping line from an order. The shipping line identified by `shipping_id` belongs to the order identified by `id`.
      * @summary Delete Shipping
      * @param {string} id Identifier of the resource
      * @param {string} shippingId identifier
@@ -395,11 +412,11 @@ export class ShippingsApi extends BaseAPI implements ShippingsApiInterface {
     }
 
     /**
-     * Update existing shipping for an existing orden
+     * Updates an existing shipping line for an order. The shipping line identified by `shipping_id` belongs to the order identified by `id`. Only the fields provided in the request body are updated.
      * @summary Update Shipping
      * @param {string} id Identifier of the resource
      * @param {string} shippingId identifier
-     * @param {ShippingRequest} shippingRequest requested field for a shipping
+     * @param {ShippingRequest} shippingRequest Request body for creating or updating a shipping line.
      * @param {OrdersUpdateShippingAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.

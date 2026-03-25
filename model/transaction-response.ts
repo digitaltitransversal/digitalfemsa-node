@@ -15,41 +15,11 @@
 
 
 /**
- * The Transaction object represents the actions or steps of an order. Statuses can be: unprocessed, pending, available, owen, paid_out, voided, capture, capture_reversal, liquidation, liquidation_reversal, payout, payout_reversal, refund, refund_reversal, chargeback, chargeback_reversal, rounding_adjustment, won_chargeback, transferred, and transferred.
+ * Transaction object.
  * @export
  * @interface TransactionResponse
  */
 export interface TransactionResponse {
-    /**
-     * The amount of the transaction.
-     * @type {number}
-     * @memberof TransactionResponse
-     */
-    'amount': number;
-    /**
-     * Randomly assigned unique order identifier associated with the charge.
-     * @type {string}
-     * @memberof TransactionResponse
-     */
-    'charge': string;
-    /**
-     * Date and time of creation of the transaction in Unix format.
-     * @type {number}
-     * @memberof TransactionResponse
-     */
-    'created_at': number;
-    /**
-     * The currency of the transaction. It uses the 3-letter code of the [International Standard ISO 4217.](https://es.wikipedia.org/wiki/ISO_4217)
-     * @type {string}
-     * @memberof TransactionResponse
-     */
-    'currency': string;
-    /**
-     * The amount to be deducted for taxes and commissions.
-     * @type {number}
-     * @memberof TransactionResponse
-     */
-    'fee': number;
     /**
      * Unique identifier of the transaction.
      * @type {string}
@@ -57,11 +27,23 @@ export interface TransactionResponse {
      */
     'id': string;
     /**
-     * Indicates whether the transaction was created in live mode or test mode.
-     * @type {boolean}
+     * Object name, which is transaction.
+     * @type {string}
      * @memberof TransactionResponse
      */
-    'livemode': boolean;
+    'object': string;
+    /**
+     * The amount of the transaction.
+     * @type {number}
+     * @memberof TransactionResponse
+     */
+    'amount': number;
+    /**
+     * The amount to be deducted for taxes and commissions.
+     * @type {number}
+     * @memberof TransactionResponse
+     */
+    'fee': number;
     /**
      * The net amount after deducting commissions and taxes.
      * @type {number}
@@ -69,22 +51,93 @@ export interface TransactionResponse {
      */
     'net': number;
     /**
-     * Object name, which is transaction.
+     * The currency of the transaction. It uses the 3-letter code of ISO 4217.
      * @type {string}
      * @memberof TransactionResponse
      */
-    'object': string;
+    'currency': string;
     /**
      * Code indicating transaction status.
      * @type {string}
      * @memberof TransactionResponse
      */
-    'status': string;
+    'status': TransactionResponseStatusEnum;
     /**
-     * Transaction Type
+     * Transaction type.
      * @type {string}
      * @memberof TransactionResponse
      */
-    'type': string;
+    'type': TransactionResponseTypeEnum;
+    /**
+     * Date and time of creation of the transaction in Unix format.
+     * @type {number}
+     * @memberof TransactionResponse
+     */
+    'created_at': number;
+    /**
+     * Indicates whether the transaction was created in live mode or test mode.
+     * @type {boolean}
+     * @memberof TransactionResponse
+     */
+    'livemode': boolean;
+    /**
+     * Charge ID associated with the transaction (present only if the transaction belongs to a charge).
+     * @type {string}
+     * @memberof TransactionResponse
+     */
+    'charge'?: string | null;
+    /**
+     * Transfer ID associated with the transaction (present only if the transaction belongs to a transfer).
+     * @type {string}
+     * @memberof TransactionResponse
+     */
+    'transfer'?: string | null;
+    /**
+     * Date and time when the transaction was transferred, in Unix format.
+     * @type {number}
+     * @memberof TransactionResponse
+     */
+    'transferred_at'?: number | null;
+    /**
+     * Transaction fee formula identifier (if available).
+     * @type {string}
+     * @memberof TransactionResponse
+     */
+    'formula'?: string | null;
 }
+
+export const TransactionResponseStatusEnum = {
+    unprocessed: 'unprocessed',
+    pending: 'pending',
+    available: 'available',
+    owing: 'owing',
+    paidOut: 'paid_out',
+    onHold: 'on_hold',
+    retained: 'retained',
+    voided: 'voided'
+} as const;
+
+export type TransactionResponseStatusEnum = typeof TransactionResponseStatusEnum[keyof typeof TransactionResponseStatusEnum];
+export const TransactionResponseTypeEnum = {
+    capture: 'capture',
+    captureReversal: 'capture_reversal',
+    liquidation: 'liquidation',
+    liquidationReversal: 'liquidation_reversal',
+    payout: 'payout',
+    payoutReversal: 'payout_reversal',
+    refund: 'refund',
+    refundReversal: 'refund_reversal',
+    roundingAdjustment: 'rounding_adjustment',
+    transfer: 'transfer',
+    transferred: 'transferred',
+    retention: 'retention',
+    temporaryRetention: 'temporary_retention',
+    cashoutRetention: 'cashout_retention',
+    cashoutConfirmation: 'cashout_confirmation',
+    cashoutCancelation: 'cashout_cancelation',
+    autofundCapture: 'autofund_capture'
+} as const;
+
+export type TransactionResponseTypeEnum = typeof TransactionResponseTypeEnum[keyof typeof TransactionResponseTypeEnum];
+
 

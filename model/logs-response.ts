@@ -15,10 +15,10 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { LogsResponseData } from './logs-response-data';
+import {LogsResponseData} from './logs-response-data';
 
 /**
- * logs model
+ * Log model representing a recorded request/response cycle for troubleshooting and auditing.
  * @export
  * @interface LogsResponse
  */

@@ -15,7 +15,7 @@
 
 
 /**
- * an updated webhook
+ * Parameters used to update a webhook. All fields are optional; send only the fields you want to change.
  * @export
  * @interface WebhookUpdateRequest
  */

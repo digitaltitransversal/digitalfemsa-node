@@ -15,7 +15,7 @@
 
 
 /**
- * webhooks model
+ * Represents a webhook endpoint configured to receive event notifications.
  * @export
  * @interface WebhookResponse
  */

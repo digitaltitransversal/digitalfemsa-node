@@ -15,7 +15,7 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { ShippingRequest } from './shipping-request';
+import {ShippingRequest} from './shipping-request';
 
 /**
  * @type ShippingOrderResponse

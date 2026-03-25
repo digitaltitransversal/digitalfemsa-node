@@ -13,22 +13,43 @@
  */
 
 
-import type { Configuration } from '../configuration';
-import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
+import type {Configuration} from '../configuration';
+import type {AxiosInstance, AxiosPromise, RawAxiosRequestConfig} from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import {
+  assertParamExists,
+  createRequestFunction,
+  DUMMY_BASE_URL,
+  serializeDataIfNeeded,
+  setApiKeyToObject,
+  setBasicAuthToObject,
+  setBearerAuthToObject,
+  setOAuthToObject,
+  setSearchParams,
+  toPathString
+} from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
+import {
+  BASE_PATH,
+  BaseAPI,
+  COLLECTION_FORMATS,
+  operationServerMap,
+  RequestArgs,
+  RequiredError
+} from '../base';
 // @ts-ignore
-import { ModelError } from '../model';
 // @ts-ignore
-import { Product } from '../model';
 // @ts-ignore
-import { ProductOrderResponse } from '../model';
 // @ts-ignore
-import { UpdateProduct } from '../model';
+import {
+  ModelError,
+  Product,
+  ProductOrderResponse,
+  UpdateProduct
+} from '../model';
+
 /**
  * ProductsApi - axios parameter creator
  * @export
@@ -36,10 +57,10 @@ import { UpdateProduct } from '../model';
 export const ProductsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Create a new product for an existing order.
+         * Creates a new product (line item) for an existing order. Use this endpoint to add an additional item to the order after it has been created.
          * @summary Create Product
          * @param {string} id Identifier of the resource
-         * @param {Product} product requested field for a product
+         * @param {Product} product Fields required to create a new product (line item) for an existing order. This request adds a new item to the order.
          * @param {OrdersCreateProductAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -90,7 +111,7 @@ export const ProductsApiAxiosParamCreator = function (configuration?: Configurat
             };
         },
         /**
-         * Delete product for an existing orden
+         * Deletes a product (line item) from an existing order. The API will validate whether the order can be modified before removing the item.
          * @summary Delete Product
          * @param {string} id Identifier of the resource
          * @param {string} lineItemId identifier
@@ -142,11 +163,11 @@ export const ProductsApiAxiosParamCreator = function (configuration?: Configurat
             };
         },
         /**
-         * Update an existing product for an existing orden
+         * Updates an existing product (line item) for an existing order. Use this endpoint to modify the details of a specific line item in the order.
          * @summary Update Product
          * @param {string} id Identifier of the resource
          * @param {string} lineItemId identifier
-         * @param {UpdateProduct} updateProduct requested field for products
+         * @param {UpdateProduct} updateProduct Fields allowed to update an existing product (line item) in an order. All fields are optional; only the provided fields will be updated.
          * @param {OrdersUpdateProductAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -210,10 +231,10 @@ export const ProductsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ProductsApiAxiosParamCreator(configuration)
     return {
         /**
-         * Create a new product for an existing order.
+         * Creates a new product (line item) for an existing order. Use this endpoint to add an additional item to the order after it has been created.
          * @summary Create Product
          * @param {string} id Identifier of the resource
-         * @param {Product} product requested field for a product
+         * @param {Product} product Fields required to create a new product (line item) for an existing order. This request adds a new item to the order.
          * @param {OrdersCreateProductAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -226,7 +247,7 @@ export const ProductsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * Delete product for an existing orden
+         * Deletes a product (line item) from an existing order. The API will validate whether the order can be modified before removing the item.
          * @summary Delete Product
          * @param {string} id Identifier of the resource
          * @param {string} lineItemId identifier
@@ -242,11 +263,11 @@ export const ProductsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * Update an existing product for an existing orden
+         * Updates an existing product (line item) for an existing order. Use this endpoint to modify the details of a specific line item in the order.
          * @summary Update Product
          * @param {string} id Identifier of the resource
          * @param {string} lineItemId identifier
-         * @param {UpdateProduct} updateProduct requested field for products
+         * @param {UpdateProduct} updateProduct Fields allowed to update an existing product (line item) in an order. All fields are optional; only the provided fields will be updated.
          * @param {OrdersUpdateProductAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -269,10 +290,10 @@ export const ProductsApiFactory = function (configuration?: Configuration, baseP
     const localVarFp = ProductsApiFp(configuration)
     return {
         /**
-         * Create a new product for an existing order.
+         * Creates a new product (line item) for an existing order. Use this endpoint to add an additional item to the order after it has been created.
          * @summary Create Product
          * @param {string} id Identifier of the resource
-         * @param {Product} product requested field for a product
+         * @param {Product} product Fields required to create a new product (line item) for an existing order. This request adds a new item to the order.
          * @param {OrdersCreateProductAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -282,7 +303,7 @@ export const ProductsApiFactory = function (configuration?: Configuration, baseP
             return localVarFp.ordersCreateProduct(id, product, acceptLanguage, xChildCompanyId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Delete product for an existing orden
+         * Deletes a product (line item) from an existing order. The API will validate whether the order can be modified before removing the item.
          * @summary Delete Product
          * @param {string} id Identifier of the resource
          * @param {string} lineItemId identifier
@@ -295,11 +316,11 @@ export const ProductsApiFactory = function (configuration?: Configuration, baseP
             return localVarFp.ordersDeleteProduct(id, lineItemId, acceptLanguage, xChildCompanyId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Update an existing product for an existing orden
+         * Updates an existing product (line item) for an existing order. Use this endpoint to modify the details of a specific line item in the order.
          * @summary Update Product
          * @param {string} id Identifier of the resource
          * @param {string} lineItemId identifier
-         * @param {UpdateProduct} updateProduct requested field for products
+         * @param {UpdateProduct} updateProduct Fields allowed to update an existing product (line item) in an order. All fields are optional; only the provided fields will be updated.
          * @param {OrdersUpdateProductAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -318,10 +339,10 @@ export const ProductsApiFactory = function (configuration?: Configuration, baseP
  */
 export interface ProductsApiInterface {
     /**
-     * Create a new product for an existing order.
+     * Creates a new product (line item) for an existing order. Use this endpoint to add an additional item to the order after it has been created.
      * @summary Create Product
      * @param {string} id Identifier of the resource
-     * @param {Product} product requested field for a product
+     * @param {Product} product Fields required to create a new product (line item) for an existing order. This request adds a new item to the order.
      * @param {OrdersCreateProductAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.
@@ -331,7 +352,7 @@ export interface ProductsApiInterface {
     ordersCreateProduct(id: string, product: Product, acceptLanguage?: OrdersCreateProductAcceptLanguageEnum, xChildCompanyId?: string, options?: RawAxiosRequestConfig): AxiosPromise<ProductOrderResponse>;
 
     /**
-     * Delete product for an existing orden
+     * Deletes a product (line item) from an existing order. The API will validate whether the order can be modified before removing the item.
      * @summary Delete Product
      * @param {string} id Identifier of the resource
      * @param {string} lineItemId identifier
@@ -344,11 +365,11 @@ export interface ProductsApiInterface {
     ordersDeleteProduct(id: string, lineItemId: string, acceptLanguage?: OrdersDeleteProductAcceptLanguageEnum, xChildCompanyId?: string, options?: RawAxiosRequestConfig): AxiosPromise<ProductOrderResponse>;
 
     /**
-     * Update an existing product for an existing orden
+     * Updates an existing product (line item) for an existing order. Use this endpoint to modify the details of a specific line item in the order.
      * @summary Update Product
      * @param {string} id Identifier of the resource
      * @param {string} lineItemId identifier
-     * @param {UpdateProduct} updateProduct requested field for products
+     * @param {UpdateProduct} updateProduct Fields allowed to update an existing product (line item) in an order. All fields are optional; only the provided fields will be updated.
      * @param {OrdersUpdateProductAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.
@@ -367,10 +388,10 @@ export interface ProductsApiInterface {
  */
 export class ProductsApi extends BaseAPI implements ProductsApiInterface {
     /**
-     * Create a new product for an existing order.
+     * Creates a new product (line item) for an existing order. Use this endpoint to add an additional item to the order after it has been created.
      * @summary Create Product
      * @param {string} id Identifier of the resource
-     * @param {Product} product requested field for a product
+     * @param {Product} product Fields required to create a new product (line item) for an existing order. This request adds a new item to the order.
      * @param {OrdersCreateProductAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.
@@ -382,7 +403,7 @@ export class ProductsApi extends BaseAPI implements ProductsApiInterface {
     }
 
     /**
-     * Delete product for an existing orden
+     * Deletes a product (line item) from an existing order. The API will validate whether the order can be modified before removing the item.
      * @summary Delete Product
      * @param {string} id Identifier of the resource
      * @param {string} lineItemId identifier
@@ -397,11 +418,11 @@ export class ProductsApi extends BaseAPI implements ProductsApiInterface {
     }
 
     /**
-     * Update an existing product for an existing orden
+     * Updates an existing product (line item) for an existing order. Use this endpoint to modify the details of a specific line item in the order.
      * @summary Update Product
      * @param {string} id Identifier of the resource
      * @param {string} lineItemId identifier
-     * @param {UpdateProduct} updateProduct requested field for products
+     * @param {UpdateProduct} updateProduct Fields allowed to update an existing product (line item) in an order. All fields are optional; only the provided fields will be updated.
      * @param {OrdersUpdateProductAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.

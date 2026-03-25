@@ -13,32 +13,53 @@
  */
 
 
-import type { Configuration } from '../configuration';
-import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
+import type {Configuration} from '../configuration';
+import type {AxiosInstance, AxiosPromise, RawAxiosRequestConfig} from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import {
+  assertParamExists,
+  createRequestFunction,
+  DUMMY_BASE_URL,
+  serializeDataIfNeeded,
+  setApiKeyToObject,
+  setBasicAuthToObject,
+  setBearerAuthToObject,
+  setOAuthToObject,
+  setSearchParams,
+  toPathString
+} from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
+import {
+  BASE_PATH,
+  BaseAPI,
+  COLLECTION_FORMATS,
+  operationServerMap,
+  RequestArgs,
+  RequiredError
+} from '../base';
 // @ts-ignore
-import { CreateCustomerFiscalEntitiesResponse } from '../model';
 // @ts-ignore
-import { Customer } from '../model';
 // @ts-ignore
-import { CustomerFiscalEntitiesRequest } from '../model';
 // @ts-ignore
-import { CustomerResponse } from '../model';
 // @ts-ignore
-import { CustomerUpdateFiscalEntitiesRequest } from '../model';
 // @ts-ignore
-import { CustomersResponse } from '../model';
 // @ts-ignore
-import { ModelError } from '../model';
 // @ts-ignore
-import { UpdateCustomer } from '../model';
 // @ts-ignore
-import { UpdateCustomerFiscalEntitiesResponse } from '../model';
+import {
+  CreateCustomerFiscalEntitiesResponse,
+  Customer,
+  CustomerFiscalEntitiesRequest,
+  CustomerResponse,
+  CustomersResponse,
+  CustomerUpdateFiscalEntitiesRequest,
+  ModelError,
+  UpdateCustomer,
+  UpdateCustomerFiscalEntitiesResponse
+} from '../model';
+
 /**
  * CustomersApi - axios parameter creator
  * @export
@@ -46,8 +67,8 @@ import { UpdateCustomerFiscalEntitiesResponse } from '../model';
 export const CustomersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * The purpose of business is to create and keep a customer, you will learn what elements you need to create a customer. 
-         * @summary Create customer
+         * Creates a new customer for the authenticated company.  Use customers to store and reuse buyer information (for example name, email, phone, and addresses). The created customer can be referenced later when creating orders and other resources. 
+         * @summary Create a customer
          * @param {Customer} customer requested field for customer
          * @param {CreateCustomerAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -96,7 +117,7 @@ export const CustomersApiAxiosParamCreator = function (configuration?: Configura
             };
         },
         /**
-         * Create Fiscal entity resource that corresponds to a customer ID.
+         * Create a fiscal entity resource for a given customer ID.
          * @summary Create Fiscal Entity
          * @param {string} id Identifier of the resource
          * @param {CustomerFiscalEntitiesRequest} customerFiscalEntitiesRequest requested field for customer fiscal entities
@@ -246,7 +267,7 @@ export const CustomersApiAxiosParamCreator = function (configuration?: Configura
             };
         },
         /**
-         * The purpose of business is to create and maintain a client, you will learn what elements you need to obtain a list of clients, which can be paged.
+         * Returns a paginated list of customers for the authenticated company.  Use the [search] parameter to filter results. 
          * @summary Get a list of customers
          * @param {GetCustomersAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -365,10 +386,10 @@ export const CustomersApiAxiosParamCreator = function (configuration?: Configura
         },
         /**
          * Update Fiscal Entity resource that corresponds to a customer ID.
-         * @summary Update  Fiscal Entity
+         * @summary Update Fiscal Entity
          * @param {string} id Identifier of the resource
          * @param {string} fiscalEntitiesId identifier
-         * @param {CustomerUpdateFiscalEntitiesRequest} customerUpdateFiscalEntitiesRequest requested field for customer update fiscal entities
+         * @param {CustomerUpdateFiscalEntitiesRequest} customerUpdateFiscalEntitiesRequest Request body for updating a customer fiscal entity.
          * @param {UpdateCustomerFiscalEntitiesAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -432,8 +453,8 @@ export const CustomersApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = CustomersApiAxiosParamCreator(configuration)
     return {
         /**
-         * The purpose of business is to create and keep a customer, you will learn what elements you need to create a customer. 
-         * @summary Create customer
+         * Creates a new customer for the authenticated company.  Use customers to store and reuse buyer information (for example name, email, phone, and addresses). The created customer can be referenced later when creating orders and other resources. 
+         * @summary Create a customer
          * @param {Customer} customer requested field for customer
          * @param {CreateCustomerAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -447,7 +468,7 @@ export const CustomersApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * Create Fiscal entity resource that corresponds to a customer ID.
+         * Create a fiscal entity resource for a given customer ID.
          * @summary Create Fiscal Entity
          * @param {string} id Identifier of the resource
          * @param {CustomerFiscalEntitiesRequest} customerFiscalEntitiesRequest requested field for customer fiscal entities
@@ -493,7 +514,7 @@ export const CustomersApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * The purpose of business is to create and maintain a client, you will learn what elements you need to obtain a list of clients, which can be paged.
+         * Returns a paginated list of customers for the authenticated company.  Use the [search] parameter to filter results. 
          * @summary Get a list of customers
          * @param {GetCustomersAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -528,10 +549,10 @@ export const CustomersApiFp = function(configuration?: Configuration) {
         },
         /**
          * Update Fiscal Entity resource that corresponds to a customer ID.
-         * @summary Update  Fiscal Entity
+         * @summary Update Fiscal Entity
          * @param {string} id Identifier of the resource
          * @param {string} fiscalEntitiesId identifier
-         * @param {CustomerUpdateFiscalEntitiesRequest} customerUpdateFiscalEntitiesRequest requested field for customer update fiscal entities
+         * @param {CustomerUpdateFiscalEntitiesRequest} customerUpdateFiscalEntitiesRequest Request body for updating a customer fiscal entity.
          * @param {UpdateCustomerFiscalEntitiesAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -554,8 +575,8 @@ export const CustomersApiFactory = function (configuration?: Configuration, base
     const localVarFp = CustomersApiFp(configuration)
     return {
         /**
-         * The purpose of business is to create and keep a customer, you will learn what elements you need to create a customer. 
-         * @summary Create customer
+         * Creates a new customer for the authenticated company.  Use customers to store and reuse buyer information (for example name, email, phone, and addresses). The created customer can be referenced later when creating orders and other resources. 
+         * @summary Create a customer
          * @param {Customer} customer requested field for customer
          * @param {CreateCustomerAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -566,7 +587,7 @@ export const CustomersApiFactory = function (configuration?: Configuration, base
             return localVarFp.createCustomer(customer, acceptLanguage, xChildCompanyId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Create Fiscal entity resource that corresponds to a customer ID.
+         * Create a fiscal entity resource for a given customer ID.
          * @summary Create Fiscal Entity
          * @param {string} id Identifier of the resource
          * @param {CustomerFiscalEntitiesRequest} customerFiscalEntitiesRequest requested field for customer fiscal entities
@@ -603,7 +624,7 @@ export const CustomersApiFactory = function (configuration?: Configuration, base
             return localVarFp.getCustomerById(id, acceptLanguage, xChildCompanyId, options).then((request) => request(axios, basePath));
         },
         /**
-         * The purpose of business is to create and maintain a client, you will learn what elements you need to obtain a list of clients, which can be paged.
+         * Returns a paginated list of customers for the authenticated company.  Use the [search] parameter to filter results. 
          * @summary Get a list of customers
          * @param {GetCustomersAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -632,10 +653,10 @@ export const CustomersApiFactory = function (configuration?: Configuration, base
         },
         /**
          * Update Fiscal Entity resource that corresponds to a customer ID.
-         * @summary Update  Fiscal Entity
+         * @summary Update Fiscal Entity
          * @param {string} id Identifier of the resource
          * @param {string} fiscalEntitiesId identifier
-         * @param {CustomerUpdateFiscalEntitiesRequest} customerUpdateFiscalEntitiesRequest requested field for customer update fiscal entities
+         * @param {CustomerUpdateFiscalEntitiesRequest} customerUpdateFiscalEntitiesRequest Request body for updating a customer fiscal entity.
          * @param {UpdateCustomerFiscalEntitiesAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -654,8 +675,8 @@ export const CustomersApiFactory = function (configuration?: Configuration, base
  */
 export interface CustomersApiInterface {
     /**
-     * The purpose of business is to create and keep a customer, you will learn what elements you need to create a customer. 
-     * @summary Create customer
+     * Creates a new customer for the authenticated company.  Use customers to store and reuse buyer information (for example name, email, phone, and addresses). The created customer can be referenced later when creating orders and other resources. 
+     * @summary Create a customer
      * @param {Customer} customer requested field for customer
      * @param {CreateCustomerAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -666,7 +687,7 @@ export interface CustomersApiInterface {
     createCustomer(customer: Customer, acceptLanguage?: CreateCustomerAcceptLanguageEnum, xChildCompanyId?: string, options?: RawAxiosRequestConfig): AxiosPromise<CustomerResponse>;
 
     /**
-     * Create Fiscal entity resource that corresponds to a customer ID.
+     * Create a fiscal entity resource for a given customer ID.
      * @summary Create Fiscal Entity
      * @param {string} id Identifier of the resource
      * @param {CustomerFiscalEntitiesRequest} customerFiscalEntitiesRequest requested field for customer fiscal entities
@@ -703,7 +724,7 @@ export interface CustomersApiInterface {
     getCustomerById(id: string, acceptLanguage?: GetCustomerByIdAcceptLanguageEnum, xChildCompanyId?: string, options?: RawAxiosRequestConfig): AxiosPromise<CustomerResponse>;
 
     /**
-     * The purpose of business is to create and maintain a client, you will learn what elements you need to obtain a list of clients, which can be paged.
+     * Returns a paginated list of customers for the authenticated company.  Use the [search] parameter to filter results. 
      * @summary Get a list of customers
      * @param {GetCustomersAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -732,10 +753,10 @@ export interface CustomersApiInterface {
 
     /**
      * Update Fiscal Entity resource that corresponds to a customer ID.
-     * @summary Update  Fiscal Entity
+     * @summary Update Fiscal Entity
      * @param {string} id Identifier of the resource
      * @param {string} fiscalEntitiesId identifier
-     * @param {CustomerUpdateFiscalEntitiesRequest} customerUpdateFiscalEntitiesRequest requested field for customer update fiscal entities
+     * @param {CustomerUpdateFiscalEntitiesRequest} customerUpdateFiscalEntitiesRequest Request body for updating a customer fiscal entity.
      * @param {UpdateCustomerFiscalEntitiesAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.
@@ -754,8 +775,8 @@ export interface CustomersApiInterface {
  */
 export class CustomersApi extends BaseAPI implements CustomersApiInterface {
     /**
-     * The purpose of business is to create and keep a customer, you will learn what elements you need to create a customer. 
-     * @summary Create customer
+     * Creates a new customer for the authenticated company.  Use customers to store and reuse buyer information (for example name, email, phone, and addresses). The created customer can be referenced later when creating orders and other resources. 
+     * @summary Create a customer
      * @param {Customer} customer requested field for customer
      * @param {CreateCustomerAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -768,7 +789,7 @@ export class CustomersApi extends BaseAPI implements CustomersApiInterface {
     }
 
     /**
-     * Create Fiscal entity resource that corresponds to a customer ID.
+     * Create a fiscal entity resource for a given customer ID.
      * @summary Create Fiscal Entity
      * @param {string} id Identifier of the resource
      * @param {CustomerFiscalEntitiesRequest} customerFiscalEntitiesRequest requested field for customer fiscal entities
@@ -811,7 +832,7 @@ export class CustomersApi extends BaseAPI implements CustomersApiInterface {
     }
 
     /**
-     * The purpose of business is to create and maintain a client, you will learn what elements you need to obtain a list of clients, which can be paged.
+     * Returns a paginated list of customers for the authenticated company.  Use the [search] parameter to filter results. 
      * @summary Get a list of customers
      * @param {GetCustomersAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -844,10 +865,10 @@ export class CustomersApi extends BaseAPI implements CustomersApiInterface {
 
     /**
      * Update Fiscal Entity resource that corresponds to a customer ID.
-     * @summary Update  Fiscal Entity
+     * @summary Update Fiscal Entity
      * @param {string} id Identifier of the resource
      * @param {string} fiscalEntitiesId identifier
-     * @param {CustomerUpdateFiscalEntitiesRequest} customerUpdateFiscalEntitiesRequest requested field for customer update fiscal entities
+     * @param {CustomerUpdateFiscalEntitiesRequest} customerUpdateFiscalEntitiesRequest Request body for updating a customer fiscal entity.
      * @param {UpdateCustomerFiscalEntitiesAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.

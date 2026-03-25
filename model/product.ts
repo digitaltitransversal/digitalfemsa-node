@@ -21,35 +21,17 @@
  */
 export interface Product {
     /**
-     * 
-     * @type {{ [key: string]: any; }}
-     * @memberof Product
-     */
-    'antifraud_info'?: { [key: string]: any; };
-    /**
-     * The brand of the item.
-     * @type {string}
-     * @memberof Product
-     */
-    'brand'?: string;
-    /**
-     * Short description of the item
-     * @type {string}
-     * @memberof Product
-     */
-    'description'?: string;
-    /**
-     * It is a key/value hash that can hold custom fields. Maximum 100 elements and allows special characters.
-     * @type {{ [key: string]: string; }}
-     * @memberof Product
-     */
-    'metadata'?: { [key: string]: string; };
-    /**
      * The name of the item. It will be displayed in the order.
      * @type {string}
      * @memberof Product
      */
     'name': string;
+    /**
+     * The price of the item in cents.
+     * @type {number}
+     * @memberof Product
+     */
+    'unit_price': number;
     /**
      * The quantity of the item in the order.
      * @type {number}
@@ -63,16 +45,28 @@ export interface Product {
      */
     'sku'?: string;
     /**
+     * The brand of the item.
+     * @type {string}
+     * @memberof Product
+     */
+    'brand'?: string;
+    /**
+     * Short description of the item
+     * @type {string}
+     * @memberof Product
+     */
+    'description'?: string;
+    /**
      * List of tags for the item. It is used to identify the item in the order.
      * @type {Array<string>}
      * @memberof Product
      */
     'tags'?: Array<string>;
     /**
-     * The price of the item in cents.
-     * @type {number}
+     * Arbitrary key-value data for your internal use. Keys should be strings; values can be any JSON value. 
+     * @type {{ [key: string]: any; }}
      * @memberof Product
      */
-    'unit_price': number;
+    'metadata'?: { [key: string]: any; };
 }
 

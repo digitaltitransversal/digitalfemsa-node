@@ -62,5 +62,17 @@ export interface ChargeResponseRefundsData {
      * @memberof ChargeResponseRefundsData
      */
     'status'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChargeResponseRefundsData
+     */
+    'payout_id'?: string;
+    /**
+     * payout reference for oxxo stores
+     * @type {string}
+     * @memberof ChargeResponseRefundsData
+     */
+    'reference'?: string;
 }
 

@@ -15,7 +15,9 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { CustomerShippingContactsResponseAddress } from './customer-shipping-contacts-response-address';
+import {
+  CustomerShippingContactsResponseAddress
+} from './customer-shipping-contacts-response-address';
 
 /**
  * Contains the detail of the shipping addresses that the client has active or has used in Femsa
@@ -48,7 +50,7 @@ export interface CustomerShippingContactsResponse {
      */
     'address'?: CustomerShippingContactsResponseAddress;
     /**
-     * 
+     * Customer ID that owns this shipping contact.
      * @type {string}
      * @memberof CustomerShippingContactsResponse
      */
@@ -84,7 +86,7 @@ export interface CustomerShippingContactsResponse {
      */
     'object'?: string;
     /**
-     * 
+     * Present only when the shipping contact was deleted.
      * @type {boolean}
      * @memberof CustomerShippingContactsResponse
      */

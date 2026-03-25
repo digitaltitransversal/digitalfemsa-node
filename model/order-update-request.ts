@@ -15,52 +15,41 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { ChargeRequest } from './charge-request';
+import {ChargeRequest} from './charge-request';
 // May contain unused imports in some cases
 // @ts-ignore
-import { CheckoutRequest } from './checkout-request';
+import {CustomerShippingContacts} from './customer-shipping-contacts';
 // May contain unused imports in some cases
 // @ts-ignore
-import { CustomerShippingContacts } from './customer-shipping-contacts';
+import {OrderDiscountLinesRequest} from './order-discount-lines-request';
 // May contain unused imports in some cases
 // @ts-ignore
-import { OrderDiscountLinesRequest } from './order-discount-lines-request';
+import {OrderTaxRequest} from './order-tax-request';
 // May contain unused imports in some cases
 // @ts-ignore
-import { OrderTaxRequest } from './order-tax-request';
+import {
+  OrderUpdateFiscalEntityRequest
+} from './order-update-fiscal-entity-request';
 // May contain unused imports in some cases
 // @ts-ignore
-import { OrderUpdateFiscalEntityRequest } from './order-update-fiscal-entity-request';
+import {
+  OrderUpdateRequestCustomerInfo
+} from './order-update-request-customer-info';
 // May contain unused imports in some cases
 // @ts-ignore
-import { OrderUpdateRequestCustomerInfo } from './order-update-request-customer-info';
+import {Product} from './product';
 // May contain unused imports in some cases
 // @ts-ignore
-import { Product } from './product';
-// May contain unused imports in some cases
-// @ts-ignore
-import { ShippingRequest } from './shipping-request';
+import {ShippingRequest} from './shipping-request';
 
 /**
- * a order
+ * Order update payload. Only supported fields can be modified.
  * @export
  * @interface OrderUpdateRequest
  */
 export interface OrderUpdateRequest {
     /**
-     * 
-     * @type {Array<ChargeRequest>}
-     * @memberof OrderUpdateRequest
-     */
-    'charges'?: Array<ChargeRequest>;
-    /**
-     * 
-     * @type {CheckoutRequest}
-     * @memberof OrderUpdateRequest
-     */
-    'checkout'?: CheckoutRequest;
-    /**
-     * Currency with which the payment will be made. It uses the 3-letter code of the [International Standard ISO 4217.](https://es.wikipedia.org/wiki/ISO_4217)
+     * Currency code in ISO 4217 (3-letter uppercase).
      * @type {string}
      * @memberof OrderUpdateRequest
      */
@@ -72,18 +61,6 @@ export interface OrderUpdateRequest {
      */
     'customer_info'?: OrderUpdateRequestCustomerInfo;
     /**
-     * List of [discounts](https://developers.femsa.com/v2.1.0/reference/orderscreatediscountline) that are applied to the order. You must have at least one discount.
-     * @type {Array<OrderDiscountLinesRequest>}
-     * @memberof OrderUpdateRequest
-     */
-    'discount_lines'?: Array<OrderDiscountLinesRequest>;
-    /**
-     * 
-     * @type {OrderUpdateFiscalEntityRequest}
-     * @memberof OrderUpdateRequest
-     */
-    'fiscal_entity'?: OrderUpdateFiscalEntityRequest;
-    /**
      * List of [products](https://developers.femsa.com/v2.1.0/reference/orderscreateproduct) that are sold in the order. You must have at least one product.
      * @type {Array<Product>}
      * @memberof OrderUpdateRequest
@@ -91,16 +68,28 @@ export interface OrderUpdateRequest {
     'line_items'?: Array<Product>;
     /**
      * 
-     * @type {{ [key: string]: string; }}
+     * @type {Array<ChargeRequest>}
      * @memberof OrderUpdateRequest
      */
-    'metadata'?: { [key: string]: string; };
+    'charges'?: Array<ChargeRequest>;
     /**
-     * Indicates whether the order charges must be preauthorized
-     * @type {boolean}
+     * List of [discounts](https://developers.femsa.com/v2.1.0/reference/orderscreatediscountline) that are applied to the order. You must have at least one discount.
+     * @type {Array<OrderDiscountLinesRequest>}
      * @memberof OrderUpdateRequest
      */
-    'pre_authorize'?: boolean;
+    'discount_lines'?: Array<OrderDiscountLinesRequest>;
+    /**
+     * 
+     * @type {Array<OrderTaxRequest>}
+     * @memberof OrderUpdateRequest
+     */
+    'tax_lines'?: Array<OrderTaxRequest>;
+    /**
+     * Existing shipping contact id from the customer to link to this order.
+     * @type {string}
+     * @memberof OrderUpdateRequest
+     */
+    'shipping_contact_id'?: string | null;
     /**
      * 
      * @type {CustomerShippingContacts}
@@ -114,10 +103,34 @@ export interface OrderUpdateRequest {
      */
     'shipping_lines'?: Array<ShippingRequest>;
     /**
-     * 
-     * @type {Array<OrderTaxRequest>}
+     * Existing fiscal entity id from the customer to link to this order.
+     * @type {string}
      * @memberof OrderUpdateRequest
      */
-    'tax_lines'?: Array<OrderTaxRequest>;
+    'fiscal_entity_id'?: string | null;
+    /**
+     * 
+     * @type {OrderUpdateFiscalEntityRequest}
+     * @memberof OrderUpdateRequest
+     */
+    'fiscal_entity'?: OrderUpdateFiscalEntityRequest;
+    /**
+     * URL where the customer should be redirected after completing a payment flow (if applicable).
+     * @type {string}
+     * @memberof OrderUpdateRequest
+     */
+    'return_url'?: string;
+    /**
+     * Arbitrary key-value data that you can attach to the order for your internal use. It is not used for payment processing. Keys should be strings; values can be any JSON value. 
+     * @type {{ [key: string]: any; }}
+     * @memberof OrderUpdateRequest
+     */
+    'metadata'?: { [key: string]: any; };
+    /**
+     * Order status update (only allowed transitions will be accepted).
+     * @type {string}
+     * @memberof OrderUpdateRequest
+     */
+    'status'?: string;
 }
 

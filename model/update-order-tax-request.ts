@@ -15,7 +15,7 @@
 
 
 /**
- * create new taxes for an existing order
+ * Create a new tax line for an existing order.
  * @export
  * @interface UpdateOrderTaxRequest
  */
@@ -27,16 +27,16 @@ export interface UpdateOrderTaxRequest {
      */
     'amount'?: number;
     /**
-     * description or tax\'s name
+     * Description or tax name
      * @type {string}
      * @memberof UpdateOrderTaxRequest
      */
     'description'?: string;
     /**
      * 
-     * @type {{ [key: string]: object; }}
+     * @type {{ [key: string]: any; }}
      * @memberof UpdateOrderTaxRequest
      */
-    'metadata'?: { [key: string]: object; };
+    'metadata'?: { [key: string]: any; };
 }
 

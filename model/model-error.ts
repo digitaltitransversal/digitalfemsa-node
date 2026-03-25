@@ -15,10 +15,10 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { Details } from './details';
+import {Details} from './details';
 // May contain unused imports in some cases
 // @ts-ignore
-import { DetailsError } from './details-error';
+import {DetailsError} from './details-error';
 
 /**
  * @type ModelError

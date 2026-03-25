@@ -15,31 +15,31 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { ChargeRequest } from './charge-request';
+import {ChargeRequest} from './charge-request';
 // May contain unused imports in some cases
 // @ts-ignore
-import { CheckoutRequest } from './checkout-request';
+import {CheckoutRequest} from './checkout-request';
 // May contain unused imports in some cases
 // @ts-ignore
-import { CustomerShippingContacts } from './customer-shipping-contacts';
+import {CustomerShippingContacts} from './customer-shipping-contacts';
 // May contain unused imports in some cases
 // @ts-ignore
-import { OrderDiscountLinesRequest } from './order-discount-lines-request';
+import {OrderDiscountLinesRequest} from './order-discount-lines-request';
 // May contain unused imports in some cases
 // @ts-ignore
-import { OrderFiscalEntityRequest } from './order-fiscal-entity-request';
+import {OrderFiscalEntityRequest} from './order-fiscal-entity-request';
 // May contain unused imports in some cases
 // @ts-ignore
-import { OrderRequestCustomerInfo } from './order-request-customer-info';
+import {OrderRequestCustomerInfo} from './order-request-customer-info';
 // May contain unused imports in some cases
 // @ts-ignore
-import { OrderTaxRequest } from './order-tax-request';
+import {OrderTaxRequest} from './order-tax-request';
 // May contain unused imports in some cases
 // @ts-ignore
-import { Product } from './product';
+import {Product} from './product';
 // May contain unused imports in some cases
 // @ts-ignore
-import { ShippingRequest } from './shipping-request';
+import {ShippingRequest} from './shipping-request';
 
 /**
  * a order
@@ -48,19 +48,7 @@ import { ShippingRequest } from './shipping-request';
  */
 export interface OrderRequest {
     /**
-     * List of [charges](https://developers.femsa.com/v2.1.0/reference/orderscreatecharge) that are applied to the order
-     * @type {Array<ChargeRequest>}
-     * @memberof OrderRequest
-     */
-    'charges'?: Array<ChargeRequest>;
-    /**
-     * 
-     * @type {CheckoutRequest}
-     * @memberof OrderRequest
-     */
-    'checkout'?: CheckoutRequest;
-    /**
-     * Currency with which the payment will be made. It uses the 3-letter code of the [International Standard ISO 4217.](https://es.wikipedia.org/wiki/ISO_4217)
+     * Currency with which the payment will be made.
      * @type {string}
      * @memberof OrderRequest
      */
@@ -72,29 +60,35 @@ export interface OrderRequest {
      */
     'customer_info': OrderRequestCustomerInfo;
     /**
-     * List of [discounts](https://developers.femsa.com/v2.1.0/reference/orderscreatediscountline) that are applied to the order. You must have at least one discount.
-     * @type {Array<OrderDiscountLinesRequest>}
-     * @memberof OrderRequest
-     */
-    'discount_lines'?: Array<OrderDiscountLinesRequest>;
-    /**
-     * 
-     * @type {OrderFiscalEntityRequest}
-     * @memberof OrderRequest
-     */
-    'fiscal_entity'?: OrderFiscalEntityRequest;
-    /**
-     * List of [products](https://developers.femsa.com/v2.1.0/reference/orderscreateproduct) that are sold in the order. You must have at least one product.
+     * List of [products](https://developers.digitalfemsa.io/reference/orderscreateproduct) that are sold in the order. You must have at least one product.
      * @type {Array<Product>}
      * @memberof OrderRequest
      */
     'line_items': Array<Product>;
     /**
-     * Metadata associated with the order
-     * @type {{ [key: string]: any; }}
+     * List of [charges](https://developers.digitalfemsa.io/reference/orderscreatecharge) that are applied to the order
+     * @type {Array<ChargeRequest>}
      * @memberof OrderRequest
      */
-    'metadata'?: { [key: string]: any; };
+    'charges'?: Array<ChargeRequest>;
+    /**
+     * 
+     * @type {CheckoutRequest}
+     * @memberof OrderRequest
+     */
+    'checkout'?: CheckoutRequest;
+    /**
+     * List of [discounts](https://developers.digitalfemsa.io/reference/orderscreatediscountline) that are applied to the order. You must have at least one discount.
+     * @type {Array<OrderDiscountLinesRequest>}
+     * @memberof OrderRequest
+     */
+    'discount_lines'?: Array<OrderDiscountLinesRequest>;
+    /**
+     * List of [taxes](https://developers.digitalfemsa.io/reference/orderscreatetaxes) that are applied to the order.
+     * @type {Array<OrderTaxRequest>}
+     * @memberof OrderRequest
+     */
+    'tax_lines'?: Array<OrderTaxRequest>;
     /**
      * Allows you to fill out the shipping information at checkout
      * @type {boolean}
@@ -102,34 +96,34 @@ export interface OrderRequest {
      */
     'needs_shipping_contact'?: boolean;
     /**
-     * Indicates the processing mode for the order, either ecommerce, recurrent or validation.
-     * @type {string}
-     * @memberof OrderRequest
-     */
-    'processing_mode'?: string;
-    /**
-     * Indicates the redirection callback upon completion of the 3DS2 flow.
-     * @type {string}
-     * @memberof OrderRequest
-     */
-    'return_url'?: string;
-    /**
      * 
      * @type {CustomerShippingContacts}
      * @memberof OrderRequest
      */
     'shipping_contact'?: CustomerShippingContacts;
     /**
-     * List of [shipping costs](https://developers.femsa.com/v2.1.0/reference/orderscreateshipping). If the online store offers digital products.
+     * List of [shipping costs](https://developers.digitalfemsa.io/reference/orderscreateshipping). If the online store offers digital products.
      * @type {Array<ShippingRequest>}
      * @memberof OrderRequest
      */
     'shipping_lines'?: Array<ShippingRequest>;
     /**
-     * List of [taxes](https://developers.femsa.com/v2.1.0/reference/orderscreatetaxes) that are applied to the order.
-     * @type {Array<OrderTaxRequest>}
+     * 
+     * @type {OrderFiscalEntityRequest}
      * @memberof OrderRequest
      */
-    'tax_lines'?: Array<OrderTaxRequest>;
+    'fiscal_entity'?: OrderFiscalEntityRequest;
+    /**
+     * Indicates the processing mode for the order, either ecommerce, recurrent or validation.
+     * @type {string}
+     * @memberof OrderRequest
+     */
+    'processing_mode'?: string;
+    /**
+     * Arbitrary key-value data that you can attach to the order for your internal use (e.g. `customer_segment`, `sales_channel`, `internal_order_id`). It is not used for payment processing or fraud decisions. Keys should be strings; values can be any JSON value.
+     * @type {{ [key: string]: any; }}
+     * @memberof OrderRequest
+     */
+    'metadata'?: { [key: string]: any; };
 }
 

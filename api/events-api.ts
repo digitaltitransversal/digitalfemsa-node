@@ -13,22 +13,43 @@
  */
 
 
-import type { Configuration } from '../configuration';
-import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
+import type {Configuration} from '../configuration';
+import type {AxiosInstance, AxiosPromise, RawAxiosRequestConfig} from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import {
+  assertParamExists,
+  createRequestFunction,
+  DUMMY_BASE_URL,
+  serializeDataIfNeeded,
+  setApiKeyToObject,
+  setBasicAuthToObject,
+  setBearerAuthToObject,
+  setOAuthToObject,
+  setSearchParams,
+  toPathString
+} from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
+import {
+  BASE_PATH,
+  BaseAPI,
+  COLLECTION_FORMATS,
+  operationServerMap,
+  RequestArgs,
+  RequiredError
+} from '../base';
 // @ts-ignore
-import { EventResponse } from '../model';
 // @ts-ignore
-import { EventsResendResponse } from '../model';
 // @ts-ignore
-import { GetEventsResponse } from '../model';
 // @ts-ignore
-import { ModelError } from '../model';
+import {
+  EventResponse,
+  EventsResendResponse,
+  GetEventsResponse,
+  ModelError
+} from '../model';
+
 /**
  * EventsApi - axios parameter creator
  * @export
@@ -36,7 +57,7 @@ import { ModelError } from '../model';
 export const EventsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Returns a single event
+         * Returns a single event by its ID, including its payload (`data`) and webhook delivery information. The `webhook_status` indicates whether webhook notifications were applicable and their overall status. The [webhook_logs]) array contains delivery attempts (it can be empty when webhook notifications are not applicable or no attempts were created). 
          * @summary Get Event
          * @param {string} id Identifier of the resource
          * @param {GetEventAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -148,7 +169,7 @@ export const EventsApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
-         * Try to send an event
+         * Triggers a new delivery attempt for a specific webhook log associated with the given event. Use this endpoint to retry failed webhook deliveries (for example, non-2xx responses or timeouts). The response returns the updated webhook log with the latest attempt metadata. 
          * @summary Resend Event
          * @param {string} eventId event identifier
          * @param {string} webhookLogId webhook log identifier
@@ -205,7 +226,7 @@ export const EventsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = EventsApiAxiosParamCreator(configuration)
     return {
         /**
-         * Returns a single event
+         * Returns a single event by its ID, including its payload (`data`) and webhook delivery information. The `webhook_status` indicates whether webhook notifications were applicable and their overall status. The [webhook_logs]) array contains delivery attempts (it can be empty when webhook notifications are not applicable or no attempts were created). 
          * @summary Get Event
          * @param {string} id Identifier of the resource
          * @param {GetEventAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -238,7 +259,7 @@ export const EventsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * Try to send an event
+         * Triggers a new delivery attempt for a specific webhook log associated with the given event. Use this endpoint to retry failed webhook deliveries (for example, non-2xx responses or timeouts). The response returns the updated webhook log with the latest attempt metadata. 
          * @summary Resend Event
          * @param {string} eventId event identifier
          * @param {string} webhookLogId webhook log identifier
@@ -263,7 +284,7 @@ export const EventsApiFactory = function (configuration?: Configuration, basePat
     const localVarFp = EventsApiFp(configuration)
     return {
         /**
-         * Returns a single event
+         * Returns a single event by its ID, including its payload (`data`) and webhook delivery information. The `webhook_status` indicates whether webhook notifications were applicable and their overall status. The [webhook_logs]) array contains delivery attempts (it can be empty when webhook notifications are not applicable or no attempts were created). 
          * @summary Get Event
          * @param {string} id Identifier of the resource
          * @param {GetEventAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -290,7 +311,7 @@ export const EventsApiFactory = function (configuration?: Configuration, basePat
             return localVarFp.getEvents(acceptLanguage, xChildCompanyId, limit, search, next, previous, options).then((request) => request(axios, basePath));
         },
         /**
-         * Try to send an event
+         * Triggers a new delivery attempt for a specific webhook log associated with the given event. Use this endpoint to retry failed webhook deliveries (for example, non-2xx responses or timeouts). The response returns the updated webhook log with the latest attempt metadata. 
          * @summary Resend Event
          * @param {string} eventId event identifier
          * @param {string} webhookLogId webhook log identifier
@@ -311,7 +332,7 @@ export const EventsApiFactory = function (configuration?: Configuration, basePat
  */
 export interface EventsApiInterface {
     /**
-     * Returns a single event
+     * Returns a single event by its ID, including its payload (`data`) and webhook delivery information. The `webhook_status` indicates whether webhook notifications were applicable and their overall status. The [webhook_logs]) array contains delivery attempts (it can be empty when webhook notifications are not applicable or no attempts were created). 
      * @summary Get Event
      * @param {string} id Identifier of the resource
      * @param {GetEventAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -338,7 +359,7 @@ export interface EventsApiInterface {
     getEvents(acceptLanguage?: GetEventsAcceptLanguageEnum, xChildCompanyId?: string, limit?: number, search?: string, next?: string, previous?: string, options?: RawAxiosRequestConfig): AxiosPromise<GetEventsResponse>;
 
     /**
-     * Try to send an event
+     * Triggers a new delivery attempt for a specific webhook log associated with the given event. Use this endpoint to retry failed webhook deliveries (for example, non-2xx responses or timeouts). The response returns the updated webhook log with the latest attempt metadata. 
      * @summary Resend Event
      * @param {string} eventId event identifier
      * @param {string} webhookLogId webhook log identifier
@@ -359,7 +380,7 @@ export interface EventsApiInterface {
  */
 export class EventsApi extends BaseAPI implements EventsApiInterface {
     /**
-     * Returns a single event
+     * Returns a single event by its ID, including its payload (`data`) and webhook delivery information. The `webhook_status` indicates whether webhook notifications were applicable and their overall status. The [webhook_logs]) array contains delivery attempts (it can be empty when webhook notifications are not applicable or no attempts were created). 
      * @summary Get Event
      * @param {string} id Identifier of the resource
      * @param {GetEventAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -390,7 +411,7 @@ export class EventsApi extends BaseAPI implements EventsApiInterface {
     }
 
     /**
-     * Try to send an event
+     * Triggers a new delivery attempt for a specific webhook log associated with the given event. Use this endpoint to retry failed webhook deliveries (for example, non-2xx responses or timeouts). The response returns the updated webhook log with the latest attempt metadata. 
      * @summary Resend Event
      * @param {string} eventId event identifier
      * @param {string} webhookLogId webhook log identifier

@@ -15,13 +15,15 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { GetCustomerPaymentMethodDataResponse } from './get-customer-payment-method-data-response';
+import {
+  GetCustomerPaymentMethodDataResponse
+} from './get-customer-payment-method-data-response';
 // May contain unused imports in some cases
 // @ts-ignore
-import { Page } from './page';
+import {Page} from './page';
 // May contain unused imports in some cases
 // @ts-ignore
-import { Pagination } from './pagination';
+import {Pagination} from './pagination';
 
 /**
  * @type GetPaymentMethodResponse

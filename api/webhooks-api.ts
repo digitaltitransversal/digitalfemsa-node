@@ -13,24 +13,45 @@
  */
 
 
-import type { Configuration } from '../configuration';
-import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
+import type {Configuration} from '../configuration';
+import type {AxiosInstance, AxiosPromise, RawAxiosRequestConfig} from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import {
+  assertParamExists,
+  createRequestFunction,
+  DUMMY_BASE_URL,
+  serializeDataIfNeeded,
+  setApiKeyToObject,
+  setBasicAuthToObject,
+  setBearerAuthToObject,
+  setOAuthToObject,
+  setSearchParams,
+  toPathString
+} from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
+import {
+  BASE_PATH,
+  BaseAPI,
+  COLLECTION_FORMATS,
+  operationServerMap,
+  RequestArgs,
+  RequiredError
+} from '../base';
 // @ts-ignore
-import { GetWebhooksResponse } from '../model';
 // @ts-ignore
-import { ModelError } from '../model';
 // @ts-ignore
-import { WebhookRequest } from '../model';
 // @ts-ignore
-import { WebhookResponse } from '../model';
 // @ts-ignore
-import { WebhookUpdateRequest } from '../model';
+import {
+  GetWebhooksResponse,
+  ModelError,
+  WebhookRequest,
+  WebhookResponse,
+  WebhookUpdateRequest
+} from '../model';
+
 /**
  * WebhooksApi - axios parameter creator
  * @export
@@ -40,7 +61,7 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * What we do at Femsa translates into events. For example, an event of interest to us occurs at the time a payment is successfully processed. At that moment we will be interested in doing several things: Send an email to the buyer, generate an invoice, start the process of shipping the product, etc.
          * @summary Create Webhook
-         * @param {WebhookRequest} webhookRequest requested field for webhook
+         * @param {WebhookRequest} webhookRequest Webhook creation/update request payload.
          * @param {CreateWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -83,8 +104,8 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
             };
         },
         /**
-         * 
-         * @summary Delete Webhook
+         * Deletes a webhook.
+         * @summary Delete webhook
          * @param {string} id Identifier of the resource
          * @param {DeleteWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {*} [options] Override http request option.
@@ -126,8 +147,8 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
             };
         },
         /**
-         * 
-         * @summary Get Webhook
+         * Retrieves the details of a webhook by its ID.
+         * @summary Get webhook
          * @param {string} id Identifier of the resource
          * @param {GetWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -180,12 +201,13 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {number} [limit] The numbers of items to return, the maximum value is 250
          * @param {string} [search] General order search, e.g. by mail, reference etc.
+         * @param {string} [url] url for webhook filter
          * @param {string} [next] next page
          * @param {string} [previous] previous page
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getWebhooks: async (acceptLanguage?: GetWebhooksAcceptLanguageEnum, xChildCompanyId?: string, limit?: number, search?: string, next?: string, previous?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getWebhooks: async (acceptLanguage?: GetWebhooksAcceptLanguageEnum, xChildCompanyId?: string, limit?: number, search?: string, url?: string, next?: string, previous?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/webhooks`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -208,6 +230,10 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
 
             if (search !== undefined) {
                 localVarQueryParameter['search'] = search;
+            }
+
+            if (url !== undefined) {
+                localVarQueryParameter['url'] = url;
             }
 
             if (next !== undefined) {
@@ -238,8 +264,8 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
             };
         },
         /**
-         * Send a webhook.ping event
-         * @summary Test Webhook
+         * Sends a test event to the specified webhook to verify it can receive events.
+         * @summary Test webhook
          * @param {string} id Identifier of the resource
          * @param {TestWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {*} [options] Override http request option.
@@ -281,10 +307,10 @@ export const WebhooksApiAxiosParamCreator = function (configuration?: Configurat
             };
         },
         /**
-         * updates an existing webhook
-         * @summary Update Webhook
+         * Updates an existing webhook.
+         * @summary Update webhook
          * @param {string} id Identifier of the resource
-         * @param {WebhookUpdateRequest} webhookUpdateRequest requested fields in order to update a webhook
+         * @param {WebhookUpdateRequest} webhookUpdateRequest Webhook update request payload.
          * @param {UpdateWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -347,7 +373,7 @@ export const WebhooksApiFp = function(configuration?: Configuration) {
         /**
          * What we do at Femsa translates into events. For example, an event of interest to us occurs at the time a payment is successfully processed. At that moment we will be interested in doing several things: Send an email to the buyer, generate an invoice, start the process of shipping the product, etc.
          * @summary Create Webhook
-         * @param {WebhookRequest} webhookRequest requested field for webhook
+         * @param {WebhookRequest} webhookRequest Webhook creation/update request payload.
          * @param {CreateWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -359,8 +385,8 @@ export const WebhooksApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * 
-         * @summary Delete Webhook
+         * Deletes a webhook.
+         * @summary Delete webhook
          * @param {string} id Identifier of the resource
          * @param {DeleteWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {*} [options] Override http request option.
@@ -373,8 +399,8 @@ export const WebhooksApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * 
-         * @summary Get Webhook
+         * Retrieves the details of a webhook by its ID.
+         * @summary Get webhook
          * @param {string} id Identifier of the resource
          * @param {GetWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -394,20 +420,21 @@ export const WebhooksApiFp = function(configuration?: Configuration) {
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {number} [limit] The numbers of items to return, the maximum value is 250
          * @param {string} [search] General order search, e.g. by mail, reference etc.
+         * @param {string} [url] url for webhook filter
          * @param {string} [next] next page
          * @param {string} [previous] previous page
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getWebhooks(acceptLanguage?: GetWebhooksAcceptLanguageEnum, xChildCompanyId?: string, limit?: number, search?: string, next?: string, previous?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetWebhooksResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getWebhooks(acceptLanguage, xChildCompanyId, limit, search, next, previous, options);
+        async getWebhooks(acceptLanguage?: GetWebhooksAcceptLanguageEnum, xChildCompanyId?: string, limit?: number, search?: string, url?: string, next?: string, previous?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetWebhooksResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getWebhooks(acceptLanguage, xChildCompanyId, limit, search, url, next, previous, options);
             const index = configuration?.serverIndex ?? 0;
             const operationBasePath = operationServerMap['WebhooksApi.getWebhooks']?.[index]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * Send a webhook.ping event
-         * @summary Test Webhook
+         * Sends a test event to the specified webhook to verify it can receive events.
+         * @summary Test webhook
          * @param {string} id Identifier of the resource
          * @param {TestWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {*} [options] Override http request option.
@@ -420,10 +447,10 @@ export const WebhooksApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * updates an existing webhook
-         * @summary Update Webhook
+         * Updates an existing webhook.
+         * @summary Update webhook
          * @param {string} id Identifier of the resource
-         * @param {WebhookUpdateRequest} webhookUpdateRequest requested fields in order to update a webhook
+         * @param {WebhookUpdateRequest} webhookUpdateRequest Webhook update request payload.
          * @param {UpdateWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -448,7 +475,7 @@ export const WebhooksApiFactory = function (configuration?: Configuration, baseP
         /**
          * What we do at Femsa translates into events. For example, an event of interest to us occurs at the time a payment is successfully processed. At that moment we will be interested in doing several things: Send an email to the buyer, generate an invoice, start the process of shipping the product, etc.
          * @summary Create Webhook
-         * @param {WebhookRequest} webhookRequest requested field for webhook
+         * @param {WebhookRequest} webhookRequest Webhook creation/update request payload.
          * @param {CreateWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -457,8 +484,8 @@ export const WebhooksApiFactory = function (configuration?: Configuration, baseP
             return localVarFp.createWebhook(webhookRequest, acceptLanguage, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
-         * @summary Delete Webhook
+         * Deletes a webhook.
+         * @summary Delete webhook
          * @param {string} id Identifier of the resource
          * @param {DeleteWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {*} [options] Override http request option.
@@ -468,8 +495,8 @@ export const WebhooksApiFactory = function (configuration?: Configuration, baseP
             return localVarFp.deleteWebhook(id, acceptLanguage, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
-         * @summary Get Webhook
+         * Retrieves the details of a webhook by its ID.
+         * @summary Get webhook
          * @param {string} id Identifier of the resource
          * @param {GetWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -486,17 +513,18 @@ export const WebhooksApiFactory = function (configuration?: Configuration, baseP
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {number} [limit] The numbers of items to return, the maximum value is 250
          * @param {string} [search] General order search, e.g. by mail, reference etc.
+         * @param {string} [url] url for webhook filter
          * @param {string} [next] next page
          * @param {string} [previous] previous page
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getWebhooks(acceptLanguage?: GetWebhooksAcceptLanguageEnum, xChildCompanyId?: string, limit?: number, search?: string, next?: string, previous?: string, options?: any): AxiosPromise<GetWebhooksResponse> {
-            return localVarFp.getWebhooks(acceptLanguage, xChildCompanyId, limit, search, next, previous, options).then((request) => request(axios, basePath));
+        getWebhooks(acceptLanguage?: GetWebhooksAcceptLanguageEnum, xChildCompanyId?: string, limit?: number, search?: string, url?: string, next?: string, previous?: string, options?: any): AxiosPromise<GetWebhooksResponse> {
+            return localVarFp.getWebhooks(acceptLanguage, xChildCompanyId, limit, search, url, next, previous, options).then((request) => request(axios, basePath));
         },
         /**
-         * Send a webhook.ping event
-         * @summary Test Webhook
+         * Sends a test event to the specified webhook to verify it can receive events.
+         * @summary Test webhook
          * @param {string} id Identifier of the resource
          * @param {TestWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {*} [options] Override http request option.
@@ -506,10 +534,10 @@ export const WebhooksApiFactory = function (configuration?: Configuration, baseP
             return localVarFp.testWebhook(id, acceptLanguage, options).then((request) => request(axios, basePath));
         },
         /**
-         * updates an existing webhook
-         * @summary Update Webhook
+         * Updates an existing webhook.
+         * @summary Update webhook
          * @param {string} id Identifier of the resource
-         * @param {WebhookUpdateRequest} webhookUpdateRequest requested fields in order to update a webhook
+         * @param {WebhookUpdateRequest} webhookUpdateRequest Webhook update request payload.
          * @param {UpdateWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -530,7 +558,7 @@ export interface WebhooksApiInterface {
     /**
      * What we do at Femsa translates into events. For example, an event of interest to us occurs at the time a payment is successfully processed. At that moment we will be interested in doing several things: Send an email to the buyer, generate an invoice, start the process of shipping the product, etc.
      * @summary Create Webhook
-     * @param {WebhookRequest} webhookRequest requested field for webhook
+     * @param {WebhookRequest} webhookRequest Webhook creation/update request payload.
      * @param {CreateWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -539,8 +567,8 @@ export interface WebhooksApiInterface {
     createWebhook(webhookRequest: WebhookRequest, acceptLanguage?: CreateWebhookAcceptLanguageEnum, options?: RawAxiosRequestConfig): AxiosPromise<WebhookResponse>;
 
     /**
-     * 
-     * @summary Delete Webhook
+     * Deletes a webhook.
+     * @summary Delete webhook
      * @param {string} id Identifier of the resource
      * @param {DeleteWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {*} [options] Override http request option.
@@ -550,8 +578,8 @@ export interface WebhooksApiInterface {
     deleteWebhook(id: string, acceptLanguage?: DeleteWebhookAcceptLanguageEnum, options?: RawAxiosRequestConfig): AxiosPromise<WebhookResponse>;
 
     /**
-     * 
-     * @summary Get Webhook
+     * Retrieves the details of a webhook by its ID.
+     * @summary Get webhook
      * @param {string} id Identifier of the resource
      * @param {GetWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -568,17 +596,18 @@ export interface WebhooksApiInterface {
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {number} [limit] The numbers of items to return, the maximum value is 250
      * @param {string} [search] General order search, e.g. by mail, reference etc.
+     * @param {string} [url] url for webhook filter
      * @param {string} [next] next page
      * @param {string} [previous] previous page
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WebhooksApiInterface
      */
-    getWebhooks(acceptLanguage?: GetWebhooksAcceptLanguageEnum, xChildCompanyId?: string, limit?: number, search?: string, next?: string, previous?: string, options?: RawAxiosRequestConfig): AxiosPromise<GetWebhooksResponse>;
+    getWebhooks(acceptLanguage?: GetWebhooksAcceptLanguageEnum, xChildCompanyId?: string, limit?: number, search?: string, url?: string, next?: string, previous?: string, options?: RawAxiosRequestConfig): AxiosPromise<GetWebhooksResponse>;
 
     /**
-     * Send a webhook.ping event
-     * @summary Test Webhook
+     * Sends a test event to the specified webhook to verify it can receive events.
+     * @summary Test webhook
      * @param {string} id Identifier of the resource
      * @param {TestWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {*} [options] Override http request option.
@@ -588,10 +617,10 @@ export interface WebhooksApiInterface {
     testWebhook(id: string, acceptLanguage?: TestWebhookAcceptLanguageEnum, options?: RawAxiosRequestConfig): AxiosPromise<WebhookResponse>;
 
     /**
-     * updates an existing webhook
-     * @summary Update Webhook
+     * Updates an existing webhook.
+     * @summary Update webhook
      * @param {string} id Identifier of the resource
-     * @param {WebhookUpdateRequest} webhookUpdateRequest requested fields in order to update a webhook
+     * @param {WebhookUpdateRequest} webhookUpdateRequest Webhook update request payload.
      * @param {UpdateWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.
@@ -612,7 +641,7 @@ export class WebhooksApi extends BaseAPI implements WebhooksApiInterface {
     /**
      * What we do at Femsa translates into events. For example, an event of interest to us occurs at the time a payment is successfully processed. At that moment we will be interested in doing several things: Send an email to the buyer, generate an invoice, start the process of shipping the product, etc.
      * @summary Create Webhook
-     * @param {WebhookRequest} webhookRequest requested field for webhook
+     * @param {WebhookRequest} webhookRequest Webhook creation/update request payload.
      * @param {CreateWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -623,8 +652,8 @@ export class WebhooksApi extends BaseAPI implements WebhooksApiInterface {
     }
 
     /**
-     * 
-     * @summary Delete Webhook
+     * Deletes a webhook.
+     * @summary Delete webhook
      * @param {string} id Identifier of the resource
      * @param {DeleteWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {*} [options] Override http request option.
@@ -636,8 +665,8 @@ export class WebhooksApi extends BaseAPI implements WebhooksApiInterface {
     }
 
     /**
-     * 
-     * @summary Get Webhook
+     * Retrieves the details of a webhook by its ID.
+     * @summary Get webhook
      * @param {string} id Identifier of the resource
      * @param {GetWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -656,19 +685,20 @@ export class WebhooksApi extends BaseAPI implements WebhooksApiInterface {
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {number} [limit] The numbers of items to return, the maximum value is 250
      * @param {string} [search] General order search, e.g. by mail, reference etc.
+     * @param {string} [url] url for webhook filter
      * @param {string} [next] next page
      * @param {string} [previous] previous page
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof WebhooksApi
      */
-    public getWebhooks(acceptLanguage?: GetWebhooksAcceptLanguageEnum, xChildCompanyId?: string, limit?: number, search?: string, next?: string, previous?: string, options?: RawAxiosRequestConfig) {
-        return WebhooksApiFp(this.configuration).getWebhooks(acceptLanguage, xChildCompanyId, limit, search, next, previous, options).then((request) => request(this.axios, this.basePath));
+    public getWebhooks(acceptLanguage?: GetWebhooksAcceptLanguageEnum, xChildCompanyId?: string, limit?: number, search?: string, url?: string, next?: string, previous?: string, options?: RawAxiosRequestConfig) {
+        return WebhooksApiFp(this.configuration).getWebhooks(acceptLanguage, xChildCompanyId, limit, search, url, next, previous, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * Send a webhook.ping event
-     * @summary Test Webhook
+     * Sends a test event to the specified webhook to verify it can receive events.
+     * @summary Test webhook
      * @param {string} id Identifier of the resource
      * @param {TestWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {*} [options] Override http request option.
@@ -680,10 +710,10 @@ export class WebhooksApi extends BaseAPI implements WebhooksApiInterface {
     }
 
     /**
-     * updates an existing webhook
-     * @summary Update Webhook
+     * Updates an existing webhook.
+     * @summary Update webhook
      * @param {string} id Identifier of the resource
-     * @param {WebhookUpdateRequest} webhookUpdateRequest requested fields in order to update a webhook
+     * @param {WebhookUpdateRequest} webhookUpdateRequest Webhook update request payload.
      * @param {UpdateWebhookAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.

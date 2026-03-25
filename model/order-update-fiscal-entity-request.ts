@@ -15,7 +15,7 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { FiscalEntityAddress } from './fiscal-entity-address';
+import {FiscalEntityAddress} from './fiscal-entity-address';
 
 /**
  * Fiscal entity of the order, Currently it is a purely informative field
@@ -42,7 +42,7 @@ export interface OrderUpdateFiscalEntityRequest {
      */
     'name'?: string | null;
     /**
-     * Metadata associated with the fiscal entity
+     * Arbitrary key-value data associated with the fiscal entity for your internal use. Keys should be strings; values can be any JSON value. 
      * @type {{ [key: string]: any; }}
      * @memberof OrderUpdateFiscalEntityRequest
      */

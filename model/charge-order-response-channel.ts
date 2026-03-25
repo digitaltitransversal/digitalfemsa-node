@@ -17,38 +17,32 @@
 /**
  * 
  * @export
- * @interface CustomerInfo
+ * @interface ChargeOrderResponseChannel
  */
-export interface CustomerInfo {
+export interface ChargeOrderResponseChannel {
     /**
      * 
      * @type {string}
-     * @memberof CustomerInfo
+     * @memberof ChargeOrderResponseChannel
      */
-    'customer_id'?: string;
+    'segment'?: string;
     /**
      * 
      * @type {string}
-     * @memberof CustomerInfo
+     * @memberof ChargeOrderResponseChannel
      */
-    'name': string;
+    'checkout_request_id'?: string;
     /**
      * 
      * @type {string}
-     * @memberof CustomerInfo
+     * @memberof ChargeOrderResponseChannel
      */
-    'email': string;
+    'checkout_request_type'?: string;
     /**
      * 
      * @type {string}
-     * @memberof CustomerInfo
+     * @memberof ChargeOrderResponseChannel
      */
-    'phone'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CustomerInfo
-     */
-    'corporate'?: boolean;
+    'id'?: string;
 }
 

@@ -13,22 +13,43 @@
  */
 
 
-import type { Configuration } from '../configuration';
-import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
+import type {Configuration} from '../configuration';
+import type {AxiosInstance, AxiosPromise, RawAxiosRequestConfig} from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import {
+  assertParamExists,
+  createRequestFunction,
+  DUMMY_BASE_URL,
+  serializeDataIfNeeded,
+  setApiKeyToObject,
+  setBasicAuthToObject,
+  setBearerAuthToObject,
+  setOAuthToObject,
+  setSearchParams,
+  toPathString
+} from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
+import {
+  BASE_PATH,
+  BaseAPI,
+  COLLECTION_FORMATS,
+  operationServerMap,
+  RequestArgs,
+  RequiredError
+} from '../base';
 // @ts-ignore
-import { CustomerShippingContacts } from '../model';
 // @ts-ignore
-import { CustomerShippingContactsResponse } from '../model';
 // @ts-ignore
-import { CustomerUpdateShippingContacts } from '../model';
 // @ts-ignore
-import { ModelError } from '../model';
+import {
+  CustomerShippingContacts,
+  CustomerShippingContactsResponse,
+  CustomerUpdateShippingContacts,
+  ModelError
+} from '../model';
+
 /**
  * ShippingContactsApi - axios parameter creator
  * @export
@@ -36,10 +57,10 @@ import { ModelError } from '../model';
 export const ShippingContactsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Create a shipping contacts for a customer.
-         * @summary Create a shipping contacts
+         * Creates a new shipping contact for a customer. The shipping contact is associated with the customer identified by `id`.
+         * @summary Create a shipping contact
          * @param {string} id Identifier of the resource
-         * @param {CustomerShippingContacts} customerShippingContacts requested field for customer shippings contacts
+         * @param {CustomerShippingContacts} customerShippingContacts Request body for creating or updating a customer shipping contact.
          * @param {CreateCustomerShippingContactsAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -146,7 +167,7 @@ export const ShippingContactsApiAxiosParamCreator = function (configuration?: Co
          * @summary Update shipping contacts
          * @param {string} id Identifier of the resource
          * @param {string} shippingContactsId identifier
-         * @param {CustomerUpdateShippingContacts} customerUpdateShippingContacts requested field for customer update shippings contacts
+         * @param {CustomerUpdateShippingContacts} customerUpdateShippingContacts Request body for updating a customer shipping contact.
          * @param {UpdateCustomerShippingContactsAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -210,10 +231,10 @@ export const ShippingContactsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ShippingContactsApiAxiosParamCreator(configuration)
     return {
         /**
-         * Create a shipping contacts for a customer.
-         * @summary Create a shipping contacts
+         * Creates a new shipping contact for a customer. The shipping contact is associated with the customer identified by `id`.
+         * @summary Create a shipping contact
          * @param {string} id Identifier of the resource
-         * @param {CustomerShippingContacts} customerShippingContacts requested field for customer shippings contacts
+         * @param {CustomerShippingContacts} customerShippingContacts Request body for creating or updating a customer shipping contact.
          * @param {CreateCustomerShippingContactsAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -246,7 +267,7 @@ export const ShippingContactsApiFp = function(configuration?: Configuration) {
          * @summary Update shipping contacts
          * @param {string} id Identifier of the resource
          * @param {string} shippingContactsId identifier
-         * @param {CustomerUpdateShippingContacts} customerUpdateShippingContacts requested field for customer update shippings contacts
+         * @param {CustomerUpdateShippingContacts} customerUpdateShippingContacts Request body for updating a customer shipping contact.
          * @param {UpdateCustomerShippingContactsAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -269,10 +290,10 @@ export const ShippingContactsApiFactory = function (configuration?: Configuratio
     const localVarFp = ShippingContactsApiFp(configuration)
     return {
         /**
-         * Create a shipping contacts for a customer.
-         * @summary Create a shipping contacts
+         * Creates a new shipping contact for a customer. The shipping contact is associated with the customer identified by `id`.
+         * @summary Create a shipping contact
          * @param {string} id Identifier of the resource
-         * @param {CustomerShippingContacts} customerShippingContacts requested field for customer shippings contacts
+         * @param {CustomerShippingContacts} customerShippingContacts Request body for creating or updating a customer shipping contact.
          * @param {CreateCustomerShippingContactsAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -299,7 +320,7 @@ export const ShippingContactsApiFactory = function (configuration?: Configuratio
          * @summary Update shipping contacts
          * @param {string} id Identifier of the resource
          * @param {string} shippingContactsId identifier
-         * @param {CustomerUpdateShippingContacts} customerUpdateShippingContacts requested field for customer update shippings contacts
+         * @param {CustomerUpdateShippingContacts} customerUpdateShippingContacts Request body for updating a customer shipping contact.
          * @param {UpdateCustomerShippingContactsAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -318,10 +339,10 @@ export const ShippingContactsApiFactory = function (configuration?: Configuratio
  */
 export interface ShippingContactsApiInterface {
     /**
-     * Create a shipping contacts for a customer.
-     * @summary Create a shipping contacts
+     * Creates a new shipping contact for a customer. The shipping contact is associated with the customer identified by `id`.
+     * @summary Create a shipping contact
      * @param {string} id Identifier of the resource
-     * @param {CustomerShippingContacts} customerShippingContacts requested field for customer shippings contacts
+     * @param {CustomerShippingContacts} customerShippingContacts Request body for creating or updating a customer shipping contact.
      * @param {CreateCustomerShippingContactsAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.
@@ -348,7 +369,7 @@ export interface ShippingContactsApiInterface {
      * @summary Update shipping contacts
      * @param {string} id Identifier of the resource
      * @param {string} shippingContactsId identifier
-     * @param {CustomerUpdateShippingContacts} customerUpdateShippingContacts requested field for customer update shippings contacts
+     * @param {CustomerUpdateShippingContacts} customerUpdateShippingContacts Request body for updating a customer shipping contact.
      * @param {UpdateCustomerShippingContactsAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.
@@ -367,10 +388,10 @@ export interface ShippingContactsApiInterface {
  */
 export class ShippingContactsApi extends BaseAPI implements ShippingContactsApiInterface {
     /**
-     * Create a shipping contacts for a customer.
-     * @summary Create a shipping contacts
+     * Creates a new shipping contact for a customer. The shipping contact is associated with the customer identified by `id`.
+     * @summary Create a shipping contact
      * @param {string} id Identifier of the resource
-     * @param {CustomerShippingContacts} customerShippingContacts requested field for customer shippings contacts
+     * @param {CustomerShippingContacts} customerShippingContacts Request body for creating or updating a customer shipping contact.
      * @param {CreateCustomerShippingContactsAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.
@@ -401,7 +422,7 @@ export class ShippingContactsApi extends BaseAPI implements ShippingContactsApiI
      * @summary Update shipping contacts
      * @param {string} id Identifier of the resource
      * @param {string} shippingContactsId identifier
-     * @param {CustomerUpdateShippingContacts} customerUpdateShippingContacts requested field for customer update shippings contacts
+     * @param {CustomerUpdateShippingContacts} customerUpdateShippingContacts Request body for updating a customer shipping contact.
      * @param {UpdateCustomerShippingContactsAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.

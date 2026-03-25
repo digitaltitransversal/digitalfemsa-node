@@ -15,94 +15,75 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { CustomerFiscalEntitiesRequest } from './customer-fiscal-entities-request';
-// May contain unused imports in some cases
-// @ts-ignore
-import { CustomerPaymentMethodsRequest } from './customer-payment-methods-request';
-// May contain unused imports in some cases
-// @ts-ignore
-import { CustomerShippingContacts } from './customer-shipping-contacts';
-// May contain unused imports in some cases
-// @ts-ignore
-import { UpdateCustomerAntifraudInfo } from './update-customer-antifraud-info';
+import {
+  CustomerPaymentMethodsRequest
+} from './customer-payment-methods-request';
 
 /**
- * update customer
+ * Request body to update a customer.
  * @export
  * @interface UpdateCustomer
  */
 export interface UpdateCustomer {
     /**
-     * 
-     * @type {UpdateCustomerAntifraudInfo}
-     * @memberof UpdateCustomer
-     */
-    'antifraud_info'?: UpdateCustomerAntifraudInfo | null;
-    /**
-     * It is a parameter that allows to identify in the response, the Femsa ID of a payment method (payment_id)
-     * @type {string}
-     * @memberof UpdateCustomer
-     */
-    'default_payment_source_id'?: string;
-    /**
-     * An email address is a series of customizable characters followed by a universal Internet symbol, the at symbol (@), the name of a host server, and a web domain ending (.mx, .com, .org, . net, etc).
-     * @type {string}
-     * @memberof UpdateCustomer
-     */
-    'email'?: string;
-    /**
-     * Client\'s name
+     * Customer\'s name.
      * @type {string}
      * @memberof UpdateCustomer
      */
     'name'?: string;
     /**
-     * Is the customer\'s phone number
+     * Customer email address.
+     * @type {string}
+     * @memberof UpdateCustomer
+     */
+    'email'?: string;
+    /**
+     * Customer phone number.
      * @type {string}
      * @memberof UpdateCustomer
      */
     'phone'?: string;
     /**
-     * It is a parameter that allows to identify in the response, the Femsa ID of the shipping address (shipping_contact)
-     * @type {string}
-     * @memberof UpdateCustomer
-     */
-    'default_shipping_contact_id'?: string;
-    /**
-     * It is a value that allows identifying if the email is corporate or not.
+     * True if the customer represents a company.
      * @type {boolean}
      * @memberof UpdateCustomer
      */
     'corporate'?: boolean;
     /**
-     * It is an undefined value.
+     * Merchant-defined reference used to identify the customer in your system.
      * @type {string}
      * @memberof UpdateCustomer
      */
     'custom_reference'?: string;
     /**
-     * 
-     * @type {Array<CustomerFiscalEntitiesRequest>}
-     * @memberof UpdateCustomer
-     */
-    'fiscal_entities'?: Array<CustomerFiscalEntitiesRequest>;
-    /**
-     * 
+     * Arbitrary metadata associated with the customer.
      * @type {{ [key: string]: any; }}
      * @memberof UpdateCustomer
      */
     'metadata'?: { [key: string]: any; };
     /**
-     * Contains details of the payment methods that the customer has active or has used in Femsa
+     * Customer payment sources to create/attach (offline recurrent references).
      * @type {Array<CustomerPaymentMethodsRequest>}
      * @memberof UpdateCustomer
      */
     'payment_sources'?: Array<CustomerPaymentMethodsRequest>;
     /**
-     * Contains the detail of the shipping addresses that the client has active or has used in Femsa
-     * @type {Array<CustomerShippingContacts>}
+     * Sets the default payment source for the customer (must be an existing payment source on the customer).
+     * @type {string}
      * @memberof UpdateCustomer
      */
-    'shipping_contacts'?: Array<CustomerShippingContacts>;
+    'default_payment_source_id'?: string;
+    /**
+     * Sets the default fiscal entity for the customer (must be an existing fiscal entity on the customer).
+     * @type {string}
+     * @memberof UpdateCustomer
+     */
+    'default_fiscal_entity_id'?: string;
+    /**
+     * Sets the default shipping contact for the customer (must be an existing shipping contact on the customer).
+     * @type {string}
+     * @memberof UpdateCustomer
+     */
+    'default_shipping_contact_id'?: string;
 }
 

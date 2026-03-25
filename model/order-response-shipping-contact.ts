@@ -15,13 +15,18 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { CustomerShippingContactsResponse } from './customer-shipping-contacts-response';
+import {
+  CustomerShippingContactsResponse
+} from './customer-shipping-contacts-response';
 // May contain unused imports in some cases
 // @ts-ignore
-import { CustomerShippingContactsResponseAddress } from './customer-shipping-contacts-response-address';
+import {
+  CustomerShippingContactsResponseAddress
+} from './customer-shipping-contacts-response-address';
 
 /**
  * @type OrderResponseShippingContact
+ * Shipping contact associated with the order. It may be `null` when not provided/required.
  * @export
  */
 export type OrderResponseShippingContact = CustomerShippingContactsResponse;

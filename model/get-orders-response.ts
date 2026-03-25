@@ -15,16 +15,16 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { OrderResponse } from './order-response';
+import {OrderResponse} from './order-response';
 // May contain unused imports in some cases
 // @ts-ignore
-import { OrdersResponse } from './orders-response';
+import {OrdersResponse} from './orders-response';
 // May contain unused imports in some cases
 // @ts-ignore
-import { Page } from './page';
+import {Page} from './page';
 // May contain unused imports in some cases
 // @ts-ignore
-import { Pagination } from './pagination';
+import {Pagination} from './pagination';
 
 /**
  * @type GetOrdersResponse

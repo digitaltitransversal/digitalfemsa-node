@@ -69,7 +69,7 @@ export interface CheckoutResponse {
      */
     'metadata'?: { [key: string]: any; };
     /**
-     * Reason for charge
+     * Payment link name
      * @type {string}
      * @memberof CheckoutResponse
      */

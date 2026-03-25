@@ -15,7 +15,7 @@
 
 
 /**
- * 
+ * Shipping line request payload.
  * @export
  * @interface ShippingRequest
  */
@@ -44,6 +44,12 @@ export interface ShippingRequest {
      * @memberof ShippingRequest
      */
     'method'?: string;
+    /**
+     * Shipping line description
+     * @type {string}
+     * @memberof ShippingRequest
+     */
+    'description'?: string;
     /**
      * Hash where the user can send additional information for each \'shipping\'.
      * @type {{ [key: string]: any; }}

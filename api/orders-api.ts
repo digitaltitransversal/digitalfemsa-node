@@ -13,28 +13,49 @@
  */
 
 
-import type { Configuration } from '../configuration';
-import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
+import type {Configuration} from '../configuration';
+import type {AxiosInstance, AxiosPromise, RawAxiosRequestConfig} from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import {
+  assertParamExists,
+  createRequestFunction,
+  DUMMY_BASE_URL,
+  serializeDataIfNeeded,
+  setApiKeyToObject,
+  setBasicAuthToObject,
+  setBearerAuthToObject,
+  setOAuthToObject,
+  setSearchParams,
+  toPathString
+} from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
+import {
+  BASE_PATH,
+  BaseAPI,
+  COLLECTION_FORMATS,
+  operationServerMap,
+  RequestArgs,
+  RequiredError
+} from '../base';
 // @ts-ignore
-import { GetOrdersResponse } from '../model';
 // @ts-ignore
-import { ModelError } from '../model';
 // @ts-ignore
-import { OrderCaptureRequest } from '../model';
 // @ts-ignore
-import { OrderRefundRequest } from '../model';
 // @ts-ignore
-import { OrderRequest } from '../model';
 // @ts-ignore
-import { OrderResponse } from '../model';
 // @ts-ignore
-import { OrderUpdateRequest } from '../model';
+import {
+  GetOrdersResponse,
+  ModelError,
+  OrderCaptureRequest,
+  OrderRefundRequest,
+  OrderRequest,
+  OrderResponse,
+  OrderUpdateRequest
+} from '../model';
+
 /**
  * OrdersApi - axios parameter creator
  * @export
@@ -42,7 +63,7 @@ import { OrderUpdateRequest } from '../model';
 export const OrdersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Cancel an order that has been previously created.
+         * Cancels an existing order. This operation marks the order as cancelled and prevents further processing depending on its current state. If the order cannot be cancelled (for example, due to its status or related charge constraints), the API returns an error response.
          * @summary Cancel Order
          * @param {string} id Identifier of the resource
          * @param {CancelOrderAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -90,7 +111,7 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
-         * Create a new order.
+         * Creates a new order (products + amounts + customer data).  Minimum required fields: - `currency` - `line_items` - `customer_info`  About `customer_info`: - You can reference an existing customer using `customer_info.customer_id`, or - You can provide customer details at minimum `customer_info.name` and `customer_info.email` to create the order with customer context.  How to create the order: - Create an order only (no payment): send only the order data. - Create an order and create the first payment charge: include `charges`. - Create an order with a checkout configuration (for a hosted payment flow): include `checkout`.  Important rules: - You cannot send `charges` and `checkout` in the same request (they are mutually exclusive). - If you send `shipping_contact_id` and/or `fiscal_entity_id`, you must also send `customer_info.customer_id` so the API can validate those IDs against that customer. 
          * @summary Create order
          * @param {OrderRequest} orderRequest requested field for order
          * @param {CreateOrderAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -140,7 +161,7 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
-         * Info for a specific order
+         * Returns the full details of an Order by its ID. The response follows the standard Order representation, including nested previews (for example `charges`, `line_items`, `shipping_lines`, `tax_lines`, and `discount_lines`) when available.
          * @summary Get Order
          * @param {string} id Identifier of the resource
          * @param {GetOrderByIdAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -188,7 +209,7 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
-         * Get order details in the form of a list
+         * Returns a paginated list of orders created in your account. Use pagination parameters to navigate through results, and `search` to filter by supported criteria. 
          * @summary Get a list of Orders
          * @param {GetOrdersAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -252,7 +273,7 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
-         * A refunded order describes the items, amount, and reason an order is being refunded.
+         * Cancels a refund previously created for an order. This operation is only available when the refund is still cancellable according to its current status and the payment method rules. If the refund cannot be cancelled, the API returns an error response.
          * @summary Cancel Refund
          * @param {string} id Identifier of the resource
          * @param {string} refundId refund identifier
@@ -304,7 +325,7 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
-         * A refunded order describes the items, amount, and reason an order is being refunded.
+         * Creates a refund for an order. This operation is used to refund a previously paid order (fully or partially, depending on the request body). The API will validate the order and its related charges before processing the refund. If the refund cannot be created due to business rules or state, an error response is returned.
          * @summary Refund Order
          * @param {string} id Identifier of the resource
          * @param {OrderRefundRequest} orderRefundRequest requested field for a refund
@@ -358,12 +379,12 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
-         * Processes an order that has been previously authorized.
+         * Captures (finalizes) an order that has been previously authorized. Use this endpoint to capture a specific amount. The captured amount must be greater than 0 and must comply with the order and charge constraints enforced by the API.
          * @summary Capture Order
          * @param {string} id Identifier of the resource
          * @param {OrdersCreateCaptureAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
-         * @param {OrderCaptureRequest} [orderCaptureRequest] requested fields for capture order
+         * @param {OrderCaptureRequest} [orderCaptureRequest] Requested fields for capturing an order
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -410,8 +431,8 @@ export const OrdersApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
-         * Update an existing Order.
-         * @summary Update Order
+         * Updates an existing order by its ID.  Orders are the central resource in the API. Updating an order may also update related order sub-resources when they are included in the request payload, according to server-side validations.  Only fields supported by the API can be modified. 
+         * @summary Update order
          * @param {string} id Identifier of the resource
          * @param {OrderUpdateRequest} orderUpdateRequest requested field for an order
          * @param {UpdateOrderAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -469,7 +490,7 @@ export const OrdersApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = OrdersApiAxiosParamCreator(configuration)
     return {
         /**
-         * Cancel an order that has been previously created.
+         * Cancels an existing order. This operation marks the order as cancelled and prevents further processing depending on its current state. If the order cannot be cancelled (for example, due to its status or related charge constraints), the API returns an error response.
          * @summary Cancel Order
          * @param {string} id Identifier of the resource
          * @param {CancelOrderAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -484,7 +505,7 @@ export const OrdersApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * Create a new order.
+         * Creates a new order (products + amounts + customer data).  Minimum required fields: - `currency` - `line_items` - `customer_info`  About `customer_info`: - You can reference an existing customer using `customer_info.customer_id`, or - You can provide customer details at minimum `customer_info.name` and `customer_info.email` to create the order with customer context.  How to create the order: - Create an order only (no payment): send only the order data. - Create an order and create the first payment charge: include `charges`. - Create an order with a checkout configuration (for a hosted payment flow): include `checkout`.  Important rules: - You cannot send `charges` and `checkout` in the same request (they are mutually exclusive). - If you send `shipping_contact_id` and/or `fiscal_entity_id`, you must also send `customer_info.customer_id` so the API can validate those IDs against that customer. 
          * @summary Create order
          * @param {OrderRequest} orderRequest requested field for order
          * @param {CreateOrderAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -499,7 +520,7 @@ export const OrdersApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * Info for a specific order
+         * Returns the full details of an Order by its ID. The response follows the standard Order representation, including nested previews (for example `charges`, `line_items`, `shipping_lines`, `tax_lines`, and `discount_lines`) when available.
          * @summary Get Order
          * @param {string} id Identifier of the resource
          * @param {GetOrderByIdAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -514,7 +535,7 @@ export const OrdersApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * Get order details in the form of a list
+         * Returns a paginated list of orders created in your account. Use pagination parameters to navigate through results, and `search` to filter by supported criteria. 
          * @summary Get a list of Orders
          * @param {GetOrdersAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -532,7 +553,7 @@ export const OrdersApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * A refunded order describes the items, amount, and reason an order is being refunded.
+         * Cancels a refund previously created for an order. This operation is only available when the refund is still cancellable according to its current status and the payment method rules. If the refund cannot be cancelled, the API returns an error response.
          * @summary Cancel Refund
          * @param {string} id Identifier of the resource
          * @param {string} refundId refund identifier
@@ -548,7 +569,7 @@ export const OrdersApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * A refunded order describes the items, amount, and reason an order is being refunded.
+         * Creates a refund for an order. This operation is used to refund a previously paid order (fully or partially, depending on the request body). The API will validate the order and its related charges before processing the refund. If the refund cannot be created due to business rules or state, an error response is returned.
          * @summary Refund Order
          * @param {string} id Identifier of the resource
          * @param {OrderRefundRequest} orderRefundRequest requested field for a refund
@@ -564,12 +585,12 @@ export const OrdersApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * Processes an order that has been previously authorized.
+         * Captures (finalizes) an order that has been previously authorized. Use this endpoint to capture a specific amount. The captured amount must be greater than 0 and must comply with the order and charge constraints enforced by the API.
          * @summary Capture Order
          * @param {string} id Identifier of the resource
          * @param {OrdersCreateCaptureAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
-         * @param {OrderCaptureRequest} [orderCaptureRequest] requested fields for capture order
+         * @param {OrderCaptureRequest} [orderCaptureRequest] Requested fields for capturing an order
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -580,8 +601,8 @@ export const OrdersApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * Update an existing Order.
-         * @summary Update Order
+         * Updates an existing order by its ID.  Orders are the central resource in the API. Updating an order may also update related order sub-resources when they are included in the request payload, according to server-side validations.  Only fields supported by the API can be modified. 
+         * @summary Update order
          * @param {string} id Identifier of the resource
          * @param {OrderUpdateRequest} orderUpdateRequest requested field for an order
          * @param {UpdateOrderAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -605,7 +626,7 @@ export const OrdersApiFactory = function (configuration?: Configuration, basePat
     const localVarFp = OrdersApiFp(configuration)
     return {
         /**
-         * Cancel an order that has been previously created.
+         * Cancels an existing order. This operation marks the order as cancelled and prevents further processing depending on its current state. If the order cannot be cancelled (for example, due to its status or related charge constraints), the API returns an error response.
          * @summary Cancel Order
          * @param {string} id Identifier of the resource
          * @param {CancelOrderAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -617,7 +638,7 @@ export const OrdersApiFactory = function (configuration?: Configuration, basePat
             return localVarFp.cancelOrder(id, acceptLanguage, xChildCompanyId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Create a new order.
+         * Creates a new order (products + amounts + customer data).  Minimum required fields: - `currency` - `line_items` - `customer_info`  About `customer_info`: - You can reference an existing customer using `customer_info.customer_id`, or - You can provide customer details at minimum `customer_info.name` and `customer_info.email` to create the order with customer context.  How to create the order: - Create an order only (no payment): send only the order data. - Create an order and create the first payment charge: include `charges`. - Create an order with a checkout configuration (for a hosted payment flow): include `checkout`.  Important rules: - You cannot send `charges` and `checkout` in the same request (they are mutually exclusive). - If you send `shipping_contact_id` and/or `fiscal_entity_id`, you must also send `customer_info.customer_id` so the API can validate those IDs against that customer. 
          * @summary Create order
          * @param {OrderRequest} orderRequest requested field for order
          * @param {CreateOrderAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -629,7 +650,7 @@ export const OrdersApiFactory = function (configuration?: Configuration, basePat
             return localVarFp.createOrder(orderRequest, acceptLanguage, xChildCompanyId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Info for a specific order
+         * Returns the full details of an Order by its ID. The response follows the standard Order representation, including nested previews (for example `charges`, `line_items`, `shipping_lines`, `tax_lines`, and `discount_lines`) when available.
          * @summary Get Order
          * @param {string} id Identifier of the resource
          * @param {GetOrderByIdAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -641,7 +662,7 @@ export const OrdersApiFactory = function (configuration?: Configuration, basePat
             return localVarFp.getOrderById(id, acceptLanguage, xChildCompanyId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Get order details in the form of a list
+         * Returns a paginated list of orders created in your account. Use pagination parameters to navigate through results, and `search` to filter by supported criteria. 
          * @summary Get a list of Orders
          * @param {GetOrdersAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -656,7 +677,7 @@ export const OrdersApiFactory = function (configuration?: Configuration, basePat
             return localVarFp.getOrders(acceptLanguage, xChildCompanyId, limit, search, next, previous, options).then((request) => request(axios, basePath));
         },
         /**
-         * A refunded order describes the items, amount, and reason an order is being refunded.
+         * Cancels a refund previously created for an order. This operation is only available when the refund is still cancellable according to its current status and the payment method rules. If the refund cannot be cancelled, the API returns an error response.
          * @summary Cancel Refund
          * @param {string} id Identifier of the resource
          * @param {string} refundId refund identifier
@@ -669,7 +690,7 @@ export const OrdersApiFactory = function (configuration?: Configuration, basePat
             return localVarFp.orderCancelRefund(id, refundId, acceptLanguage, xChildCompanyId, options).then((request) => request(axios, basePath));
         },
         /**
-         * A refunded order describes the items, amount, and reason an order is being refunded.
+         * Creates a refund for an order. This operation is used to refund a previously paid order (fully or partially, depending on the request body). The API will validate the order and its related charges before processing the refund. If the refund cannot be created due to business rules or state, an error response is returned.
          * @summary Refund Order
          * @param {string} id Identifier of the resource
          * @param {OrderRefundRequest} orderRefundRequest requested field for a refund
@@ -682,12 +703,12 @@ export const OrdersApiFactory = function (configuration?: Configuration, basePat
             return localVarFp.orderRefund(id, orderRefundRequest, acceptLanguage, xChildCompanyId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Processes an order that has been previously authorized.
+         * Captures (finalizes) an order that has been previously authorized. Use this endpoint to capture a specific amount. The captured amount must be greater than 0 and must comply with the order and charge constraints enforced by the API.
          * @summary Capture Order
          * @param {string} id Identifier of the resource
          * @param {OrdersCreateCaptureAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
-         * @param {OrderCaptureRequest} [orderCaptureRequest] requested fields for capture order
+         * @param {OrderCaptureRequest} [orderCaptureRequest] Requested fields for capturing an order
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -695,8 +716,8 @@ export const OrdersApiFactory = function (configuration?: Configuration, basePat
             return localVarFp.ordersCreateCapture(id, acceptLanguage, xChildCompanyId, orderCaptureRequest, options).then((request) => request(axios, basePath));
         },
         /**
-         * Update an existing Order.
-         * @summary Update Order
+         * Updates an existing order by its ID.  Orders are the central resource in the API. Updating an order may also update related order sub-resources when they are included in the request payload, according to server-side validations.  Only fields supported by the API can be modified. 
+         * @summary Update order
          * @param {string} id Identifier of the resource
          * @param {OrderUpdateRequest} orderUpdateRequest requested field for an order
          * @param {UpdateOrderAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -716,7 +737,7 @@ export const OrdersApiFactory = function (configuration?: Configuration, basePat
  */
 export interface OrdersApiInterface {
     /**
-     * Cancel an order that has been previously created.
+     * Cancels an existing order. This operation marks the order as cancelled and prevents further processing depending on its current state. If the order cannot be cancelled (for example, due to its status or related charge constraints), the API returns an error response.
      * @summary Cancel Order
      * @param {string} id Identifier of the resource
      * @param {CancelOrderAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -728,7 +749,7 @@ export interface OrdersApiInterface {
     cancelOrder(id: string, acceptLanguage?: CancelOrderAcceptLanguageEnum, xChildCompanyId?: string, options?: RawAxiosRequestConfig): AxiosPromise<OrderResponse>;
 
     /**
-     * Create a new order.
+     * Creates a new order (products + amounts + customer data).  Minimum required fields: - `currency` - `line_items` - `customer_info`  About `customer_info`: - You can reference an existing customer using `customer_info.customer_id`, or - You can provide customer details at minimum `customer_info.name` and `customer_info.email` to create the order with customer context.  How to create the order: - Create an order only (no payment): send only the order data. - Create an order and create the first payment charge: include `charges`. - Create an order with a checkout configuration (for a hosted payment flow): include `checkout`.  Important rules: - You cannot send `charges` and `checkout` in the same request (they are mutually exclusive). - If you send `shipping_contact_id` and/or `fiscal_entity_id`, you must also send `customer_info.customer_id` so the API can validate those IDs against that customer. 
      * @summary Create order
      * @param {OrderRequest} orderRequest requested field for order
      * @param {CreateOrderAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -740,7 +761,7 @@ export interface OrdersApiInterface {
     createOrder(orderRequest: OrderRequest, acceptLanguage?: CreateOrderAcceptLanguageEnum, xChildCompanyId?: string, options?: RawAxiosRequestConfig): AxiosPromise<OrderResponse>;
 
     /**
-     * Info for a specific order
+     * Returns the full details of an Order by its ID. The response follows the standard Order representation, including nested previews (for example `charges`, `line_items`, `shipping_lines`, `tax_lines`, and `discount_lines`) when available.
      * @summary Get Order
      * @param {string} id Identifier of the resource
      * @param {GetOrderByIdAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -752,7 +773,7 @@ export interface OrdersApiInterface {
     getOrderById(id: string, acceptLanguage?: GetOrderByIdAcceptLanguageEnum, xChildCompanyId?: string, options?: RawAxiosRequestConfig): AxiosPromise<OrderResponse>;
 
     /**
-     * Get order details in the form of a list
+     * Returns a paginated list of orders created in your account. Use pagination parameters to navigate through results, and `search` to filter by supported criteria. 
      * @summary Get a list of Orders
      * @param {GetOrdersAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -767,7 +788,7 @@ export interface OrdersApiInterface {
     getOrders(acceptLanguage?: GetOrdersAcceptLanguageEnum, xChildCompanyId?: string, limit?: number, search?: string, next?: string, previous?: string, options?: RawAxiosRequestConfig): AxiosPromise<GetOrdersResponse>;
 
     /**
-     * A refunded order describes the items, amount, and reason an order is being refunded.
+     * Cancels a refund previously created for an order. This operation is only available when the refund is still cancellable according to its current status and the payment method rules. If the refund cannot be cancelled, the API returns an error response.
      * @summary Cancel Refund
      * @param {string} id Identifier of the resource
      * @param {string} refundId refund identifier
@@ -780,7 +801,7 @@ export interface OrdersApiInterface {
     orderCancelRefund(id: string, refundId: string, acceptLanguage?: OrderCancelRefundAcceptLanguageEnum, xChildCompanyId?: string, options?: RawAxiosRequestConfig): AxiosPromise<OrderResponse>;
 
     /**
-     * A refunded order describes the items, amount, and reason an order is being refunded.
+     * Creates a refund for an order. This operation is used to refund a previously paid order (fully or partially, depending on the request body). The API will validate the order and its related charges before processing the refund. If the refund cannot be created due to business rules or state, an error response is returned.
      * @summary Refund Order
      * @param {string} id Identifier of the resource
      * @param {OrderRefundRequest} orderRefundRequest requested field for a refund
@@ -793,12 +814,12 @@ export interface OrdersApiInterface {
     orderRefund(id: string, orderRefundRequest: OrderRefundRequest, acceptLanguage?: OrderRefundAcceptLanguageEnum, xChildCompanyId?: string, options?: RawAxiosRequestConfig): AxiosPromise<OrderResponse>;
 
     /**
-     * Processes an order that has been previously authorized.
+     * Captures (finalizes) an order that has been previously authorized. Use this endpoint to capture a specific amount. The captured amount must be greater than 0 and must comply with the order and charge constraints enforced by the API.
      * @summary Capture Order
      * @param {string} id Identifier of the resource
      * @param {OrdersCreateCaptureAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
-     * @param {OrderCaptureRequest} [orderCaptureRequest] requested fields for capture order
+     * @param {OrderCaptureRequest} [orderCaptureRequest] Requested fields for capturing an order
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OrdersApiInterface
@@ -806,8 +827,8 @@ export interface OrdersApiInterface {
     ordersCreateCapture(id: string, acceptLanguage?: OrdersCreateCaptureAcceptLanguageEnum, xChildCompanyId?: string, orderCaptureRequest?: OrderCaptureRequest, options?: RawAxiosRequestConfig): AxiosPromise<OrderResponse>;
 
     /**
-     * Update an existing Order.
-     * @summary Update Order
+     * Updates an existing order by its ID.  Orders are the central resource in the API. Updating an order may also update related order sub-resources when they are included in the request payload, according to server-side validations.  Only fields supported by the API can be modified. 
+     * @summary Update order
      * @param {string} id Identifier of the resource
      * @param {OrderUpdateRequest} orderUpdateRequest requested field for an order
      * @param {UpdateOrderAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -827,7 +848,7 @@ export interface OrdersApiInterface {
  */
 export class OrdersApi extends BaseAPI implements OrdersApiInterface {
     /**
-     * Cancel an order that has been previously created.
+     * Cancels an existing order. This operation marks the order as cancelled and prevents further processing depending on its current state. If the order cannot be cancelled (for example, due to its status or related charge constraints), the API returns an error response.
      * @summary Cancel Order
      * @param {string} id Identifier of the resource
      * @param {CancelOrderAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -841,7 +862,7 @@ export class OrdersApi extends BaseAPI implements OrdersApiInterface {
     }
 
     /**
-     * Create a new order.
+     * Creates a new order (products + amounts + customer data).  Minimum required fields: - `currency` - `line_items` - `customer_info`  About `customer_info`: - You can reference an existing customer using `customer_info.customer_id`, or - You can provide customer details at minimum `customer_info.name` and `customer_info.email` to create the order with customer context.  How to create the order: - Create an order only (no payment): send only the order data. - Create an order and create the first payment charge: include `charges`. - Create an order with a checkout configuration (for a hosted payment flow): include `checkout`.  Important rules: - You cannot send `charges` and `checkout` in the same request (they are mutually exclusive). - If you send `shipping_contact_id` and/or `fiscal_entity_id`, you must also send `customer_info.customer_id` so the API can validate those IDs against that customer. 
      * @summary Create order
      * @param {OrderRequest} orderRequest requested field for order
      * @param {CreateOrderAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -855,7 +876,7 @@ export class OrdersApi extends BaseAPI implements OrdersApiInterface {
     }
 
     /**
-     * Info for a specific order
+     * Returns the full details of an Order by its ID. The response follows the standard Order representation, including nested previews (for example `charges`, `line_items`, `shipping_lines`, `tax_lines`, and `discount_lines`) when available.
      * @summary Get Order
      * @param {string} id Identifier of the resource
      * @param {GetOrderByIdAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
@@ -869,7 +890,7 @@ export class OrdersApi extends BaseAPI implements OrdersApiInterface {
     }
 
     /**
-     * Get order details in the form of a list
+     * Returns a paginated list of orders created in your account. Use pagination parameters to navigate through results, and `search` to filter by supported criteria. 
      * @summary Get a list of Orders
      * @param {GetOrdersAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -886,7 +907,7 @@ export class OrdersApi extends BaseAPI implements OrdersApiInterface {
     }
 
     /**
-     * A refunded order describes the items, amount, and reason an order is being refunded.
+     * Cancels a refund previously created for an order. This operation is only available when the refund is still cancellable according to its current status and the payment method rules. If the refund cannot be cancelled, the API returns an error response.
      * @summary Cancel Refund
      * @param {string} id Identifier of the resource
      * @param {string} refundId refund identifier
@@ -901,7 +922,7 @@ export class OrdersApi extends BaseAPI implements OrdersApiInterface {
     }
 
     /**
-     * A refunded order describes the items, amount, and reason an order is being refunded.
+     * Creates a refund for an order. This operation is used to refund a previously paid order (fully or partially, depending on the request body). The API will validate the order and its related charges before processing the refund. If the refund cannot be created due to business rules or state, an error response is returned.
      * @summary Refund Order
      * @param {string} id Identifier of the resource
      * @param {OrderRefundRequest} orderRefundRequest requested field for a refund
@@ -916,12 +937,12 @@ export class OrdersApi extends BaseAPI implements OrdersApiInterface {
     }
 
     /**
-     * Processes an order that has been previously authorized.
+     * Captures (finalizes) an order that has been previously authorized. Use this endpoint to capture a specific amount. The captured amount must be greater than 0 and must comply with the order and charge constraints enforced by the API.
      * @summary Capture Order
      * @param {string} id Identifier of the resource
      * @param {OrdersCreateCaptureAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
-     * @param {OrderCaptureRequest} [orderCaptureRequest] requested fields for capture order
+     * @param {OrderCaptureRequest} [orderCaptureRequest] Requested fields for capturing an order
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof OrdersApi
@@ -931,8 +952,8 @@ export class OrdersApi extends BaseAPI implements OrdersApiInterface {
     }
 
     /**
-     * Update an existing Order.
-     * @summary Update Order
+     * Updates an existing order by its ID.  Orders are the central resource in the API. Updating an order may also update related order sub-resources when they are included in the request payload, according to server-side validations.  Only fields supported by the API can be modified. 
+     * @summary Update order
      * @param {string} id Identifier of the resource
      * @param {OrderUpdateRequest} orderUpdateRequest requested field for an order
      * @param {UpdateOrderAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use

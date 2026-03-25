@@ -21,16 +21,23 @@
  */
 export interface ApiKeyRequest {
     /**
-     * A name or brief explanation of what this api key is used for
+     * A name or brief explanation of what this API key is used for.
      * @type {string}
      * @memberof ApiKeyRequest
      */
     'description'?: string;
     /**
-     * 
+     * Defines the type of API key to create. Only \"private\" is supported for creation. A \"public\" API key already exists by default per company/environment. 
      * @type {string}
      * @memberof ApiKeyRequest
      */
-    'role': string;
+    'role': ApiKeyRequestRoleEnum;
 }
+
+export const ApiKeyRequestRoleEnum = {
+    private: 'private'
+} as const;
+
+export type ApiKeyRequestRoleEnum = typeof ApiKeyRequestRoleEnum[keyof typeof ApiKeyRequestRoleEnum];
+
 

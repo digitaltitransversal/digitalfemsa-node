@@ -15,7 +15,7 @@
 
 
 /**
- * 
+ * Checkout resource linked to the order. Present only when the order is linked to a checkout (`channel.checkout_request_id`).
  * @export
  * @interface OrderResponseCheckout
  */

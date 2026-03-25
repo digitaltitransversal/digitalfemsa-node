@@ -15,7 +15,7 @@
 
 
 /**
- * webhook keys model
+ * Represents a webhook signing key configuration for the company.
  * @export
  * @interface WebhookKeyResponse
  */

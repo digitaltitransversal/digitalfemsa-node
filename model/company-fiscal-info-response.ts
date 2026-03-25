@@ -15,7 +15,9 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { CompanyFiscalInfoAddressResponse } from './company-fiscal-info-address-response';
+import {
+  CompanyFiscalInfoAddressResponse
+} from './company-fiscal-info-address-response';
 
 /**
  * Company fiscal info model

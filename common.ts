@@ -13,14 +13,15 @@
  */
 
 
-import type { Configuration } from "./configuration";
-import type { RequestArgs } from "./base";
-import type { AxiosInstance, AxiosResponse } from 'axios';
-import { RequiredError } from "./base";
-import {arch, platform, release}  from 'os';
+import type {Configuration} from "./configuration";
+import type {RequestArgs} from "./base";
+import {RequiredError} from "./base";
+import type {AxiosInstance, AxiosResponse} from 'axios';
+import {arch, platform, release} from 'os';
 import * as fs from 'fs';
 import * as https from 'https';
 import * as path from 'path';
+
 /**
  *
  * @export
@@ -32,10 +33,9 @@ export const DUMMY_BASE_URL = 'https://example.com'
  * @export
  */
 export const digitalfemsaHeaders = {
-    sdk_version: ['DigitalFemsa::', "1.0.2"].join(''),
+    sdk_version: '1.1.0',
     lang: 'node',
     lang_version: process.version,
-    publisher: 'digitalfemsa',
     uname: [arch, platform, release].join(' ')
   }
 
@@ -177,7 +177,7 @@ export const createRequestFunction = function (axiosArgs: RequestArgs, globalAxi
  * @export
  */
 export const setCommonHeaders = async function (object: any) {
-    object["User-Agent"] = "App/v2 NodeBindings/" + "1.0.2";
+    object["User-Agent"] = "App/v2 NodeBindings/" + "1.1.0";
     object["X-App-Client-User-Agent"] = JSON.stringify(digitalfemsaHeaders);
     object["Spin-Client-User-Agent"] = JSON.stringify(digitalfemsaHeaders);
     object["Accept"] = "application/vnd.app-v2.1.0+json";

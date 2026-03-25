@@ -13,26 +13,47 @@
  */
 
 
-import type { Configuration } from '../configuration';
-import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
+import type {Configuration} from '../configuration';
+import type {AxiosInstance, AxiosPromise, RawAxiosRequestConfig} from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import {
+  assertParamExists,
+  createRequestFunction,
+  DUMMY_BASE_URL,
+  serializeDataIfNeeded,
+  setApiKeyToObject,
+  setBasicAuthToObject,
+  setBearerAuthToObject,
+  setOAuthToObject,
+  setSearchParams,
+  toPathString
+} from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
+import {
+  BASE_PATH,
+  BaseAPI,
+  COLLECTION_FORMATS,
+  operationServerMap,
+  RequestArgs,
+  RequiredError
+} from '../base';
 // @ts-ignore
-import { CreateCustomerPaymentMethodsRequest } from '../model';
 // @ts-ignore
-import { CreateCustomerPaymentMethodsResponse } from '../model';
 // @ts-ignore
-import { GetPaymentMethodResponse } from '../model';
 // @ts-ignore
-import { ModelError } from '../model';
 // @ts-ignore
-import { UpdateCustomerPaymentMethodsResponse } from '../model';
 // @ts-ignore
-import { UpdatePaymentMethods } from '../model';
+import {
+  CreateCustomerPaymentMethodsRequest,
+  CreateCustomerPaymentMethodsResponse,
+  GetPaymentMethodResponse,
+  ModelError,
+  UpdateCustomerPaymentMethodsResponse,
+  UpdatePaymentMethods
+} from '../model';
+
 /**
  * PaymentMethodsApi - axios parameter creator
  * @export
@@ -40,7 +61,7 @@ import { UpdatePaymentMethods } from '../model';
 export const PaymentMethodsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Create a payment method for a customer.
+         * Creates a new payment method for a customer. The payment method is associated with the customer identified by `id`. The accepted fields depend on the payment method `type`.
          * @summary Create Payment Method
          * @param {string} id Identifier of the resource
          * @param {CreateCustomerPaymentMethodsRequest} createCustomerPaymentMethodsRequest requested field for customer payment methods
@@ -94,7 +115,7 @@ export const PaymentMethodsApiAxiosParamCreator = function (configuration?: Conf
             };
         },
         /**
-         * Delete an existing payment method
+         * Deletes a specific payment method of a customer. After deletion, the payment method can no longer be used for future payments.
          * @summary Delete Payment Method
          * @param {string} id Identifier of the resource
          * @param {string} paymentMethodId Identifier of the payment method
@@ -214,11 +235,11 @@ export const PaymentMethodsApiAxiosParamCreator = function (configuration?: Conf
             };
         },
         /**
-         * Gets a payment Method that corresponds to a customer ID.
+         * Updates a specific payment method of a customer. Use this endpoint to modify the payment method identified by `payment_method_id` for the customer identified by `id`. The fields that can be updated depend on the payment method `type`.
          * @summary Update Payment Method
          * @param {string} id Identifier of the resource
          * @param {string} paymentMethodId Identifier of the payment method
-         * @param {UpdatePaymentMethods} updatePaymentMethods requested field for customer payment methods
+         * @param {UpdatePaymentMethods} updatePaymentMethods Request body for updating a customer payment method.
          * @param {UpdateCustomerPaymentMethodsAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -282,7 +303,7 @@ export const PaymentMethodsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = PaymentMethodsApiAxiosParamCreator(configuration)
     return {
         /**
-         * Create a payment method for a customer.
+         * Creates a new payment method for a customer. The payment method is associated with the customer identified by `id`. The accepted fields depend on the payment method `type`.
          * @summary Create Payment Method
          * @param {string} id Identifier of the resource
          * @param {CreateCustomerPaymentMethodsRequest} createCustomerPaymentMethodsRequest requested field for customer payment methods
@@ -298,7 +319,7 @@ export const PaymentMethodsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * Delete an existing payment method
+         * Deletes a specific payment method of a customer. After deletion, the payment method can no longer be used for future payments.
          * @summary Delete Payment Method
          * @param {string} id Identifier of the resource
          * @param {string} paymentMethodId Identifier of the payment method
@@ -333,11 +354,11 @@ export const PaymentMethodsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * Gets a payment Method that corresponds to a customer ID.
+         * Updates a specific payment method of a customer. Use this endpoint to modify the payment method identified by `payment_method_id` for the customer identified by `id`. The fields that can be updated depend on the payment method `type`.
          * @summary Update Payment Method
          * @param {string} id Identifier of the resource
          * @param {string} paymentMethodId Identifier of the payment method
-         * @param {UpdatePaymentMethods} updatePaymentMethods requested field for customer payment methods
+         * @param {UpdatePaymentMethods} updatePaymentMethods Request body for updating a customer payment method.
          * @param {UpdateCustomerPaymentMethodsAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -360,7 +381,7 @@ export const PaymentMethodsApiFactory = function (configuration?: Configuration,
     const localVarFp = PaymentMethodsApiFp(configuration)
     return {
         /**
-         * Create a payment method for a customer.
+         * Creates a new payment method for a customer. The payment method is associated with the customer identified by `id`. The accepted fields depend on the payment method `type`.
          * @summary Create Payment Method
          * @param {string} id Identifier of the resource
          * @param {CreateCustomerPaymentMethodsRequest} createCustomerPaymentMethodsRequest requested field for customer payment methods
@@ -373,7 +394,7 @@ export const PaymentMethodsApiFactory = function (configuration?: Configuration,
             return localVarFp.createCustomerPaymentMethods(id, createCustomerPaymentMethodsRequest, acceptLanguage, xChildCompanyId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Delete an existing payment method
+         * Deletes a specific payment method of a customer. After deletion, the payment method can no longer be used for future payments.
          * @summary Delete Payment Method
          * @param {string} id Identifier of the resource
          * @param {string} paymentMethodId Identifier of the payment method
@@ -402,11 +423,11 @@ export const PaymentMethodsApiFactory = function (configuration?: Configuration,
             return localVarFp.getCustomerPaymentMethods(id, acceptLanguage, xChildCompanyId, limit, next, previous, search, options).then((request) => request(axios, basePath));
         },
         /**
-         * Gets a payment Method that corresponds to a customer ID.
+         * Updates a specific payment method of a customer. Use this endpoint to modify the payment method identified by `payment_method_id` for the customer identified by `id`. The fields that can be updated depend on the payment method `type`.
          * @summary Update Payment Method
          * @param {string} id Identifier of the resource
          * @param {string} paymentMethodId Identifier of the payment method
-         * @param {UpdatePaymentMethods} updatePaymentMethods requested field for customer payment methods
+         * @param {UpdatePaymentMethods} updatePaymentMethods Request body for updating a customer payment method.
          * @param {UpdateCustomerPaymentMethodsAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -425,7 +446,7 @@ export const PaymentMethodsApiFactory = function (configuration?: Configuration,
  */
 export interface PaymentMethodsApiInterface {
     /**
-     * Create a payment method for a customer.
+     * Creates a new payment method for a customer. The payment method is associated with the customer identified by `id`. The accepted fields depend on the payment method `type`.
      * @summary Create Payment Method
      * @param {string} id Identifier of the resource
      * @param {CreateCustomerPaymentMethodsRequest} createCustomerPaymentMethodsRequest requested field for customer payment methods
@@ -438,7 +459,7 @@ export interface PaymentMethodsApiInterface {
     createCustomerPaymentMethods(id: string, createCustomerPaymentMethodsRequest: CreateCustomerPaymentMethodsRequest, acceptLanguage?: CreateCustomerPaymentMethodsAcceptLanguageEnum, xChildCompanyId?: string, options?: RawAxiosRequestConfig): AxiosPromise<CreateCustomerPaymentMethodsResponse>;
 
     /**
-     * Delete an existing payment method
+     * Deletes a specific payment method of a customer. After deletion, the payment method can no longer be used for future payments.
      * @summary Delete Payment Method
      * @param {string} id Identifier of the resource
      * @param {string} paymentMethodId Identifier of the payment method
@@ -467,11 +488,11 @@ export interface PaymentMethodsApiInterface {
     getCustomerPaymentMethods(id: string, acceptLanguage?: GetCustomerPaymentMethodsAcceptLanguageEnum, xChildCompanyId?: string, limit?: number, next?: string, previous?: string, search?: string, options?: RawAxiosRequestConfig): AxiosPromise<GetPaymentMethodResponse>;
 
     /**
-     * Gets a payment Method that corresponds to a customer ID.
+     * Updates a specific payment method of a customer. Use this endpoint to modify the payment method identified by `payment_method_id` for the customer identified by `id`. The fields that can be updated depend on the payment method `type`.
      * @summary Update Payment Method
      * @param {string} id Identifier of the resource
      * @param {string} paymentMethodId Identifier of the payment method
-     * @param {UpdatePaymentMethods} updatePaymentMethods requested field for customer payment methods
+     * @param {UpdatePaymentMethods} updatePaymentMethods Request body for updating a customer payment method.
      * @param {UpdateCustomerPaymentMethodsAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.
@@ -490,7 +511,7 @@ export interface PaymentMethodsApiInterface {
  */
 export class PaymentMethodsApi extends BaseAPI implements PaymentMethodsApiInterface {
     /**
-     * Create a payment method for a customer.
+     * Creates a new payment method for a customer. The payment method is associated with the customer identified by `id`. The accepted fields depend on the payment method `type`.
      * @summary Create Payment Method
      * @param {string} id Identifier of the resource
      * @param {CreateCustomerPaymentMethodsRequest} createCustomerPaymentMethodsRequest requested field for customer payment methods
@@ -505,7 +526,7 @@ export class PaymentMethodsApi extends BaseAPI implements PaymentMethodsApiInter
     }
 
     /**
-     * Delete an existing payment method
+     * Deletes a specific payment method of a customer. After deletion, the payment method can no longer be used for future payments.
      * @summary Delete Payment Method
      * @param {string} id Identifier of the resource
      * @param {string} paymentMethodId Identifier of the payment method
@@ -538,11 +559,11 @@ export class PaymentMethodsApi extends BaseAPI implements PaymentMethodsApiInter
     }
 
     /**
-     * Gets a payment Method that corresponds to a customer ID.
+     * Updates a specific payment method of a customer. Use this endpoint to modify the payment method identified by `payment_method_id` for the customer identified by `id`. The fields that can be updated depend on the payment method `type`.
      * @summary Update Payment Method
      * @param {string} id Identifier of the resource
      * @param {string} paymentMethodId Identifier of the payment method
-     * @param {UpdatePaymentMethods} updatePaymentMethods requested field for customer payment methods
+     * @param {UpdatePaymentMethods} updatePaymentMethods Request body for updating a customer payment method.
      * @param {UpdateCustomerPaymentMethodsAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.

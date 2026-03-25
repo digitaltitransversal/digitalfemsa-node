@@ -15,7 +15,7 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { CustomerAddress } from './customer-address';
+import {CustomerAddress} from './customer-address';
 
 /**
  * 
@@ -40,6 +40,12 @@ export interface CustomerFiscalEntitiesRequest {
      * @type {string}
      * @memberof CustomerFiscalEntitiesRequest
      */
+    'name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CustomerFiscalEntitiesRequest
+     */
     'email'?: string;
     /**
      * 
@@ -49,15 +55,9 @@ export interface CustomerFiscalEntitiesRequest {
     'phone'?: string;
     /**
      * 
-     * @type {{ [key: string]: object; }}
+     * @type {{ [key: string]: any; }}
      * @memberof CustomerFiscalEntitiesRequest
      */
-    'metadata'?: { [key: string]: object; };
-    /**
-     * 
-     * @type {string}
-     * @memberof CustomerFiscalEntitiesRequest
-     */
-    'company_name'?: string;
+    'metadata'?: { [key: string]: any; };
 }
 

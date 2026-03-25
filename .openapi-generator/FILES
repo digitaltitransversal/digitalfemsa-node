@@ -35,6 +35,7 @@ model/api-key-response.ts
 model/api-key-update-request.ts
 model/balance-common-field.ts
 model/balance-response.ts
+model/charge-order-response-channel.ts
 model/charge-order-response-payment-method.ts
 model/charge-order-response.ts
 model/charge-request-payment-method.ts
@@ -60,8 +61,6 @@ model/create-customer-fiscal-entities-response.ts
 model/create-customer-payment-methods-request.ts
 model/create-customer-payment-methods-response.ts
 model/customer-address.ts
-model/customer-antifraud-info-response.ts
-model/customer-antifraud-info.ts
 model/customer-fiscal-entities-data-response.ts
 model/customer-fiscal-entities-request.ts
 model/customer-fiscal-entities-response.ts
@@ -115,11 +114,10 @@ model/order-discount-lines-request.ts
 model/order-fiscal-entity-address-response.ts
 model/order-fiscal-entity-request.ts
 model/order-fiscal-entity-response.ts
-model/order-next-action-response-redirect-to-url.ts
-model/order-next-action-response.ts
 model/order-refund-request.ts
 model/order-request-customer-info.ts
 model/order-request.ts
+model/order-response-channel.ts
 model/order-response-charges.ts
 model/order-response-checkout.ts
 model/order-response-customer-info.ts
@@ -144,13 +142,11 @@ model/product-order-response.ts
 model/product.ts
 model/shipping-order-response.ts
 model/shipping-request.ts
-model/sms-checkout-request.ts
 model/transaction-response.ts
 model/transfer-destination-response.ts
 model/transfer-method-response.ts
 model/transfer-response.ts
 model/transfers-response.ts
-model/update-customer-antifraud-info.ts
 model/update-customer-fiscal-entities-response.ts
 model/update-customer-payment-methods-response.ts
 model/update-customer.ts

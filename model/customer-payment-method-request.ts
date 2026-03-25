@@ -15,13 +15,13 @@
 
 
 /**
- * Contains details of the payment methods that the customer has active or has used in Femsa
+ * Payment method data to attach to a customer.
  * @export
  * @interface CustomerPaymentMethodRequest
  */
 export interface CustomerPaymentMethodRequest {
     /**
-     * Type of payment method
+     * Type of payment method.
      * @type {string}
      * @memberof CustomerPaymentMethodRequest
      */

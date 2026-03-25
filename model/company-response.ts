@@ -15,10 +15,12 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { CompanyFiscalInfoResponse } from './company-fiscal-info-response';
+import {CompanyFiscalInfoResponse} from './company-fiscal-info-response';
 // May contain unused imports in some cases
 // @ts-ignore
-import { CompanyPayoutDestinationResponse } from './company-payout-destination-response';
+import {
+  CompanyPayoutDestinationResponse
+} from './company-payout-destination-response';
 
 /**
  * Company model

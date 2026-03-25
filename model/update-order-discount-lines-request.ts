@@ -37,6 +37,16 @@ export interface UpdateOrderDiscountLinesRequest {
      * @type {string}
      * @memberof UpdateOrderDiscountLinesRequest
      */
-    'type'?: string;
+    'type'?: UpdateOrderDiscountLinesRequestTypeEnum;
 }
+
+export const UpdateOrderDiscountLinesRequestTypeEnum = {
+    loyalty: 'loyalty',
+    campaign: 'campaign',
+    coupon: 'coupon',
+    sign: 'sign'
+} as const;
+
+export type UpdateOrderDiscountLinesRequestTypeEnum = typeof UpdateOrderDiscountLinesRequestTypeEnum[keyof typeof UpdateOrderDiscountLinesRequestTypeEnum];
+
 

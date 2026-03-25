@@ -13,18 +13,36 @@
  */
 
 
-import type { Configuration } from '../configuration';
-import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
+import type {Configuration} from '../configuration';
+import type {AxiosInstance, AxiosPromise, RawAxiosRequestConfig} from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import {
+  assertParamExists,
+  createRequestFunction,
+  DUMMY_BASE_URL,
+  serializeDataIfNeeded,
+  setApiKeyToObject,
+  setBasicAuthToObject,
+  setBearerAuthToObject,
+  setOAuthToObject,
+  setSearchParams,
+  toPathString
+} from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
+import {
+  BASE_PATH,
+  BaseAPI,
+  COLLECTION_FORMATS,
+  operationServerMap,
+  RequestArgs,
+  RequiredError
+} from '../base';
 // @ts-ignore
-import { BalanceResponse } from '../model';
 // @ts-ignore
-import { ModelError } from '../model';
+import {BalanceResponse, ModelError} from '../model';
+
 /**
  * BalancesApi - axios parameter creator
  * @export
@@ -32,7 +50,7 @@ import { ModelError } from '../model';
 export const BalancesApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Get a company\'s balance
+         * Retrieves the current balance information for the authenticated company.  Monetary fields are returned as arrays of amounts grouped by currency. 
          * @summary Get a company\'s balance
          * @param {GetBalanceAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {*} [options] Override http request option.
@@ -81,7 +99,7 @@ export const BalancesApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = BalancesApiAxiosParamCreator(configuration)
     return {
         /**
-         * Get a company\'s balance
+         * Retrieves the current balance information for the authenticated company.  Monetary fields are returned as arrays of amounts grouped by currency. 
          * @summary Get a company\'s balance
          * @param {GetBalanceAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {*} [options] Override http request option.
@@ -104,7 +122,7 @@ export const BalancesApiFactory = function (configuration?: Configuration, baseP
     const localVarFp = BalancesApiFp(configuration)
     return {
         /**
-         * Get a company\'s balance
+         * Retrieves the current balance information for the authenticated company.  Monetary fields are returned as arrays of amounts grouped by currency. 
          * @summary Get a company\'s balance
          * @param {GetBalanceAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {*} [options] Override http request option.
@@ -123,7 +141,7 @@ export const BalancesApiFactory = function (configuration?: Configuration, baseP
  */
 export interface BalancesApiInterface {
     /**
-     * Get a company\'s balance
+     * Retrieves the current balance information for the authenticated company.  Monetary fields are returned as arrays of amounts grouped by currency. 
      * @summary Get a company\'s balance
      * @param {GetBalanceAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {*} [options] Override http request option.
@@ -142,7 +160,7 @@ export interface BalancesApiInterface {
  */
 export class BalancesApi extends BaseAPI implements BalancesApiInterface {
     /**
-     * Get a company\'s balance
+     * Retrieves the current balance information for the authenticated company.  Monetary fields are returned as arrays of amounts grouped by currency. 
      * @summary Get a company\'s balance
      * @param {GetBalanceAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {*} [options] Override http request option.

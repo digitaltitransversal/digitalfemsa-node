@@ -13,28 +13,49 @@
  */
 
 
-import type { Configuration } from '../configuration';
-import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
+import type {Configuration} from '../configuration';
+import type {AxiosInstance, AxiosPromise, RawAxiosRequestConfig} from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import {
+  assertParamExists,
+  createRequestFunction,
+  DUMMY_BASE_URL,
+  serializeDataIfNeeded,
+  setApiKeyToObject,
+  setBasicAuthToObject,
+  setBearerAuthToObject,
+  setOAuthToObject,
+  setSearchParams,
+  toPathString
+} from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
+import {
+  BASE_PATH,
+  BaseAPI,
+  COLLECTION_FORMATS,
+  operationServerMap,
+  RequestArgs,
+  RequiredError
+} from '../base';
 // @ts-ignore
-import { GetWebhookKeysResponse } from '../model';
 // @ts-ignore
-import { ModelError } from '../model';
 // @ts-ignore
-import { WebhookKeyCreateResponse } from '../model';
 // @ts-ignore
-import { WebhookKeyDeleteResponse } from '../model';
 // @ts-ignore
-import { WebhookKeyRequest } from '../model';
 // @ts-ignore
-import { WebhookKeyResponse } from '../model';
 // @ts-ignore
-import { WebhookKeyUpdateRequest } from '../model';
+import {
+  GetWebhookKeysResponse,
+  ModelError,
+  WebhookKeyCreateResponse,
+  WebhookKeyDeleteResponse,
+  WebhookKeyRequest,
+  WebhookKeyResponse,
+  WebhookKeyUpdateRequest
+} from '../model';
+
 /**
  * WebhookKeysApi - axios parameter creator
  * @export
@@ -42,7 +63,7 @@ import { WebhookKeyUpdateRequest } from '../model';
 export const WebhookKeysApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Create a webhook key
+         * Creates a new webhook signing key for the current company.
          * @summary Create Webhook Key
          * @param {CreateWebhookKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {WebhookKeyRequest} [webhookKeyRequest] 
@@ -85,8 +106,8 @@ export const WebhookKeysApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
-         * 
-         * @summary Delete Webhook key
+         * Deletes a webhook signing key.
+         * @summary Delete webhook key
          * @param {string} id Identifier of the resource
          * @param {DeleteWebhookKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {*} [options] Override http request option.
@@ -128,8 +149,8 @@ export const WebhookKeysApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
-         * 
-         * @summary Get Webhook Key
+         * Retrieves the details of a webhook signing key by its ID.
+         * @summary Get webhook key
          * @param {string} id Identifier of the resource
          * @param {GetWebhookKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -240,8 +261,8 @@ export const WebhookKeysApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
-         * updates an existing webhook key
-         * @summary Update Webhook Key
+         * Activates or deactivates an existing webhook signing key.
+         * @summary Update webhook key
          * @param {string} id Identifier of the resource
          * @param {UpdateWebhookKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {WebhookKeyUpdateRequest} [webhookKeyUpdateRequest] 
@@ -297,7 +318,7 @@ export const WebhookKeysApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = WebhookKeysApiAxiosParamCreator(configuration)
     return {
         /**
-         * Create a webhook key
+         * Creates a new webhook signing key for the current company.
          * @summary Create Webhook Key
          * @param {CreateWebhookKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {WebhookKeyRequest} [webhookKeyRequest] 
@@ -311,8 +332,8 @@ export const WebhookKeysApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * 
-         * @summary Delete Webhook key
+         * Deletes a webhook signing key.
+         * @summary Delete webhook key
          * @param {string} id Identifier of the resource
          * @param {DeleteWebhookKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {*} [options] Override http request option.
@@ -325,8 +346,8 @@ export const WebhookKeysApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * 
-         * @summary Get Webhook Key
+         * Retrieves the details of a webhook signing key by its ID.
+         * @summary Get webhook key
          * @param {string} id Identifier of the resource
          * @param {GetWebhookKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -358,8 +379,8 @@ export const WebhookKeysApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * updates an existing webhook key
-         * @summary Update Webhook Key
+         * Activates or deactivates an existing webhook signing key.
+         * @summary Update webhook key
          * @param {string} id Identifier of the resource
          * @param {UpdateWebhookKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {WebhookKeyUpdateRequest} [webhookKeyUpdateRequest] 
@@ -383,7 +404,7 @@ export const WebhookKeysApiFactory = function (configuration?: Configuration, ba
     const localVarFp = WebhookKeysApiFp(configuration)
     return {
         /**
-         * Create a webhook key
+         * Creates a new webhook signing key for the current company.
          * @summary Create Webhook Key
          * @param {CreateWebhookKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {WebhookKeyRequest} [webhookKeyRequest] 
@@ -394,8 +415,8 @@ export const WebhookKeysApiFactory = function (configuration?: Configuration, ba
             return localVarFp.createWebhookKey(acceptLanguage, webhookKeyRequest, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
-         * @summary Delete Webhook key
+         * Deletes a webhook signing key.
+         * @summary Delete webhook key
          * @param {string} id Identifier of the resource
          * @param {DeleteWebhookKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {*} [options] Override http request option.
@@ -405,8 +426,8 @@ export const WebhookKeysApiFactory = function (configuration?: Configuration, ba
             return localVarFp.deleteWebhookKey(id, acceptLanguage, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
-         * @summary Get Webhook Key
+         * Retrieves the details of a webhook signing key by its ID.
+         * @summary Get webhook key
          * @param {string} id Identifier of the resource
          * @param {GetWebhookKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -432,8 +453,8 @@ export const WebhookKeysApiFactory = function (configuration?: Configuration, ba
             return localVarFp.getWebhookKeys(acceptLanguage, xChildCompanyId, limit, search, next, previous, options).then((request) => request(axios, basePath));
         },
         /**
-         * updates an existing webhook key
-         * @summary Update Webhook Key
+         * Activates or deactivates an existing webhook signing key.
+         * @summary Update webhook key
          * @param {string} id Identifier of the resource
          * @param {UpdateWebhookKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {WebhookKeyUpdateRequest} [webhookKeyUpdateRequest] 
@@ -453,7 +474,7 @@ export const WebhookKeysApiFactory = function (configuration?: Configuration, ba
  */
 export interface WebhookKeysApiInterface {
     /**
-     * Create a webhook key
+     * Creates a new webhook signing key for the current company.
      * @summary Create Webhook Key
      * @param {CreateWebhookKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {WebhookKeyRequest} [webhookKeyRequest] 
@@ -464,8 +485,8 @@ export interface WebhookKeysApiInterface {
     createWebhookKey(acceptLanguage?: CreateWebhookKeyAcceptLanguageEnum, webhookKeyRequest?: WebhookKeyRequest, options?: RawAxiosRequestConfig): AxiosPromise<WebhookKeyCreateResponse>;
 
     /**
-     * 
-     * @summary Delete Webhook key
+     * Deletes a webhook signing key.
+     * @summary Delete webhook key
      * @param {string} id Identifier of the resource
      * @param {DeleteWebhookKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {*} [options] Override http request option.
@@ -475,8 +496,8 @@ export interface WebhookKeysApiInterface {
     deleteWebhookKey(id: string, acceptLanguage?: DeleteWebhookKeyAcceptLanguageEnum, options?: RawAxiosRequestConfig): AxiosPromise<WebhookKeyDeleteResponse>;
 
     /**
-     * 
-     * @summary Get Webhook Key
+     * Retrieves the details of a webhook signing key by its ID.
+     * @summary Get webhook key
      * @param {string} id Identifier of the resource
      * @param {GetWebhookKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -502,8 +523,8 @@ export interface WebhookKeysApiInterface {
     getWebhookKeys(acceptLanguage?: GetWebhookKeysAcceptLanguageEnum, xChildCompanyId?: string, limit?: number, search?: string, next?: string, previous?: string, options?: RawAxiosRequestConfig): AxiosPromise<GetWebhookKeysResponse>;
 
     /**
-     * updates an existing webhook key
-     * @summary Update Webhook Key
+     * Activates or deactivates an existing webhook signing key.
+     * @summary Update webhook key
      * @param {string} id Identifier of the resource
      * @param {UpdateWebhookKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {WebhookKeyUpdateRequest} [webhookKeyUpdateRequest] 
@@ -523,7 +544,7 @@ export interface WebhookKeysApiInterface {
  */
 export class WebhookKeysApi extends BaseAPI implements WebhookKeysApiInterface {
     /**
-     * Create a webhook key
+     * Creates a new webhook signing key for the current company.
      * @summary Create Webhook Key
      * @param {CreateWebhookKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {WebhookKeyRequest} [webhookKeyRequest] 
@@ -536,8 +557,8 @@ export class WebhookKeysApi extends BaseAPI implements WebhookKeysApiInterface {
     }
 
     /**
-     * 
-     * @summary Delete Webhook key
+     * Deletes a webhook signing key.
+     * @summary Delete webhook key
      * @param {string} id Identifier of the resource
      * @param {DeleteWebhookKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {*} [options] Override http request option.
@@ -549,8 +570,8 @@ export class WebhookKeysApi extends BaseAPI implements WebhookKeysApiInterface {
     }
 
     /**
-     * 
-     * @summary Get Webhook Key
+     * Retrieves the details of a webhook signing key by its ID.
+     * @summary Get webhook key
      * @param {string} id Identifier of the resource
      * @param {GetWebhookKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
@@ -580,8 +601,8 @@ export class WebhookKeysApi extends BaseAPI implements WebhookKeysApiInterface {
     }
 
     /**
-     * updates an existing webhook key
-     * @summary Update Webhook Key
+     * Activates or deactivates an existing webhook signing key.
+     * @summary Update webhook key
      * @param {string} id Identifier of the resource
      * @param {UpdateWebhookKeyAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {WebhookKeyUpdateRequest} [webhookKeyUpdateRequest] 

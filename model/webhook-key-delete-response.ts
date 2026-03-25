@@ -15,7 +15,7 @@
 
 
 /**
- * webhook keys model
+ * Represents a webhook signing key after it has been deleted.
  * @export
  * @interface WebhookKeyDeleteResponse
  */

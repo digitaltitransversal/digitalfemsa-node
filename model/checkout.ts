@@ -15,7 +15,7 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { CheckoutOrderTemplate } from './checkout-order-template';
+import {CheckoutOrderTemplate} from './checkout-order-template';
 
 /**
  * It is a sub-resource of the Order model that can be stipulated in order to configure its corresponding checkout
@@ -47,12 +47,6 @@ export interface Checkout {
      * @memberof Checkout
      */
     'needs_shipping_contact'?: boolean;
-    /**
-     * This flag allows you to specify if the link will be on demand.
-     * @type {boolean}
-     * @memberof Checkout
-     */
-    'on_demand_enabled'?: boolean | null;
     /**
      * 
      * @type {CheckoutOrderTemplate}

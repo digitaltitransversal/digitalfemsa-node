@@ -13,22 +13,43 @@
  */
 
 
-import type { Configuration } from '../configuration';
-import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
+import type {Configuration} from '../configuration';
+import type {AxiosInstance, AxiosPromise, RawAxiosRequestConfig} from 'axios';
 import globalAxios from 'axios';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import {
+  assertParamExists,
+  createRequestFunction,
+  DUMMY_BASE_URL,
+  serializeDataIfNeeded,
+  setApiKeyToObject,
+  setBasicAuthToObject,
+  setBearerAuthToObject,
+  setOAuthToObject,
+  setSearchParams,
+  toPathString
+} from '../common';
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
+import {
+  BASE_PATH,
+  BaseAPI,
+  COLLECTION_FORMATS,
+  operationServerMap,
+  RequestArgs,
+  RequiredError
+} from '../base';
 // @ts-ignore
-import { ModelError } from '../model';
 // @ts-ignore
-import { OrderTaxRequest } from '../model';
 // @ts-ignore
-import { UpdateOrderTaxRequest } from '../model';
 // @ts-ignore
-import { UpdateOrderTaxResponse } from '../model';
+import {
+  ModelError,
+  OrderTaxRequest,
+  UpdateOrderTaxRequest,
+  UpdateOrderTaxResponse
+} from '../model';
+
 /**
  * TaxesApi - axios parameter creator
  * @export
@@ -36,10 +57,10 @@ import { UpdateOrderTaxResponse } from '../model';
 export const TaxesApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Create new taxes for an existing orden
+         * Creates a new tax line for an existing order. The tax line is added to the order identified by `id`. The response returns the created tax line.
          * @summary Create Tax
          * @param {string} id Identifier of the resource
-         * @param {OrderTaxRequest} orderTaxRequest requested field for a taxes
+         * @param {OrderTaxRequest} orderTaxRequest Request body for creating a tax line.
          * @param {OrdersCreateTaxesAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -90,7 +111,7 @@ export const TaxesApiAxiosParamCreator = function (configuration?: Configuration
             };
         },
         /**
-         * Delete taxes for an existing orden
+         * Deletes an existing tax line from an order. The tax line identified by `tax_id` belongs to the order identified by `id`. The response includes the deleted resource with `deleted: true`.
          * @summary Delete Tax
          * @param {string} id Identifier of the resource
          * @param {string} taxId identifier
@@ -142,11 +163,11 @@ export const TaxesApiAxiosParamCreator = function (configuration?: Configuration
             };
         },
         /**
-         * Update taxes for an existing orden
+         * Updates an existing tax line for an order. The tax line identified by `tax_id` belongs to the order identified by `id`. Only the fields provided in the request body are updated.
          * @summary Update Tax
          * @param {string} id Identifier of the resource
          * @param {string} taxId identifier
-         * @param {UpdateOrderTaxRequest} updateOrderTaxRequest requested field for taxes
+         * @param {UpdateOrderTaxRequest} updateOrderTaxRequest Request body for updating a tax line.
          * @param {OrdersUpdateTaxesAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -210,10 +231,10 @@ export const TaxesApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = TaxesApiAxiosParamCreator(configuration)
     return {
         /**
-         * Create new taxes for an existing orden
+         * Creates a new tax line for an existing order. The tax line is added to the order identified by `id`. The response returns the created tax line.
          * @summary Create Tax
          * @param {string} id Identifier of the resource
-         * @param {OrderTaxRequest} orderTaxRequest requested field for a taxes
+         * @param {OrderTaxRequest} orderTaxRequest Request body for creating a tax line.
          * @param {OrdersCreateTaxesAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -226,7 +247,7 @@ export const TaxesApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * Delete taxes for an existing orden
+         * Deletes an existing tax line from an order. The tax line identified by `tax_id` belongs to the order identified by `id`. The response includes the deleted resource with `deleted: true`.
          * @summary Delete Tax
          * @param {string} id Identifier of the resource
          * @param {string} taxId identifier
@@ -242,11 +263,11 @@ export const TaxesApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, operationBasePath || basePath);
         },
         /**
-         * Update taxes for an existing orden
+         * Updates an existing tax line for an order. The tax line identified by `tax_id` belongs to the order identified by `id`. Only the fields provided in the request body are updated.
          * @summary Update Tax
          * @param {string} id Identifier of the resource
          * @param {string} taxId identifier
-         * @param {UpdateOrderTaxRequest} updateOrderTaxRequest requested field for taxes
+         * @param {UpdateOrderTaxRequest} updateOrderTaxRequest Request body for updating a tax line.
          * @param {OrdersUpdateTaxesAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -269,10 +290,10 @@ export const TaxesApiFactory = function (configuration?: Configuration, basePath
     const localVarFp = TaxesApiFp(configuration)
     return {
         /**
-         * Create new taxes for an existing orden
+         * Creates a new tax line for an existing order. The tax line is added to the order identified by `id`. The response returns the created tax line.
          * @summary Create Tax
          * @param {string} id Identifier of the resource
-         * @param {OrderTaxRequest} orderTaxRequest requested field for a taxes
+         * @param {OrderTaxRequest} orderTaxRequest Request body for creating a tax line.
          * @param {OrdersCreateTaxesAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -282,7 +303,7 @@ export const TaxesApiFactory = function (configuration?: Configuration, basePath
             return localVarFp.ordersCreateTaxes(id, orderTaxRequest, acceptLanguage, xChildCompanyId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Delete taxes for an existing orden
+         * Deletes an existing tax line from an order. The tax line identified by `tax_id` belongs to the order identified by `id`. The response includes the deleted resource with `deleted: true`.
          * @summary Delete Tax
          * @param {string} id Identifier of the resource
          * @param {string} taxId identifier
@@ -295,11 +316,11 @@ export const TaxesApiFactory = function (configuration?: Configuration, basePath
             return localVarFp.ordersDeleteTaxes(id, taxId, acceptLanguage, xChildCompanyId, options).then((request) => request(axios, basePath));
         },
         /**
-         * Update taxes for an existing orden
+         * Updates an existing tax line for an order. The tax line identified by `tax_id` belongs to the order identified by `id`. Only the fields provided in the request body are updated.
          * @summary Update Tax
          * @param {string} id Identifier of the resource
          * @param {string} taxId identifier
-         * @param {UpdateOrderTaxRequest} updateOrderTaxRequest requested field for taxes
+         * @param {UpdateOrderTaxRequest} updateOrderTaxRequest Request body for updating a tax line.
          * @param {OrdersUpdateTaxesAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
          * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
          * @param {*} [options] Override http request option.
@@ -318,10 +339,10 @@ export const TaxesApiFactory = function (configuration?: Configuration, basePath
  */
 export interface TaxesApiInterface {
     /**
-     * Create new taxes for an existing orden
+     * Creates a new tax line for an existing order. The tax line is added to the order identified by `id`. The response returns the created tax line.
      * @summary Create Tax
      * @param {string} id Identifier of the resource
-     * @param {OrderTaxRequest} orderTaxRequest requested field for a taxes
+     * @param {OrderTaxRequest} orderTaxRequest Request body for creating a tax line.
      * @param {OrdersCreateTaxesAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.
@@ -331,7 +352,7 @@ export interface TaxesApiInterface {
     ordersCreateTaxes(id: string, orderTaxRequest: OrderTaxRequest, acceptLanguage?: OrdersCreateTaxesAcceptLanguageEnum, xChildCompanyId?: string, options?: RawAxiosRequestConfig): AxiosPromise<UpdateOrderTaxResponse>;
 
     /**
-     * Delete taxes for an existing orden
+     * Deletes an existing tax line from an order. The tax line identified by `tax_id` belongs to the order identified by `id`. The response includes the deleted resource with `deleted: true`.
      * @summary Delete Tax
      * @param {string} id Identifier of the resource
      * @param {string} taxId identifier
@@ -344,11 +365,11 @@ export interface TaxesApiInterface {
     ordersDeleteTaxes(id: string, taxId: string, acceptLanguage?: OrdersDeleteTaxesAcceptLanguageEnum, xChildCompanyId?: string, options?: RawAxiosRequestConfig): AxiosPromise<UpdateOrderTaxResponse>;
 
     /**
-     * Update taxes for an existing orden
+     * Updates an existing tax line for an order. The tax line identified by `tax_id` belongs to the order identified by `id`. Only the fields provided in the request body are updated.
      * @summary Update Tax
      * @param {string} id Identifier of the resource
      * @param {string} taxId identifier
-     * @param {UpdateOrderTaxRequest} updateOrderTaxRequest requested field for taxes
+     * @param {UpdateOrderTaxRequest} updateOrderTaxRequest Request body for updating a tax line.
      * @param {OrdersUpdateTaxesAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.
@@ -367,10 +388,10 @@ export interface TaxesApiInterface {
  */
 export class TaxesApi extends BaseAPI implements TaxesApiInterface {
     /**
-     * Create new taxes for an existing orden
+     * Creates a new tax line for an existing order. The tax line is added to the order identified by `id`. The response returns the created tax line.
      * @summary Create Tax
      * @param {string} id Identifier of the resource
-     * @param {OrderTaxRequest} orderTaxRequest requested field for a taxes
+     * @param {OrderTaxRequest} orderTaxRequest Request body for creating a tax line.
      * @param {OrdersCreateTaxesAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.
@@ -382,7 +403,7 @@ export class TaxesApi extends BaseAPI implements TaxesApiInterface {
     }
 
     /**
-     * Delete taxes for an existing orden
+     * Deletes an existing tax line from an order. The tax line identified by `tax_id` belongs to the order identified by `id`. The response includes the deleted resource with `deleted: true`.
      * @summary Delete Tax
      * @param {string} id Identifier of the resource
      * @param {string} taxId identifier
@@ -397,11 +418,11 @@ export class TaxesApi extends BaseAPI implements TaxesApiInterface {
     }
 
     /**
-     * Update taxes for an existing orden
+     * Updates an existing tax line for an order. The tax line identified by `tax_id` belongs to the order identified by `id`. Only the fields provided in the request body are updated.
      * @summary Update Tax
      * @param {string} id Identifier of the resource
      * @param {string} taxId identifier
-     * @param {UpdateOrderTaxRequest} updateOrderTaxRequest requested field for taxes
+     * @param {UpdateOrderTaxRequest} updateOrderTaxRequest Request body for updating a tax line.
      * @param {OrdersUpdateTaxesAcceptLanguageEnum} [acceptLanguage] Use for knowing which language to use
      * @param {string} [xChildCompanyId] In the case of a holding company, the company id of the child company to which will process the request.
      * @param {*} [options] Override http request option.
