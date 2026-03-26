@@ -22,8 +22,22 @@ jobs:
               exit 1
             fi
           fi
-      - run: |
+      - name: Configure npm auth
+        run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+      - name: Validate npm publish access
+        run: |
+          PACKAGE_NAME=$(node -p "require('./package.json').name")
+          NPM_USER=$(npm whoami)
+          echo "Authenticated to npm as $NPM_USER for package $PACKAGE_NAME."
+
+          if ! npm owner ls "$PACKAGE_NAME" | tee /tmp/npm-owners.txt | grep -Eiq "^$NPM_USER[[:space:]]"; then
+            echo "The npm token user '$NPM_USER' is not an owner of '$PACKAGE_NAME'."
+            echo "Ask an existing owner to run: npm owner add $NPM_USER $PACKAGE_NAME"
+            exit 1
+          fi
+
+      - run: |
           npm ci
           npm run build
           VERSION=$(node -p "require('./package.json').version" )
