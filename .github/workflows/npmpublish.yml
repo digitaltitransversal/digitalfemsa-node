@@ -1,16 +1,17 @@
 name: publish on npm
 on:
   release:
-    types: [created]
+    types: [published]
 
 jobs:
   publish-npm:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 14
+          node-version: 20
+          cache: npm
           registry-url: https://registry.npmjs.org/
       - name: Check if release creator is a code owner
         run: |
@@ -22,8 +23,8 @@ jobs:
             fi
           fi
       - run: |
-          npm install
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+          npm ci
           npm run build
           VERSION=$(node -p "require('./package.json').version" )
           # Only publish stable versions to the latest tag
