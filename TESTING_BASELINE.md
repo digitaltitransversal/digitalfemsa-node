@@ -1,8 +1,8 @@
 # Testing Baseline - DigitalFemsa Node SDK
 
 **Fecha de creación**: 2 de junio de 2026  
-**Versión del SDK**: 1.1.0  
-**Dependencias actuales**: axios@1.13.6
+**Versión del SDK**: 1.1.1  
+**Dependencias actuales**: axios@1.16.1
 
 ## 📊 Resultados del Baseline
 

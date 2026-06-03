@@ -2,6 +2,7 @@
 
 **Proyecto**: DigitalFemsa Node.js SDK  
 **Ticket**: BOPR-1856  
+**Versión**: 1.1.1  
 **Fecha**: 2 de junio de 2026  
 **Branch**: `fix/BOPR-1856-vulnerabilities`
 

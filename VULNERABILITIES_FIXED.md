@@ -1,7 +1,7 @@
 # Vulnerabilidades Resueltas - DigitalFemsa Node SDK
 
 **Fecha de resolución**: 2 de junio de 2026  
-**Versión del SDK**: 1.1.0  
+**Versión del SDK**: 1.1.1  
 **Branch**: fix/BOPR-1856-vulnerabilities
 
 ## 🎯 Resumen Ejecutivo
