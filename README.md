@@ -82,11 +82,56 @@ client.createCustomer(customer).then(response => {
 ```
 
 ## Running the tests
+
+### Quick Start
 Navigate to digitalfemsa-node folder and run the following commands.
-```
+```bash
 npm run build
 npm run test
 ```
+
+### Test Suite Overview
+
+The SDK includes comprehensive contract regression tests that validate API functionality and detect breaking changes:
+
+- **22 test suites** covering all 19 API modules
+- **153 tests** validating required parameters, request structure, and HTTP methods
+- **62% code coverage** across APIs and core functionality
+
+### Test Categories
+
+**Contract Tests** (`__tests__/contract/`):
+- Validate required parameters throw `RequiredError` when missing
+- Verify request structure and data types
+- Confirm correct HTTP endpoints and methods (GET, POST, PUT, DELETE)
+- Act as regression tests to detect API changes
+
+**Unit Tests** (`__tests__/`):
+- API instantiation tests
+- Configuration tests
+- Model export tests
+
+### Running Specific Tests
+
+```bash
+# Run all tests with coverage
+npm test
+
+# Run only contract tests
+npm test -- __tests__/contract/
+
+# Run tests for a specific API
+npm test -- __tests__/contract/orders-api.contract.spec.ts
+
+# Run tests in watch mode
+npm test -- --watch
+```
+
+### Test Documentation
+
+For detailed information about the test baseline and vulnerability fixes, see:
+- `TESTING_BASELINE.md` - Complete test coverage documentation
+- `VULNERABILITIES_FIXED.md` - Security vulnerability resolution report
 
 ## Contributing
 We encourage you to contribute to this repository, so everyone can benefit from new features, bug fixes, and any other improvements.
