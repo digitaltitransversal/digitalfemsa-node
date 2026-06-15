@@ -21,10 +21,30 @@ import {ChargesDataResponse} from './charges-data-response';
 import {Pagination} from './pagination';
 
 /**
- * @type OrderResponseCharges
- * List preview of charges created for the order. Charges are only created when included in the request or created later through payment flows. This field can be `null` depending on the response context. 
+ * List preview of charges created for the order. Charges are only created when included in the request or created later through payment flows. This field can be `null` depending on the response context.
+ * 
+ * MANUAL FIX: This interface was manually extended to include 'total' and 'data' fields
+ * that are present in the API response but missing from the auto-generated type definition.
+ * This fix will be lost if the SDK is regenerated without updating the OpenAPI spec first.
+ * 
+ * TODO: Update OpenAPI specification to properly define OrderResponseCharges with these fields
+ * 
  * @export
+ * @interface OrderResponseCharges
  */
-export type OrderResponseCharges = Pagination;
+export interface OrderResponseCharges extends Pagination {
+    /**
+     * Total number of charges
+     * @type {number}
+     * @memberof OrderResponseCharges
+     */
+    'total'?: number;
+    /**
+     * Array of charge objects
+     * @type {Array<ChargesDataResponse>}
+     * @memberof OrderResponseCharges
+     */
+    'data'?: Array<ChargesDataResponse>;
+}
 
 
