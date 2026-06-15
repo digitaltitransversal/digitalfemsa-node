@@ -1,0 +1,9 @@
+{
+  "name": "test-lambda-digitalfemsa",
+  "version": "1.0.0",
+  "description": "Test Lambda to replicate ca_bundle.crt issue",
+  "main": "index.js",
+  "dependencies": {
+    "digitalfemsa": "file:../"
+  }
+}
