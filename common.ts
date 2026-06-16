@@ -162,11 +162,27 @@ export const createRequestFunction = function (axiosArgs: RequestArgs, globalAxi
     return <T = unknown, R = AxiosResponse<T>>(axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
         if (!axiosArgs.options.httpsAgent) {
             const certPath = path.join(__dirname, '/cert/ca_bundle.crt')
-
-            axiosArgs.options.httpsAgent = new https.Agent({
-                ca: fs.readFileSync(certPath),
-                rejectUnauthorized: false
-            })
+            
+            // Try to load custom CA bundle, fallback to system certificates if not found
+            // This fixes issues in serverless environments (AWS Lambda, Google Cloud Functions, etc.)
+            try {
+                if (fs.existsSync(certPath)) {
+                    axiosArgs.options.httpsAgent = new https.Agent({
+                        ca: fs.readFileSync(certPath),
+                        rejectUnauthorized: false
+                    })
+                } else {
+                    // Fallback to system certificates (works in serverless environments)
+                    axiosArgs.options.httpsAgent = new https.Agent({
+                        rejectUnauthorized: true
+                    })
+                }
+            } catch (error) {
+                // If any error occurs, use system certificates as fallback
+                axiosArgs.options.httpsAgent = new https.Agent({
+                    rejectUnauthorized: true
+                })
+            }
         }
         const axiosRequestArgs = {...axiosArgs.options, url: (axios.defaults.baseURL ? '' : configuration?.basePath ?? basePath) + axiosArgs.url};
         return axios.request<T, R>(axiosRequestArgs);
