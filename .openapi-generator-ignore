@@ -23,3 +23,7 @@
 #!docs/README.md
 git_push.sh
 README.md
+templates/node/common.mustache
+templates/node/package.mustache
+templates/node/VERSION.mustache
+package.json
